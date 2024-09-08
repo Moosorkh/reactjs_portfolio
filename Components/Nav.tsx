@@ -1,4 +1,5 @@
-import React from 'react'
+import { Bars3Icon } from '@heroicons/react/20/solid';
+import React from 'react';
 
 const Nav = () => {
   return (
@@ -13,6 +14,9 @@ const Nav = () => {
         <div className='nav-link'>ABOUT</div>
         <div className='nav-link'>BLOG</div>
         <div className='nav-link'>CONTACT</div>
+        <div>
+            <Bars3Icon className="w-[2rem] md:hidden h-[2rem] cursor-pointer text-yellow-300"/>
+        </div>
         </div>
     </div>
   )

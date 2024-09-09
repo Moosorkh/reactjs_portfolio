@@ -46,15 +46,17 @@
   .nav-link-mobile::after {
     content: "";
     position: absolute;
+    bottom: 0;
     height: 3px;
     background-color: #facc15;
     width: 100%;
     transform: scaleX(0);
     transition: transform 300ms;
     transform-origin: center;
+    display: block;
   }
 
   .nav-link-mobile:hover::after {
-    transform: scaleX(1.0);
+    transform: scaleX(1);
   }
 }

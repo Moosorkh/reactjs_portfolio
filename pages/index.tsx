@@ -1,3 +1,4 @@
+import MobileNav from '@/Components/MobileNav';
 import Nav from '@/Components/Nav';
 import React from 'react'
 import { useState } from 'react';
@@ -9,6 +10,7 @@ const Homepage = () => {
   return (
     <div className='overflow-x-hidden'>
       <div>
+        <MobileNav />
         <Nav />
       </div>
     </div>

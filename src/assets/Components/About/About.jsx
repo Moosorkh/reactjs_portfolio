@@ -1,98 +1,71 @@
 import React from "react";
-import AboutImg from "../../7358653-removebg-preview.png"; // Your About image
 import avatar from "../../7358602-removebg-preview.png";
-import { IoArrowForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import TextChange from "../TextChange";
 
 const About = () => {
   const navigate = useNavigate();
-  const handleContact = () => {
-    navigate("/contact");
-  };
   return (
     <div
       id="About"
-      className="text-white flex flex-col items-center bg-opacity-30 rounded-lg p-12 bg-black shadow-xl"
+      className="text-white flex flex-col justify-between min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 p-12 shadow-xl"
     >
       {/* First Section from Home Component */}
-      <div className="md:flex w-full justify-between items-center p-10 md:p-20">
-        <div className="md:w-2/4">
-          <p className=" md:text-xl font-bold leading-normal tracking-tighter">
-            <TextChange />
-          </p>
-          <p className="text-sm md:text-2xl tracking-tight mt-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-            dolore. Aspernatur, sequi molestias, velit quo reprehenderit
-            debitis.
-          </p>
-          <button
-            className="mt-5 md:mt-10 text-white py-2 px-3 bg-[#465697] text-sm md:text-lg rounded-3xl hover:scale-105 transition-transform"
-            onClick={() => navigate("/contact")}
-          >
-            Contact Me
-          </button>
-        </div>
-        <div>
-          <img className="w-2/5" src={avatar} alt="Avatar" />
-        </div>
-      </div>
+      <div className="flex-grow">
+        <p className="text-xl md:text-3xl font-bold leading-snug tracking-tighter mt-10">
+          <TextChange />
+        </p>
 
-      {/* Second Section from About Component */}
-      <div className="md:flex overflow-hidden items-center md:flex-wrap md:justify-center mx-0 md:mx-20 bg-opacity-30 rounded-lg p-12 bg-black shadow-xl">
-        <div>
-          <h2 className="text-2xl md:text-4xl font-bold">About me</h2>
-          <div className="md:flex flex-wrap flex-col md:flex-row items-center">
-            <img className="md:h-80" src={AboutImg} alt="About img" />
-            <ul>
-              {/* Frontend Developer */}
-              <div className="flex gap-3 py-4">
-                <IoArrowForward size={30} className="mt-1" />
-                <span className="w-96">
-                  <h1 className="text-xl md:text-2xl font-semibold leading-normal">
-                    Frontend developer
-                  </h1>
-                  <p className="text-sm md:text-md leading-tight">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maiores explicabo deserunt asperiores quasi, vitae
-                    blanditiis perferendis quos consectetur ea harum!
-                  </p>
-                </span>
-              </div>
+        <div className="md:flex w-full justify-center items-center md:px-20 mt-10">
+          {/* Left section with description */}
+          <div className="md:w-1/2 p-6">
+            <h2 className="text-2xl md:text-4xl font-bold mb-6">
+              I’m A Passionate Full Stack Developer.
+            </h2>
+            <p className="text-sm md:text-lg leading-relaxed mb-6">
+              With a solid foundation in both <strong>frontend</strong> and{" "}
+              <strong>backend</strong> development, I specialize in crafting
+              dynamic and scalable web applications. I have hands-on experience
+              working with the latest technologies, including{" "}
+              <strong>React</strong>, <strong>Node.js</strong>,{" "}
+              <strong>JavaScript</strong>, <strong>TypeScript</strong>, and{" "}
+              <strong>Python</strong>. I am driven by a deep passion for
+              creating intuitive user experiences and solving complex technical
+              problems.
+            </p>
+            <p className="text-sm md:text-lg leading-relaxed mb-6">
+              My background in <strong>full-stack development</strong> empowers
+              me to bridge the gap between beautiful design and robust
+              functionality. Whether it's architecting scalable systems,
+              optimizing performance, or crafting seamless UI interactions, I am
+              always eager to push boundaries and deliver exceptional results.
+            </p>
+            <p className="text-sm md:text-lg leading-relaxed mb-6">
+              Let's work together to bring your ideas to life. Feel free to
+              check out my projects below or get in touch if you'd like to
+              collaborate!
+            </p>
+            <button
+              className="mt-5 md:mt-10 text-white py-3 px-6 bg-[#607D8B] text-sm md:text-lg rounded-full hover:bg-[#FF8C00] transition-all duration-300 ease-in-out"
+              onClick={() => navigate("/contact")}
+            >
+              Contact Me
+            </button>
+          </div>
 
-              {/* Database Developer */}
-              <div className="flex gap-3 py-4">
-                <IoArrowForward size={30} className="mt-1" />
-                <span className="w-96">
-                  <h1 className="text-xl md:text-2xl font-semibold leading-normal">
-                    Database developer
-                  </h1>
-                  <p className="text-sm md:text-md leading-tight">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maiores explicabo deserunt asperiores quasi, vitae
-                    blanditiis perferendis quos consectetur ea harum!
-                  </p>
-                </span>
-              </div>
-
-              {/* Backend Developer */}
-              <div className="flex gap-3 py-4">
-                <IoArrowForward size={30} className="mt-1" />
-                <span className="w-96">
-                  <h1 className="text-xl md:text-2xl font-semibold leading-normal">
-                    Backend developer
-                  </h1>
-                  <p className="text-sm md:text-md leading-tight">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maiores explicabo deserunt asperiores quasi, vitae
-                    blanditiis perferendis quos consectetur ea harum!
-                  </p>
-                </span>
-              </div>
-            </ul>
+          {/* Right section with avatar */}
+          <div className="md:w-1/2 flex justify-center p-6">
+            <img
+              className="w-64 md:w-80 rounded-full shadow-lg"
+              src={avatar}
+              alt="Avatar"
+            />
           </div>
         </div>
       </div>
+
+      {/* Bottom Margin to push the content up */}
+      <div className="mt-auto mb-12" />
     </div>
   );
 };

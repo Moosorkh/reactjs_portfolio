@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const TextChange = () => {
   const texts = [
-    "Hi, I am Mehdi,",
-    "A Full Stack Developer.",
+    "Hi!",
     "Welcome to my portfolio!",
   ];
 
@@ -14,55 +13,45 @@ const TextChange = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // Update the first or second line based on the current index
-      if (currentIndex === 0 && isTyping) {
-        // First line typing
-        setCurrentText([texts[0].substring(0, endValue), ""]);
-      } else if (currentIndex === 1 && isTyping) {
-        // First line is complete, second line starts typing
-        setCurrentText([texts[0], texts[1].substring(0, endValue)]);
-      }else if (currentIndex === 2 && isTyping) {
-        // First line is complete, second line starts typing
-        setCurrentText([texts[0], texts[1], texts[2].substring(0, endValue)]);
-      }
-
-      // Control the typing forward
       if (isTyping) {
-        setEndValue((prev) => prev + 1);
+        // Handle typing logic based on the current index
+        if (currentIndex === 0) {
+          // First text typing
+          setCurrentText([texts[0].substring(0, endValue), ""]);
+        } else if (currentIndex === 1) {
+          // Second text typing
+          setCurrentText([texts[0], texts[1].substring(0, endValue)]);
+        }
+
+        setEndValue((prev) => prev + 1); // Increment typing
       }
 
-      // Once the first text is fully typed, move to the second text
+      // If the typing reaches the end of the current text
       if (endValue >= texts[currentIndex].length) {
         if (currentIndex === 0) {
-          // First line finished typing, start second line
-          setEndValue(0); // Reset typing index for the second line
-          setCurrentIndex(1); // Move to second text typing
+          // Finished first text, move to second text
+          setEndValue(0);
+          setCurrentIndex(1);
         } else if (currentIndex === 1) {
-            // Second line finished typing, start third line
-            setEndValue(0); // Reset typing index for the second line
-            setCurrentIndex(2); // Move to second text typing
-            }
-        else if (currentIndex === 2) {
-          // Second line finished typing, reset everything
-          setIsTyping(false); // Pause typing to avoid glitch
+          // Finished second text, reset everything
+          setIsTyping(false);
           setTimeout(() => {
             setCurrentText(["", ""]); // Clear both lines after delay
             setEndValue(0); // Reset typing index
             setCurrentIndex(0); // Start typing the first line again
-            setIsTyping(true); // Allow typing to start
+            setIsTyping(true); // Allow typing to restart
           }, 2000); // Delay before restarting
-        } 
+        }
       }
-    }, 30); // Typing speed
+    }, 100); // Typing speed
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
   }, [endValue, currentIndex, isTyping, texts]);
 
   return (
     <div className="transition ease duration-300 h-20 overflow-hidden">
       <div>{currentText[0]}</div>
       <div>{currentText[1]}</div>
-      <div>{currentText[2]}</div>
     </div>
   );
 };

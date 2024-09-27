@@ -11,7 +11,7 @@ import Portfolio from "./assets/Components/Portfolio/Portfolio";
 import Contact from "./assets/Components/Contact/Contact";
 import NotFound from "./assets/Components/NotFound/NotFound";
 import Navbar from "./assets/Components/Navbar/Navbar";
-import Projects from "./assets/Components/Projects/Projects";
+import Resume from "./assets/Components/Resume/Resume";
 import Footer from "./assets/Components/Footer/Footer";
 import "./assets/Components/transition.css";
 
@@ -24,7 +24,7 @@ const AnimatedRoutes = () => {
         <Routes location={location}>
           <Route path="/" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -5,12 +5,10 @@ import {
   FaHtml5,
   FaJs,
   FaReact,
-  FaAmazon,
   FaGithub,
   FaGitAlt,
   FaNodeJs,
   FaBootstrap,
-  FaGoogle,
 } from "react-icons/fa";
 import { DiRedis, DiPostgresql } from "react-icons/di";
 import {
@@ -20,14 +18,21 @@ import {
   SiSequelize,
   SiPython,
 } from "react-icons/si";
-import { RiNetflixFill } from "@remixicon/react";
 
 const Portfolio = () => {
   return (
-    <div id="Portfolio" className="min-h-screen p-10 md:p-24 bg-gray-900">
-      <h1 className="text-2xl md:text-4xl text-white font-bold">Portfolio</h1>
-      <div className="flex flex-wrap items-center justify-around">
-        <div className="flex flex-wrap md:w-2/5 gap-8 md:p-12 py-10">
+    <div
+      id="Portfolio"
+      className="min-h-screen p-10 md:p-24 bg-gradient-to-b from-gray-800 to-gray-900"
+    >
+      <h1 className="text-2xl md:text-4xl text-white font-bold mb-12 text-center">
+        Portfolio
+      </h1>
+
+      {/* Technology Stack Section */}
+      <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
+        <div className="flex flex-wrap md:w-1/1 gap-8 md:p-12 py-10">
+          {/* Example tech icons with consistent styling */}
           {/* HTML5 */}
           <span className="relative group p-2 bg-white rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
             <FaHtml5 color="#E34F26" size={50} />
@@ -156,47 +161,96 @@ const Portfolio = () => {
             </span>
           </span>
         </div>
+      </div>
 
-        {/* Experience Section */}
-        <div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg p-4 items-center">
-            <FaGoogle color="#4285F4" size={50} />
-            <span className="text-white">
-              <h2 className="leading-tight">Software Engineer, Google</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
+      {/* Projects Section */}
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 text-center text-white">
+        Projects
+      </h2>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center">
+        {/* Project 1 - AdoptPaws */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
+            AdoptPaws
+          </h3>
+          <p className="text-sm sm:text-base text-gray-300">
+            AdoptPaws is a frontend E-commerce website for a pet adoption center
+            that includes a simple shopping cart feature.
+          </p>
+          <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+            <li>
+              Built a responsive E-commerce web application using HTML, CSS, and
+              JavaScript.
+            </li>
+            <li>Implemented cart functionality stored in localStorage.</li>
+            <li>
+              Integrated cart persistence across page reloads using JavaScript.
+            </li>
+            <li>Tools/Languages: HTML5, CSS3, JavaScript, LocalStorage</li>
+          </ul>
+          <div className="mt-3">
+            <a href="#" className="text-blue-400">
+              Repo
+            </a>{" "}
+            |{" "}
+            <a href="#" className="text-blue-400">
+              Deployed (With Vercel)
+            </a>
           </div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg p-4 items-center">
-            <RiNetflixFill color="#E50914" size={50} />
-            <span className="text-white">
-              <h2 className="leading-tight">Software Engineer, Netflix</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
+        </div>
+
+        {/* Project 2 - VehicleVanguard */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
+            VehicleVanguard
+          </h3>
+          <p className="text-sm sm:text-base text-gray-300">
+            VehicleVanguard is a command-line application that allows users to
+            manage different types of vehicles.
+          </p>
+          <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+            <li>
+              Designed and implemented a vehicle management system using
+              TypeScript.
+            </li>
+            <li>Led the integration of complex vehicle-specific actions.</li>
+            <li>Promoted user interaction through a dynamic set of options.</li>
+            <li>Tools/Languages: TypeScript</li>
+          </ul>
+          <div className="mt-3">
+            <a href="#" className="text-blue-400">
+              Repo
+            </a>
           </div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg p-4 items-center">
-            <FaAmazon color="#FF9900" size={50} />
-            <span className="text-white">
-              <h2 className="leading-tight">Software Engineer, Amazon</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
+        </div>
+
+        {/* Project 3 - Personal Portfolio */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
+            Personal Portfolio
+          </h3>
+          <p className="text-sm sm:text-base text-gray-300">
+            This personal portfolio was built using React and TailwindCSS. It
+            showcases my projects, skills, and experience in a clean format.
+          </p>
+          <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+            <li>Built using React and TailwindCSS for styling.</li>
+            <li>Features responsive design and interactive hover effects.</li>
+            <li>
+              Integrates with GitHub for showcasing repositories and deployment
+              using Netlify.
+            </li>
+            <li>Tools/Languages: React, TailwindCSS, GitHub, Netlify</li>
+          </ul>
+          <div className="mt-3">
+            <a href="#" className="text-blue-400">
+              Repo
+            </a>{" "}
+            |{" "}
+            <a href="#" className="text-blue-400">
+              Deployed (With Netlify)
+            </a>
           </div>
         </div>
       </div>

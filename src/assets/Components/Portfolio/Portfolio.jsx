@@ -18,6 +18,11 @@ import {
   SiSequelize,
   SiPython,
 } from "react-icons/si";
+// Importing project images
+import AdoptPawsImage from "../../AdoptPaws.png";
+import VehicleVanguardImage from "../../VehicleVanguard.png";
+import PersonalPortfolioImage from "../../portfolio_image.png";
+
 
 const Portfolio = () => {
   return (
@@ -171,86 +176,121 @@ const Portfolio = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center">
         {/* Project 1 - AdoptPaws */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <h3 className="text-lg sm:text-xl font-semibold text-white">
-            AdoptPaws
-          </h3>
-          <p className="text-sm sm:text-base text-gray-300">
-            AdoptPaws is a frontend E-commerce website for a pet adoption center
-            that includes a simple shopping cart feature.
-          </p>
-          <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
-            <li>
-              Built a responsive E-commerce web application using HTML, CSS, and
-              JavaScript.
-            </li>
-            <li>Implemented cart functionality stored in localStorage.</li>
-            <li>
-              Integrated cart persistence across page reloads using JavaScript.
-            </li>
-            <li>Tools/Languages: HTML5, CSS3, JavaScript, LocalStorage</li>
-          </ul>
-          <div className="mt-3">
-            <a href="#" className="text-blue-400">
-              Repo
-            </a>{" "}
-            |{" "}
-            <a href="#" className="text-blue-400">
-              Deployed (With Vercel)
-            </a>
+          <img
+            src={AdoptPawsImage}
+            alt="AdoptPaws"
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <div className="p-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-white">
+              AdoptPaws
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300">
+              AdoptPaws is a frontend E-commerce website for a pet adoption
+              center that includes a simple shopping cart feature.
+            </p>
+            <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+              <li>
+                Built a responsive E-commerce web application using HTML, CSS,
+                and JavaScript.
+              </li>
+              <li>Implemented cart functionality stored in localStorage.</li>
+              <li>
+                Integrated cart persistence across page reloads using
+                JavaScript.
+              </li>
+              <li>Tools/Languages: HTML5, CSS3, JavaScript, LocalStorage</li>
+            </ul>
+            <div className="mt-3">
+              <a
+                href="https://github.com/Moosorkh/AdoptPaws.git"
+                target="_blank"
+                className="text-blue-400"
+              >
+                Repo
+              </a>{" "}
+              |{" "}
+              <a
+                href="https://adopt-paws.vercel.app/"
+                target="_blank"
+                className="text-blue-400"
+              >
+                Deployed (With Vercel)
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Project 2 - VehicleVanguard */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <h3 className="text-lg sm:text-xl font-semibold text-white">
-            VehicleVanguard
-          </h3>
-          <p className="text-sm sm:text-base text-gray-300">
-            VehicleVanguard is a command-line application that allows users to
-            manage different types of vehicles.
-          </p>
-          <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
-            <li>
-              Designed and implemented a vehicle management system using
-              TypeScript.
-            </li>
-            <li>Led the integration of complex vehicle-specific actions.</li>
-            <li>Promoted user interaction through a dynamic set of options.</li>
-            <li>Tools/Languages: TypeScript</li>
-          </ul>
-          <div className="mt-3">
-            <a href="#" className="text-blue-400">
-              Repo
-            </a>
+          <img
+            src={VehicleVanguardImage}
+            alt="VehicleVanguard"
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <div className="p-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-white">
+              VehicleVanguard
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300">
+              VehicleVanguard is a command-line application that allows users to
+              manage different types of vehicles.
+            </p>
+            <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+              <li>
+                Designed and implemented a vehicle management system using
+                TypeScript.
+              </li>
+              <li>Led the integration of complex vehicle-specific actions.</li>
+              <li>
+                Promoted user interaction through a dynamic set of options.
+              </li>
+              <li>Tools/Languages: TypeScript</li>
+            </ul>
+            <div className="mt-3">
+              <a
+                href="https://github.com/Moosorkh/vehiclevanguard.git" target = "_blank"
+                className="text-blue-400"
+              >
+                Repo
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Project 3 - Personal Portfolio */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <h3 className="text-lg sm:text-xl font-semibold text-white">
-            Personal Portfolio
-          </h3>
-          <p className="text-sm sm:text-base text-gray-300">
-            This personal portfolio was built using React and TailwindCSS. It
-            showcases my projects, skills, and experience in a clean format.
-          </p>
-          <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
-            <li>Built using React and TailwindCSS for styling.</li>
-            <li>Features responsive design and interactive hover effects.</li>
-            <li>
-              Integrates with GitHub for showcasing repositories and deployment
-              using Netlify.
-            </li>
-            <li>Tools/Languages: React, TailwindCSS, GitHub, Netlify</li>
-          </ul>
-          <div className="mt-3">
-            <a href="#" className="text-blue-400">
-              Repo
-            </a>{" "}
-            |{" "}
-            <a href="#" className="text-blue-400">
-              Deployed (With Netlify)
-            </a>
+          <img
+            src={PersonalPortfolioImage}
+            alt="Personal Portfolio"
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <div className="p-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-white">
+              Personal Portfolio
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300">
+              This personal portfolio was built using React and TailwindCSS. It
+              showcases my projects, skills, and experience in a clean format.
+            </p>
+            <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+              <li>Built using React and TailwindCSS for styling.</li>
+              <li>Features responsive design and interactive hover effects.</li>
+              <li>
+                Integrates with GitHub for showcasing repositories and
+                deployment using Netlify.
+              </li>
+              <li>Tools/Languages: React, TailwindCSS, GitHub, Netlify</li>
+            </ul>
+            <div className="mt-3">
+              <a href="#" className="text-blue-400">
+                Repo
+              </a>{" "}
+              |{" "}
+              <a href="#" className="text-blue-400">
+                Deployed (With Netlify)
+              </a>
+            </div>
           </div>
         </div>
       </div>

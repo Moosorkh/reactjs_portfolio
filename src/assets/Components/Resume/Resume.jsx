@@ -5,10 +5,10 @@ const Resume = () => {
   return (
     <div
       id="resume"
-      className="min-h-screen p-6 md:p-10 lg:p-24 text-white bg-gray-900"
+      className="min-h-screen p-6 md:p-20 lg:p-24 text-white bg-gray-900"
     >
       {/* Resume Section */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-12 text-center tracking-wide">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-5 text-center tracking-wide">
         Resume
       </h2>
 

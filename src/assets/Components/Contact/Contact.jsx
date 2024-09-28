@@ -100,15 +100,11 @@ const Contact = () => {
         <div className="flex justify-center space-x-8 mb-1">
           <div className="text-center transition-transform duration-300 hover:scale-105">
             <FaEnvelope size={40} />
-            <p className="mt-2">myemail@gmail.com</p>
-          </div>
-          <div className="text-center transition-transform duration-300 hover:scale-105">
-            <FaPhoneAlt size={40} />
-            <p className="mt-2">+123 456 789</p>
+            <p className="mt-2">Moosorkh@Gmail.com</p>
           </div>
           <div className="text-center transition-transform duration-300 hover:scale-105">
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/irdmousa/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -118,7 +114,7 @@ const Contact = () => {
           </div>
           <div className="text-center transition-transform duration-300 hover:scale-105">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Moosorkh"
               target="_blank"
               rel="noopener noreferrer"
             >

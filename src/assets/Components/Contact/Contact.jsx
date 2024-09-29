@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
+
 
 const Contact = () => {
+
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+
+  const {name, email, subject, message} = formData;
 
   const [errors, setErrors] = useState({
     name: "",
@@ -80,6 +86,17 @@ const Contact = () => {
     } else {
       // Handle form submission
       console.log("Form submitted successfully:", formData);
+
+      // template_k51y7id
+      emailjs.sendForm('service_kuev1ih', 'template_k51y7id', form.current, 'r9kJS4CN9kj1xDzH1').then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
       // Clear the form after submission (optional)
       setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
@@ -126,6 +143,7 @@ const Contact = () => {
       </div>
       {/* Contact Form */}
       <form
+        ref={form}
         className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6"
         onSubmit={handleSubmit}
       >
@@ -143,9 +161,10 @@ const Contact = () => {
                 errors.name ? "border-red-500" : ""
               }`}
               id="name"
+              name="name"
               type="text"
               placeholder="Enter your name"
-              value={formData.name}
+              value={name}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -169,9 +188,10 @@ const Contact = () => {
                 errors.email ? "border-red-500" : ""
               }`}
               id="email"
+              name="email"
               type="email"
               placeholder="Enter your email"
-              value={formData.email}
+              value={email}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -195,9 +215,10 @@ const Contact = () => {
                 errors.subject ? "border-red-500" : ""
               }`}
               id="subject"
+              name="subject"
               type="text"
               placeholder="Enter subject"
-              value={formData.subject}
+              value={subject}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -221,9 +242,10 @@ const Contact = () => {
                 errors.message ? "border-red-500" : ""
               }`}
               id="message"
+              name="message"
               rows="4"
               placeholder="Enter your message"
-              value={formData.message}
+              value={message}
               onChange={handleInputChange}
               onBlur={handleBlur}
             ></textarea>

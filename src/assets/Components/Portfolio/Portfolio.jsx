@@ -249,7 +249,8 @@ const Portfolio = () => {
             </ul>
             <div className="mt-3">
               <a
-                href="https://github.com/Moosorkh/vehiclevanguard.git" target = "_blank"
+                href="https://github.com/Moosorkh/vehiclevanguard.git"
+                target="_blank"
                 className="text-blue-400"
               >
                 Repo
@@ -283,7 +284,10 @@ const Portfolio = () => {
               <li>Tools/Languages: React, TailwindCSS, GitHub, Netlify</li>
             </ul>
             <div className="mt-3">
-              <a href="#" className="text-blue-400">
+              <a
+                href="https://github.com/Moosorkh/reactjs_portfolio.git"
+                className="text-blue-400"
+              >
                 Repo
               </a>{" "}
               |{" "}

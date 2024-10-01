@@ -13,7 +13,7 @@ const Resume = () => {
       </h2>
 
       <div className="text-center mb-8">
-        {/* Download Link */}
+        {/* Download Link updated file added*/}
         <a
           href="/Mehdi_Azar_Technical_Resume.pdf" // Ensure this path is correct and the file is placed in the 'public' folder
           download="Mehdi_Azar_Technical_Resume.pdf" // Suggest a download name for the file

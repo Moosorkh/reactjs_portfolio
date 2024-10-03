@@ -2,6 +2,7 @@ import React from "react";
 import avatar from "../../7358602-removebg-preview.png";
 import { useNavigate } from "react-router-dom";
 import TextChange from "../TextChange";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const navigate = useNavigate();
@@ -23,6 +24,11 @@ const About = () => {
               I’m A Passionate Full Stack Developer.
             </h2>
             <p className="text-sm md:text-lg leading-relaxed mb-6">
+              Let's work together to bring your ideas to life. Feel free to
+              check out my{" "}<Link to="/portfolio"><strong>projects</strong>
+              </Link>{" "}or get in touch if you'd like to collaborate!
+            </p>
+            <p className="text-sm md:text-lg leading-relaxed mb-6">
               With a solid foundation in both <strong>frontend</strong> and{" "}
               <strong>backend</strong> development, I specialize in crafting
               dynamic and scalable web applications. I have hands-on experience
@@ -39,11 +45,6 @@ const About = () => {
               functionality. Whether it's architecting scalable systems,
               optimizing performance, or crafting seamless UI interactions, I am
               always eager to push boundaries and deliver exceptional results.
-            </p>
-            <p className="text-sm md:text-lg leading-relaxed mb-6">
-              Let's work together to bring your ideas to life. Feel free to
-              check out my projects below or get in touch if you'd like to
-              collaborate!
             </p>
             <button
               className="mt-5 md:mt-10 text-white py-3 px-6 bg-[#607D8B] text-sm md:text-lg rounded-full hover:bg-[#FF8C00] transition-all duration-300 ease-in-out"

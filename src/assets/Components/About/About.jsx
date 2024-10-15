@@ -24,28 +24,16 @@ const About = () => {
               I’m A Passionate Full Stack Developer.
             </h2>
             <p className="text-sm md:text-lg leading-relaxed mb-6">
-              Let's work together to bring your ideas to life. Feel free to
-              check out my{" "}<Link to="/portfolio"><strong>projects</strong>
-              </Link>{" "}or get in touch if you'd like to collaborate!
+              Let’s work together to bring ideas to life. Feel free to explore the
+              <Link to="/portfolio"><strong>projects</strong></Link> section or reach out if collaboration sounds exciting!
             </p>
             <p className="text-sm md:text-lg leading-relaxed mb-6">
-              With a solid foundation in both <strong>frontend</strong> and{" "}
-              <strong>backend</strong> development, I specialize in crafting
-              dynamic and scalable web applications. I have hands-on experience
-              working with the latest technologies, including{" "}
-              <strong>React</strong>, <strong>Node.js</strong>,{" "}
-              <strong>JavaScript</strong>, <strong>TypeScript</strong>, and{" "}
-              <strong>Python</strong>. I am driven by a deep passion for
-              creating intuitive user experiences and solving complex technical
-              problems.
+              With a solid foundation in both <strong>frontend</strong> and <strong>backend</strong> development, the focus is on crafting dynamic and scalable web applications. Hands-on experience includes working with technologies such as <strong>React</strong>, <strong>Node.js</strong>, <strong>JavaScript</strong>, <strong>TypeScript</strong>, and <strong>Python</strong>. The goal is always to create intuitive user experiences while solving complex technical challenges.
             </p>
             <p className="text-sm md:text-lg leading-relaxed mb-6">
-              My background in <strong>full-stack development</strong> empowers
-              me to bridge the gap between beautiful design and robust
-              functionality. Whether it's architecting scalable systems,
-              optimizing performance, or crafting seamless UI interactions, I am
-              always eager to push boundaries and deliver exceptional results.
+              A background in <strong>full-stack development</strong> ensures the ability to bridge the gap between beautiful design and robust functionality. Whether architecting scalable systems, optimizing performance, or creating seamless UI interactions, the aim is to continually push boundaries and deliver exceptional results.
             </p>
+
             <button
               className="mt-5 md:mt-10 text-white py-3 px-6 bg-[#607D8B] text-sm md:text-lg rounded-full hover:bg-[#FF8C00] transition-all duration-300 ease-in-out"
               onClick={() => navigate("/contact")}

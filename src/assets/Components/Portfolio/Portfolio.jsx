@@ -22,7 +22,7 @@ import {
 import AdoptPawsImage from "../../AdoptPaws.png";
 import VehicleVanguardImage from "../../VehicleVanguard.png";
 import PersonalPortfolioImage from "../../portfolio_image.png";
-import WeatherDashboardImage from "../../WeatherDashboard.png";
+import WeatherDashboardImage from "../../weatherdashboard.png";
 
 
 const Portfolio = () => {

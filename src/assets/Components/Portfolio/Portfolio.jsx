@@ -22,6 +22,7 @@ import {
 import AdoptPawsImage from "../../AdoptPaws.png";
 import VehicleVanguardImage from "../../VehicleVanguard.png";
 import PersonalPortfolioImage from "../../portfolio_image.png";
+import WeatherDashboardImage from "../../WeatherDashboard.png";
 
 
 const Portfolio = () => {
@@ -174,7 +175,49 @@ const Portfolio = () => {
       </h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center">
-        {/* Project 1 - AdoptPaws */}
+
+
+        {/* Project 1 - Weather Dashboard */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <img
+            src={WeatherDashboardImage}
+            alt="Personal Portfolio"
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <div className="p-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-white">
+              Weather Dashboard
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300">
+              The Weather Dashboard is a web application enabling users to search and view current weather data and a 5-day forecast for cities worldwide. Users can store their search history locally, allowing quick access to previously searched cities.
+            </p>
+            <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+              <li>Built with: TypeScript, TailwindCSS, and Express for a modern, full-stack approach</li>
+              <li>Features Real-time weather data for searched cities</li>
+              <li>
+                5-day weather forecast display
+              </li>
+              <li>Persistent local storage of search history (local feature only)</li>
+              <li>Tools/Languages: TypeScript, TailwindCSS, Express, OpenWeatherMap API</li>
+              <li>Interactive UI with light/dark mode toggle and hover effects</li>
+            </ul>
+            <div className="mt-3">
+              <a
+                href="https://github.com/Moosorkh/Module-9-Challenge.git"
+                target="_blank"
+                className="text-blue-400"
+              >
+                Repo
+              </a>{" "}
+              |{" "}
+              <a href="https://module-9-challenge.onrender.com/" target="_blank" className="text-blue-400">
+                Deployed (Render)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 2 - AdoptPaws */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <img
             src={AdoptPawsImage}

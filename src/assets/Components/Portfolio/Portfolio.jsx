@@ -18,7 +18,7 @@ import {
   SiSequelize,
   SiPython,
 } from "react-icons/si";
-// Importing project images
+// Importing project image
 import AdoptPawsImage from "../../AdoptPaws.png";
 import VehicleVanguardImage from "../../VehicleVanguard.png";
 import PersonalPortfolioImage from "../../portfolio_image.png";

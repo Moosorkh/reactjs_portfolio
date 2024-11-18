@@ -23,7 +23,7 @@ import AdoptPawsImage from "../../AdoptPaws.png";
 import VehicleVanguardImage from "../../VehicleVanguard.png";
 import PersonalPortfolioImage from "../../portfolio_image.png";
 import WeatherDashboardImage from "../../weatherdashboard.png";
-import KanbanBoard from "../../kanbanboard.png";
+import KanbanBoard from "../../KanbanBoard.png";
 
 const Portfolio = () => {
   return (

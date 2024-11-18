@@ -23,6 +23,7 @@ import AdoptPawsImage from "../../AdoptPaws.png";
 import VehicleVanguardImage from "../../VehicleVanguard.png";
 import PersonalPortfolioImage from "../../portfolio_image.png";
 import WeatherDashboardImage from "../../weatherdashboard.png";
+import KanbanBoard from "../../kanbanboard.png";
 
 const Portfolio = () => {
   return (
@@ -168,6 +169,8 @@ const Portfolio = () => {
         </div>
       </div>
 
+
+
       {/* Projects Section */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 text-center text-white">
         Projects
@@ -175,6 +178,49 @@ const Portfolio = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center">
 
+        {/* Project 1 - Kanban Board */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <img
+            src={KanbanBoard}
+            alt="Kanban Board"
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <div className="p-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-white">
+              Kanban Board
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300">
+              The KanbanBoard application is a web-based task management tool that helps teams and individuals track tasks visually using a Kanban-style board. Users can create, edit, and manage tickets assigned to different statuses, making it easy to stay organized and productive.
+            </p>
+            <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+              <li>Full-stack application built with TypeScript, React, and Express</li>
+              <li>Features user authentication with JWT for secure access</li>
+              <li>Interactive Kanban-style task management interface</li>
+              <li>Database integration with PostgreSQL and Sequelize ORM</li>
+              <li>Responsive design using TailwindCSS for mobile and desktop</li>
+              <li>Deployed live on Render for seamless access</li>
+            </ul>
+            <div className="mt-3">
+              <a
+                href="https://github.com/Moosorkh/KanbanBoard"
+                target="_blank"
+                className="text-blue-400"
+                rel="noopener noreferrer"
+              >
+                GitHub Repo
+              </a>{" "}
+              |{" "}
+              <a
+                href="https://kanbanboard-esud.onrender.com/"
+                target="_blank"
+                className="text-blue-400"
+                rel="noopener noreferrer"
+              >
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
 
         {/* Project 1 - Weather Dashboard */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">

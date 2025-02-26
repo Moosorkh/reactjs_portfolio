@@ -34,6 +34,10 @@ const About = () => {
               A background in <strong>full-stack development</strong> ensures the ability to bridge the gap between beautiful design and robust functionality. Whether architecting scalable systems, optimizing performance, or creating seamless UI interactions, the aim is to continually push boundaries and deliver exceptional results.
             </p>
 
+            <p className="text-sm md:text-lg leading-relaxed mb-6">
+              I've excelled in full-stack roles, swiftly clearing development backlogs and engineering advanced features such as a mobile-responsive map search and a drag-and-drop bed reservation system (just as an example). My work with React, C#, and PostgreSQL has not only enhanced user interaction but also system performance, demonstrating my capability to handle complex software solutions effectively.
+            </p>
+
             <button
               className="mt-5 md:mt-10 text-white py-3 px-6 bg-[#607D8B] text-sm md:text-lg rounded-full hover:bg-[#FF8C00] transition-all duration-300 ease-in-out"
               onClick={() => navigate("/contact")}

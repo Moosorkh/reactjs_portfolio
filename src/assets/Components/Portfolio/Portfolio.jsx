@@ -24,6 +24,8 @@ import VehicleVanguardImage from "../../VehicleVanguard.png";
 import PersonalPortfolioImage from "../../portfolio_image.png";
 import WeatherDashboardImage from "../../weatherdashboard.png";
 import KanbanBoard from "../../KanbanBoard.png";
+import MapListToggleImage from '../../../assets/MapListToggleImage.png';
+
 
 const Portfolio = () => {
   return (
@@ -169,15 +171,12 @@ const Portfolio = () => {
         </div>
       </div>
 
-
-
       {/* Projects Section */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 text-center text-white">
         Projects
       </h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center">
-
         {/* Project 1 - Kanban Board */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <img
@@ -190,14 +189,22 @@ const Portfolio = () => {
               Kanban Board
             </h3>
             <p className="text-sm sm:text-base text-gray-300">
-              The KanbanBoard application is a web-based task management tool that helps teams and individuals track tasks visually using a Kanban-style board. Users can create, edit, and manage tickets assigned to different statuses, making it easy to stay organized and productive.
+              The KanbanBoard application is a web-based task management tool
+              that helps teams and individuals track tasks visually using a
+              Kanban-style board. Users can create, edit, and manage tickets
+              assigned to different statuses, making it easy to stay organized
+              and productive.
             </p>
             <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
-              <li>Full-stack application built with TypeScript, React, and Express</li>
+              <li>
+                Full-stack application built with TypeScript, React, and Express
+              </li>
               <li>Features user authentication with JWT for secure access</li>
               <li>Interactive Kanban-style task management interface</li>
               <li>Database integration with PostgreSQL and Sequelize ORM</li>
-              <li>Responsive design using TailwindCSS for mobile and desktop</li>
+              <li>
+                Responsive design using TailwindCSS for mobile and desktop
+              </li>
               <li>Deployed live on Render for seamless access</li>
             </ul>
             <div className="mt-3">
@@ -222,7 +229,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Project 1 - Weather Dashboard */}
+        {/* Project 2 - Weather Dashboard */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <img
             src={WeatherDashboardImage}
@@ -234,17 +241,28 @@ const Portfolio = () => {
               Weather Dashboard
             </h3>
             <p className="text-sm sm:text-base text-gray-300">
-              The Weather Dashboard is a web application enabling users to search and view current weather data and a 5-day forecast for cities worldwide. Users can store their search history locally, allowing quick access to previously searched cities.
+              The Weather Dashboard is a web application enabling users to
+              search and view current weather data and a 5-day forecast for
+              cities worldwide. Users can store their search history locally,
+              allowing quick access to previously searched cities.
             </p>
             <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
-              <li>Built with: TypeScript, TailwindCSS, and Express for a modern, full-stack approach</li>
-              <li>Features Real-time weather data for searched cities</li>
               <li>
-                5-day weather forecast display
+                Built with: TypeScript, TailwindCSS, and Express for a modern,
+                full-stack approach
               </li>
-              <li>Persistent local storage of search history (local feature only)</li>
-              <li>Tools/Languages: TypeScript, TailwindCSS, Express, OpenWeatherMap API</li>
-              <li>Interactive UI with light/dark mode toggle and hover effects</li>
+              <li>Features Real-time weather data for searched cities</li>
+              <li>5-day weather forecast display</li>
+              <li>
+                Persistent local storage of search history (local feature only)
+              </li>
+              <li>
+                Tools/Languages: TypeScript, TailwindCSS, Express,
+                OpenWeatherMap API
+              </li>
+              <li>
+                Interactive UI with light/dark mode toggle and hover effects
+              </li>
             </ul>
             <div className="mt-3">
               <a
@@ -255,14 +273,90 @@ const Portfolio = () => {
                 Repo
               </a>{" "}
               |{" "}
-              <a href="https://module-9-challenge.onrender.com/" target="_blank" className="text-blue-400">
+              <a
+                href="https://module-9-challenge.onrender.com/"
+                target="_blank"
+                className="text-blue-400"
+              >
                 Deployed (Render)
               </a>
             </div>
           </div>
         </div>
 
-        {/* Project 2 - AdoptPaws */}
+      {/* Project 3 - Mobile-responsive Map Search */}
+        
+      <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+  <img
+    src= {MapListToggleImage}  // Replace with actual image path
+    alt="Map List Toggle"
+    className="w-full h-48 object-cover rounded-t-lg"
+  />
+  <div className="p-4">
+    <h3 className="text-lg sm:text-xl font-semibold text-white">
+      Map List Toggle
+    </h3>
+    <p className="text-sm sm:text-base text-gray-300">
+      An interactive React application that toggles between a map view and a list view, showcasing various locations.
+    </p>
+    <ul className="list-disc pl-5 mt-2 text-sm sm:text-base text-gray-400">
+      <li>
+        Developed a fully responsive interface using React and Leaflet for dynamic map rendering.
+      </li>
+      <li>
+        Implemented a search feature to filter locations on the map or list view dynamically.
+      </li>
+      <li>
+        Utilized React state and props effectively to manage the application state across different components.
+      </li>
+      <li>Tools/Languages: React, JavaScript, CSS, Leaflet</li>
+    </ul>
+    <div className="mt-3">
+      <a
+        href="https://github.com/Moosorkh/map-list-toggle.git"
+        target="_blank"
+        className="text-blue-400"
+      >
+        Repo
+      </a>{" "}
+      |{" "}
+      <a
+        href="https://map-list-toggle.vercel.app/"
+        target="_blank"
+        className="text-blue-400"
+      >
+        Deployed (With Vercel)
+      </a>
+    </div>
+  </div>
+</div>
+
+      {/* Project 4 - Enhanced Authentication System */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
+            Enhanced Authentication System
+          </h3>
+          <p className="text-sm sm:text-base text-gray-300">
+            Engineered custom login features for web applications, including
+            tailored messages and notifications for new users, enhancing user
+            engagement and security measures, implemented with C# and ASP.NET.
+          </p>
+        </div>
+
+      {/* Project 5 - Interactive Bed Reservation System */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
+            Interactive Bed Reservation System
+          </h3>
+          <p className="text-sm sm:text-base text-gray-300">
+            Created a user-friendly drag-and-drop interface for bed reservations
+            and swapping, significantly improving user experience and
+            operational efficiency. Implemented using React with robust backend
+            management through C# and Entity Framework.
+          </p>
+        </div>
+
+        {/* Project 6 - AdoptPaws */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <img
             src={AdoptPawsImage}
@@ -309,7 +403,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Project 2 - VehicleVanguard */}
+        {/* Project 7 - VehicleVanguard */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <img
             src={VehicleVanguardImage}
@@ -347,7 +441,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Project 3 - Personal Portfolio */}
+        {/* Project 8 - Personal Portfolio */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <img
             src={PersonalPortfolioImage}

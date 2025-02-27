@@ -7,16 +7,14 @@ const Resume = () => {
       id="resume"
       className="min-h-screen p-6 md:p-20 lg:p-24 text-white bg-gray-900"
     >
-      {/* Resume Section */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-5 text-center tracking-wide">
         Resume
       </h2>
 
       <div className="text-center mb-8">
-        {/* Download Link updated file added*/}
         <a
-          href="/Mehdi_Azar_Technical_Resume.pdf" // Ensure this path is correct and the file is placed in the 'public' folder
-          download="Mehdi_Azar_Technical_Resume.pdf" // Suggest a download name for the file
+          href="/Mehdi_Azar_Technical_Resume.pdf"
+          download="Mehdi_Azar_Technical_Resume.pdf"
           className="inline-block px-8 py-4 bg-teal-500 text-white rounded-full text-lg font-semibold hover:bg-teal-400 transition-all duration-300"
         >
           Download Resume
@@ -26,25 +24,12 @@ const Resume = () => {
 
       <div className="md:flex flex-col items-center justify-center mx-0 md:mx-10 lg:mx-20 bg-opacity-30 rounded-lg p-6 md:p-12 bg-black shadow-xl">
         <div className="md:flex flex-wrap flex-col md:flex-row items-center justify-around gap-12">
-          {/* Career Summary and Technical Skills */}
           <div className="w-full md:w-1/3">
             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-6">
               Career Summary
             </h3>
             <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-6">
-              A software development bootcamp graduate skilled in{" "}
-              <strong>full-stack web development</strong> with hands-on
-              experience in building <strong>responsive</strong> and{" "}
-              <strong>scalable web applications</strong>. Proficient in modern
-              technologies such as{" "}
-              <strong>JavaScript, TypeScript, React, Python</strong>, and{" "}
-              <strong>Node.js</strong>. Strong understanding of databases (
-              <strong>SQL, MongoDB</strong>) and full-stack application
-              development using both the <strong>MERN</strong> and{" "}
-              <strong>Python stack</strong>. Collaborative team player with
-              experience in <strong>agile methodologies</strong>,{" "}
-              <strong>version control</strong>, and{" "}
-              <strong>CI/CD pipelines</strong>.
+              Innovative full-stack developer with extensive experience in building responsive and scalable web applications across diverse technology stacks. Proficient in advanced JavaScript frameworks and technologies, including React, TypeScript, and Node.js. Strong capability in utilizing C#, ASP.NET, and ReactNative for comprehensive backend-to-frontend integration. Highly skilled in managing and optimizing databases using Entity Framework, PostgreSQL, and other ORMs like Prisma and Sequelize. Expert in creating intuitive user interfaces and seamless user experiences using ReactJS, MUI, and Tailwind CSS.
             </p>
 
             <h4 className="text-lg sm:text-xl font-semibold mb-4">
@@ -52,22 +37,20 @@ const Resume = () => {
             </h4>
             <ul className="list-disc pl-5 text-sm sm:text-base leading-relaxed space-y-2">
               <li>
-                <strong>Frontend:</strong> HTML5, CSS, JQuery, JavaScript,
-                TypeScript, Bootstrap, SASS, TailwindCSS, ReactJS
+                <strong>Frontend:</strong> HTML5, CSS3, JavaScript, TypeScript, React, React Router, MUI, TailwindCSS, Bootstrap, SASS
               </li>
               <li>
-                <strong>Backend:</strong> MySQL, Express, ReactJS, Node,
-                Postgres, AWS, Webpack, NoSQL
+                <strong>Backend:</strong> Node.js, Express.js, C#, ASP.NET, Entity Framework, PostgreSQL, MongoDB, AWS, Prisma, Sequelize, Mongoose
               </li>
               <li>
-                <strong>Tools:</strong> Git, GitHub, Webpack, Firebase, AWS,
-                Docker, GitHub Copilot, CI/CD Pipelines, LangChain (AI-powered
-                tools)
+                <strong>DevOps/Tools:</strong> Git, GitHub, Docker, AWS, CI/CD Pipelines, Webpack, Firebase, Cypress
+              </li>
+              <li>
+                <strong>AI/ML Tools:</strong> LangChain, GitHub Copilot
               </li>
             </ul>
           </div>
 
-          {/* Professional Experience */}
           <div className="w-full md:w-1/2">
             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-6">
               Professional Experience
@@ -75,35 +58,37 @@ const Resume = () => {
 
             <div className="mb-6">
               <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2">
-                Frontend Developer
+                Full-Stack Developer
               </h4>
               <p className="text-sm sm:text-base leading-relaxed">
-                Collaborated with cross-functional teams to design and implement
-                front-end applications, ensuring responsiveness and adherence to
-                design guidelines. Utilized React, JavaScript, and CSS for
-                building user-friendly interfaces.
+                Spearheaded the rapid clearance of development backlog, addressing all outstanding issues within the first month of tenure. Engineered a series of innovative features, including mobile-responsive map search, enhanced authentication systems, and interactive bed reservation systems. Led the design and implementation of more than a dozen UI improvements utilizing MUI, Tailwind CSS, and advanced ReactJS techniques.
               </p>
             </div>
 
             <div className="mb-6">
               <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2">
-                Database Developer
+                UI Tester
               </h4>
               <p className="text-sm sm:text-base leading-relaxed">
-                Managed database architecture and design for enterprise-level
-                systems, focusing on optimization and scalability using SQL and
-                NoSQL solutions like PostgreSQL and MongoDB.
+                Worked with developers to conduct UI testing using Playwright, improving efficiency by 40%. Utilized Agile methodology to identify and fix bugs, enhancing development speed and quality.
               </p>
             </div>
 
             <div>
               <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2">
-                Backend Developer
+                Web Designer for SEO Company
               </h4>
               <p className="text-sm sm:text-base leading-relaxed">
-                Developed and maintained backend services and APIs using Node.js
-                and Express. Ensured smooth integration with databases and
-                front-end services.
+                Designed and developed responsive SEO-optimized websites for small businesses, leading to a 25% increase in search engine rankings and a 30% boost in organic traffic. Integrated SQL databases and WordPress for dynamic website functionality.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2">
+                IT Specialist
+              </h4>
+              <p className="text-sm sm:text-base leading-relaxed">
+                Provided comprehensive IT support, troubleshooting, and problem-solving across various software and hardware systems from 2008 to 2016.
               </p>
             </div>
           </div>

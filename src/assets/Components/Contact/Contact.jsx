@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
-import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
 
 
 const Contact = () => {
-
   const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +11,14 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
+  const [formStatus, setFormStatus] = useState({
+    submitted: false,
+    success: false,
+    message: ""
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {name, email, subject, message} = formData;
 
@@ -84,187 +91,272 @@ const Contact = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
-      // Handle form submission
-      console.log("Form submitted successfully:", formData);
+      // Set loading state
+      setIsSubmitting(true);
 
-      // template_k51y7id
-      emailjs.sendForm('service_kuev1ih', 'template_k51y7id', form.current, 'r9kJS4CN9kj1xDzH1').then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-
-      // Clear the form after submission (optional)
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setErrors({});
+      // Handle form submission with updated service details
+      emailjs.sendForm('service_jrv8j4r', 'template_k51y7id', form.current, 'r9kJS4CN9kj1xDzH1')
+        .then(
+          (result) => {
+            console.log(result.text);
+            setFormStatus({
+              submitted: true,
+              success: true,
+              message: "Thank you! Your message has been sent successfully."
+            });
+            // Clear the form after submission
+            setFormData({ name: "", email: "", subject: "", message: "" });
+            setErrors({});
+          },
+          (error) => {
+            console.log(error.text);
+            setFormStatus({
+              submitted: true,
+              success: false,
+              message: "Oops! Something went wrong. Please try again later."
+            });
+          }
+        )
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     }
   };
 
   return (
     <div
       id="Contact"
-      className="flex flex-col justify-center items-center bg-gradient-to-b from-blue-600 to-blue-800 text-white p-10 md:p-12 min-h-screen"
+      className="flex flex-col justify-center items-center bg-gradient-to-b from-gray-900 to-gray-800 text-white p-6 md:p-12 min-h-screen pt-24"
     >
-      {/* Contact Information */}
-      <div className="text-center mb-2">
-        <h1 className="text-2xl md:text-6xl font-bold mb-1">Contact</h1>
-        <h3 className="text-sm md:text-2xl font-normal mb-10">
-          Feel Free To reach out!
-        </h3>
-        <div className="flex justify-center space-x-8 mb-1">
-          <div className="text-center transition-transform duration-300 hover:scale-105">
-            <FaEnvelope size={40} />
-            <p className="mt-2">Moosorkh@Gmail.com</p>
+      {/* Contact Header */}
+      <div className="text-center mb-10">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          Get In Touch
+        </h1>
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          Have a project in mind or want to discuss a collaboration opportunity? 
+          I'd love to hear from you!
+        </p>
+      </div>
+
+      <div className="w-full max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        {/* Contact Info Cards */}
+        <div className="md:col-span-1 space-y-6">
+          {/* Email Card */}
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]">
+            <div className="flex items-center space-x-4">
+              <div className="p-3 bg-blue-600/20 rounded-full">
+                <FaEnvelope className="text-blue-400 text-2xl" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold">Email</h3>
+                <p className="text-gray-300">Moosorkh@Gmail.com</p>
+              </div>
+            </div>
           </div>
-          <div className="text-center transition-transform duration-300 hover:scale-105">
-            <a
-              href="https://www.linkedin.com/in/irdmousa/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin size={40} />
-            </a>
-            <p className="mt-2">LinkedIn</p>
+          
+          {/* LinkedIn Card */}
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]">
+            <div className="flex items-center space-x-4">
+              <div className="p-3 bg-blue-600/20 rounded-full">
+                <FaLinkedin className="text-blue-400 text-2xl" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold">LinkedIn</h3>
+                <a 
+                  href="https://www.linkedin.com/in/irdmousa/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
+                  Connect with me
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="text-center transition-transform duration-300 hover:scale-105">
-            <a
-              href="https://github.com/Moosorkh"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub size={40} />
-            </a>
-            <p className="mt-2">GitHub</p>
+          
+          {/* GitHub Card */}
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]">
+            <div className="flex items-center space-x-4">
+              <div className="p-3 bg-blue-600/20 rounded-full">
+                <FaGithub className="text-blue-400 text-2xl" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold">GitHub</h3>
+                <a 
+                  href="https://github.com/Moosorkh" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-blue-400 transition-colors"
+                >
+                  View my projects
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <div className="md:col-span-2">
+          <div className="bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+            {formStatus.submitted && formStatus.success ? (
+              <div className="flex flex-col items-center justify-center py-10 text-center">
+                <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 animate-bounce">
+                  <FaPaperPlane className="text-white text-xl" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Message Sent!</h3>
+                <p className="text-gray-300 mb-6">
+                  Thank you for reaching out. I'll get back to you as soon as possible.
+                </p>
+                <button
+                  onClick={() => setFormStatus({ submitted: false, success: false, message: "" })}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form
+                ref={form}
+                className="space-y-6"
+                onSubmit={handleSubmit}
+              >
+                <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Name Field */}
+                  <div>
+                    <label
+                      className="block text-sm font-medium mb-2"
+                      htmlFor="name"
+                    >
+                      Name
+                    </label>
+                    <input
+                      className={`w-full px-4 py-3 bg-gray-700 border ${
+                        errors.name ? "border-red-500" : "border-gray-600"
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Your name"
+                      value={name}
+                      onChange={handleInputChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.name && (
+                      <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                    )}
+                  </div>
+
+                  {/* Email Field */}
+                  <div>
+                    <label
+                      className="block text-sm font-medium mb-2"
+                      htmlFor="email"
+                    >
+                      Email
+                    </label>
+                    <input
+                      className={`w-full px-4 py-3 bg-gray-700 border ${
+                        errors.email ? "border-red-500" : "border-gray-600"
+                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Your email"
+                      value={email}
+                      onChange={handleInputChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Subject Field */}
+                <div>
+                  <label
+                    className="block text-sm font-medium mb-2"
+                    htmlFor="subject"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    className={`w-full px-4 py-3 bg-gray-700 border ${
+                      errors.subject ? "border-red-500" : "border-gray-600"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    placeholder="Subject of your message"
+                    value={subject}
+                    onChange={handleInputChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.subject && (
+                    <p className="text-red-500 text-xs mt-1">{errors.subject}</p>
+                  )}
+                </div>
+
+                {/* Message Field */}
+                <div>
+                  <label
+                    className="block text-sm font-medium mb-2"
+                    htmlFor="message"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    className={`w-full px-4 py-3 bg-gray-700 border ${
+                      errors.message ? "border-red-500" : "border-gray-600"
+                    } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white h-40`}
+                    id="message"
+                    name="message"
+                    placeholder="Your message"
+                    value={message}
+                    onChange={handleInputChange}
+                    onBlur={handleBlur}
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+                  )}
+                </div>
+
+                {/* Submit Button */}
+                <div>
+                  <button
+                    className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center disabled:opacity-70"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message <FaPaperPlane className="ml-2" />
+                      </>
+                    )}
+                  </button>
+                </div>
+                
+                {formStatus.submitted && !formStatus.success && (
+                  <div className="bg-red-500/20 border border-red-500 text-red-300 px-4 py-3 rounded-lg">
+                    {formStatus.message}
+                  </div>
+                )}
+              </form>
+            )}
           </div>
         </div>
       </div>
-      {/* Contact Form */}
-      <form
-        ref={form}
-        className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6"
-        onSubmit={handleSubmit}
-      >
-        {/* Name Field */}
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
-                errors.name ? "border-red-500" : ""
-              }`}
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Enter your name"
-              value={name}
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-            />
-            {errors.name && (
-              <p className="text-red-500 text-xs italic">{errors.name}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Email Field */}
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
-                errors.email ? "border-red-500" : ""
-              }`}
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-xs italic">{errors.email}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Subject Field */}
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="subject"
-            >
-              Subject
-            </label>
-            <input
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
-                errors.subject ? "border-red-500" : ""
-              }`}
-              id="subject"
-              name="subject"
-              type="text"
-              placeholder="Enter subject"
-              value={subject}
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-            />
-            {errors.subject && (
-              <p className="text-red-500 text-xs italic">{errors.subject}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Message Field */}
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="message"
-            >
-              Message
-            </label>
-            <textarea
-              className={`appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 ${
-                errors.message ? "border-red-500" : ""
-              }`}
-              id="message"
-              name="message"
-              rows="4"
-              placeholder="Enter your message"
-              value={message}
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-            ></textarea>
-            {errors.message && (
-              <p className="text-red-500 text-xs italic">{errors.message}</p>
-            )}
-          </div>
-        </div>
-
-        {/* Submit Button */}
-        <div className="flex items-center justify-center">
-          <button
-            className="shadow bg-teal-400 hover:bg-teal-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded transition-transform duration-300 hover:scale-105"
-            type="submit"
-          >
-            Send
-          </button>
-        </div>
-      </form>
     </div>
   );
 };

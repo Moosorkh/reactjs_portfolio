@@ -1,57 +1,81 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-const TextChange = () => {
+const TextChange = ({ typingSpeed = 70, pauseTime = 2000, cursorBlinkSpeed = 400 }) => {
+  // Expanded text options with more professional content
   const texts = [
-    "Hi!",
+    "Hi there!",
     "Welcome to my portfolio!",
+    "I'm a Full Stack Developer",
+    "Specialized in React, TypeScript & C#",
+    "Building modern web applications"
   ];
 
-  const [currentText, setCurrentText] = useState(["", ""]);
-  const [endValue, setEndValue] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0); // Tracks which text is typing
-  const [isTyping, setIsTyping] = useState(true); // Flag to prevent clearing mid-typing
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [cursorVisible, setCursorVisible] = useState(true);
 
+  // Handle cursor blinking
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const cursorInterval = setInterval(() => {
+      setCursorVisible(prev => !prev);
+    }, cursorBlinkSpeed);
+    
+    return () => clearInterval(cursorInterval);
+  }, [cursorBlinkSpeed]);
+
+  // Main typing/deleting logic
+  const handleTypingEffect = useCallback(() => {
+    const currentText = texts[currentIndex];
+    
+    // Calculate delay based on whether we're typing or deleting
+    const delay = isTyping 
+      ? typingSpeed 
+      : typingSpeed / 2; // Faster when deleting
+    
+    setTimeout(() => {
       if (isTyping) {
-        // Handle typing logic based on the current index
-        if (currentIndex === 0) {
-          // First text typing
-          setCurrentText([texts[0].substring(0, endValue), ""]);
-        } else if (currentIndex === 1) {
-          // Second text typing
-          setCurrentText([texts[0], texts[1].substring(0, endValue)]);
-        }
-
-        setEndValue((prev) => prev + 1); // Increment typing
-      }
-
-      // If the typing reaches the end of the current text
-      if (endValue >= texts[currentIndex].length) {
-        if (currentIndex === 0) {
-          // Finished first text, move to second text
-          setEndValue(0);
-          setCurrentIndex(1);
-        } else if (currentIndex === 1) {
-          // Finished second text, reset everything
+        // Typing mode - add characters
+        setDisplayText(currentText.substring(0, displayText.length + 1));
+        
+        // Check if we've completed typing the current text
+        if (displayText.length === currentText.length) {
+          // Pause before deleting
+          setTimeout(() => setIsDeleting(true), pauseTime);
           setIsTyping(false);
-          setTimeout(() => {
-            setCurrentText(["", ""]); // Clear both lines after delay
-            setEndValue(0); // Reset typing index
-            setCurrentIndex(0); // Start typing the first line again
-            setIsTyping(true); // Allow typing to restart
-          }, 2000); // Delay before restarting
+        }
+      } else if (isDeleting) {
+        // Deleting mode - remove characters
+        setDisplayText(currentText.substring(0, displayText.length - 1));
+        
+        // Check if we've deleted all text
+        if (displayText.length === 0) {
+          setIsDeleting(false);
+          setIsTyping(true);
+          setCurrentIndex((currentIndex + 1) % texts.length);
         }
       }
-    }, 100); // Typing speed
+    }, delay);
+  }, [currentIndex, displayText, isDeleting, isTyping, pauseTime, texts, typingSpeed]);
 
-    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
-  }, [endValue, currentIndex, isTyping, texts]);
+  // Run the effect when states change
+  useEffect(() => {
+    const typingTimer = handleTypingEffect();
+    return () => clearTimeout(typingTimer);
+  }, [displayText, isTyping, isDeleting, handleTypingEffect]);
 
   return (
-    <div className="transition ease duration-300 h-20 overflow-hidden">
-      <div>{currentText[0]}</div>
-      <div>{currentText[1]}</div>
+    <div className="min-h-[7rem] md:min-h-[9rem] flex items-center">
+    <div className="relative">
+    <span className="text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold">
+        {displayText}
+      </span>
+      <span 
+        className={`inline-block w-2 h-8 md:h-9 ml-1 bg-blue-400 ${cursorVisible ? 'opacity-100' : 'opacity-0'} transition-opacity`}
+        style={{ verticalAlign: 'middle' }}
+      ></span>
+      </div>
     </div>
   );
 };

@@ -35,6 +35,7 @@ import {
 const Resume = () => {
   const [activeSection, setActiveSection] = useState("all");
   const [animatedElements, setAnimatedElements] = useState({});
+  const [tabChanging, setTabChanging] = useState(false);
 
   useEffect(() => {
     // Initialize all elements as visible for initial animation
@@ -55,6 +56,24 @@ const Resume = () => {
 
     setAnimatedElements(initialState);
   }, []);
+
+  // Handle tab changes with animation
+  const handleTabChange = (tabName) => {
+    if (activeSection === tabName) return;
+
+    // Start transition out
+    setTabChanging(true);
+
+    // Change tab after fade out animation
+    setTimeout(() => {
+      setActiveSection(tabName);
+
+      // Start transition in
+      setTimeout(() => {
+        setTabChanging(false);
+      }, 50);
+    }, 300);
+  };
 
   const renderSkillIcon = (skillName) => {
     const icons = {
@@ -85,7 +104,7 @@ const Resume = () => {
     return icons[skillName] || <div className="w-4 h-4" />;
   };
 
-  // FIXED LOGIC HERE - simplified isActive to be more predictable
+  // Check if a section should be visible
   const isActive = (section) => {
     if (activeSection === "all") return true;
     return activeSection === section;
@@ -94,7 +113,7 @@ const Resume = () => {
   return (
     <div
       id="resume"
-      className="min-h-screen p-6 md:px-10 lg:px-20 pt-24 text-white bg-gradient-to-b from-gray-900 to-gray-800"
+      className="min-h-screen p-6 md:px-10 lg:px-20 pt-24 pb-16 text-white bg-gradient-to-b from-gray-900 to-gray-800"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Header Section */}
@@ -135,37 +154,48 @@ const Resume = () => {
           >
             <FilterButton
               active={activeSection === "all"}
-              onClick={() => setActiveSection("all")}
+              onClick={() => handleTabChange("all")}
             >
               All
             </FilterButton>
             <FilterButton
               active={activeSection === "skills"}
-              onClick={() => setActiveSection("skills")}
+              onClick={() => handleTabChange("skills")}
             >
               Technical Skills
             </FilterButton>
             <FilterButton
               active={activeSection === "experience"}
-              onClick={() => setActiveSection("experience")}
+              onClick={() => handleTabChange("experience")}
             >
               Work Experience
             </FilterButton>
             <FilterButton
               active={activeSection === "education"}
-              onClick={() => setActiveSection("education")}
+              onClick={() => handleTabChange("education")}
             >
               Education
             </FilterButton>
           </div>
         </div>
 
-        {/* Resume Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Technical Skills Section - FIXED VISIBILITY LOGIC */}
+        {/* Resume Content with transition */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 ease-in-out transform ${
+            tabChanging ? "opacity-0 scale-95" : "opacity-100 scale-100"
+          }`}
+        >
+          {/* Technical Skills */}
           <div
-            className={`md:col-span-3 lg:col-span-1 ${
-              isActive("skills") || isActive("all") ? "block" : "hidden"
+            className={`${
+              activeSection === "skills"
+                ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
+                : activeSection === "experience" ||
+                  activeSection === "education"
+                ? "hidden md:hidden"
+                : "md:col-span-3 lg:col-span-1"
+            } transition-all duration-500 ease-in-out ${
+              isActive("skills") || activeSection === "all" ? "block" : "hidden"
             }`}
           >
             <div className="animate-on-scroll" id="element-2">
@@ -185,7 +215,7 @@ const Resume = () => {
 
                 <div className="space-y-6">
                   {/* Frontend Skills */}
-                  <div>
+                  <div className="transition-all duration-300 ease-in-out">
                     <h3 className="text-lg font-semibold mb-3 text-blue-400">
                       Frontend
                     </h3>
@@ -216,7 +246,7 @@ const Resume = () => {
                   </div>
 
                   {/* Backend Skills */}
-                  <div>
+                  <div className="transition-all duration-300 ease-in-out">
                     <h3 className="text-lg font-semibold mb-3 text-blue-400">
                       Backend
                     </h3>
@@ -242,7 +272,7 @@ const Resume = () => {
                   </div>
 
                   {/* Database Skills */}
-                  <div>
+                  <div className="transition-all duration-300 ease-in-out">
                     <h3 className="text-lg font-semibold mb-3 text-blue-400">
                       Database
                     </h3>
@@ -267,7 +297,7 @@ const Resume = () => {
                   </div>
 
                   {/* DevOps & Tools */}
-                  <div>
+                  <div className="transition-all duration-300 ease-in-out">
                     <h3 className="text-lg font-semibold mb-3 text-blue-400">
                       DevOps & Tools
                     </h3>
@@ -297,8 +327,17 @@ const Resume = () => {
             </div>
           </div>
 
-          {/* Work Experience & Education - FIXED VISIBILITY LOGIC */}
-          <div className={`md:col-span-3 lg:col-span-2`}>
+          {/* Work Experience & Education */}
+          <div
+            className={`${
+              activeSection === "skills"
+                ? "hidden md:hidden"
+                : activeSection === "experience" ||
+                  activeSection === "education"
+                ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
+                : "md:col-span-3 lg:col-span-2"
+            } transition-all duration-500 ease-in-out`}
+          >
             <div className="space-y-8">
               {/* Professional Experience */}
               <div className={`${isActive("experience") ? "block" : "hidden"}`}>
@@ -332,6 +371,7 @@ const Resume = () => {
                           "Led UI improvements utilizing MUI, Tailwind CSS, and ReactJS",
                           "Contributed to backend development with C#, Entity Framework, and PostgreSQL",
                         ]}
+                        delay={0}
                       />
 
                       {/* Job 2 */}
@@ -347,6 +387,7 @@ const Resume = () => {
                           "Performed UI testing and improvements, increasing test efficiency by 40% through the use of Playwright.",
                           "Participated in Agile development cycles, collaborating closely with the team to prioritize features, address bugs, and deploy updates swiftly.",
                         ]}
+                        delay={1}
                       />
 
                       {/* Job 3 */}
@@ -362,6 +403,7 @@ const Resume = () => {
                           "Integrated SQL databases and WordPress for dynamic website functionality",
                           "Created custom hashtag generation tools for social media engagement",
                         ]}
+                        delay={2}
                       />
 
                       {/* Job 4 */}
@@ -376,6 +418,7 @@ const Resume = () => {
                           "Assisted in deployment and management of network solutions",
                           "Contributed to robust and efficient IT infrastructure",
                         ]}
+                        delay={3}
                       />
                     </div>
                   </div>
@@ -399,7 +442,7 @@ const Resume = () => {
                       <h2 className="text-2xl font-bold">Education</h2>
                     </div>
 
-                    <div className="bg-gray-700/30 rounded-lg p-5 mb-6">
+                    <div className="bg-gray-700/30 rounded-lg p-5 mb-6 transition-all duration-300 ease-in-out transform hover:shadow-md">
                       <div className="md:flex justify-between items-start mb-4">
                         <div>
                           <h3 className="text-xl font-bold">
@@ -447,9 +490,33 @@ const Resume = () => {
                           </span>
                         </li>
                       </ul>
+                      <div className="mt-6 flex justify-center">
+                        <a
+                          href="https://www.parchment.com/u/award/7f4583f379bc1cf88ec2d305dea1ad1c"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow transform hover:scale-105 hover:shadow-md"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                            />
+                          </svg>
+                          View Certificate
+                        </a>
+                      </div>
                     </div>
 
-                    <div className="bg-gray-700/30 rounded-lg p-5">
+                    <div className="bg-gray-700/30 rounded-lg p-5 transition-all duration-300 ease-in-out transform hover:shadow-md">
                       <h3 className="text-xl font-bold mb-3">
                         Continuing Education & Certifications
                       </h3>
@@ -479,7 +546,7 @@ const Resume = () => {
                 </div>
               </div>
 
-              {/* Career Summary - Only show in "all" mode */}
+              {/* Career Summary */}
               <div
                 className={`${activeSection === "all" ? "block" : "hidden"}`}
               >
@@ -539,7 +606,7 @@ const FilterButton = ({ active, onClick, children }) => (
     onClick={onClick}
     className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${
       active
-        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105"
         : "bg-gray-800 text-gray-300 hover:bg-gray-700"
     }`}
   >
@@ -548,7 +615,7 @@ const FilterButton = ({ active, onClick, children }) => (
 );
 
 const SkillBadge = ({ name, icon }) => (
-  <div className="bg-gray-700/70 px-3 py-1 rounded-full flex items-center gap-2 text-sm">
+  <div className="bg-gray-700/70 px-3 py-1 rounded-full flex items-center gap-2 text-sm transition-all duration-300 hover:bg-gray-600/70 hover:scale-105 cursor-default">
     {icon}
     <span>{name}</span>
   </div>
@@ -561,32 +628,54 @@ const JobExperience = ({
   location,
   description,
   highlights,
-}) => (
-  <div className="border-l-2 border-purple-600/50 pl-5 relative">
-    <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-600"></div>
-    <div className="mb-2">
-      <h3 className="text-xl font-bold">{title}</h3>
-      <div className="flex flex-wrap items-center gap-x-3 text-sm mb-1">
-        <span className="text-purple-400 font-medium">{company}</span>
-        <span className="text-gray-400">{period}</span>
-        {location && <span className="text-gray-400">| {location}</span>}
+  delay = 0,
+}) => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 100 + delay * 100);
+
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  return (
+    <div
+      className={`border-l-2 border-purple-600/50 pl-5 relative transition-all duration-500 ease-out transform ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      }`}
+    >
+      <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-600"></div>
+      <div className="mb-2">
+        <h3 className="text-xl font-bold">{title}</h3>
+        <div className="flex flex-wrap items-center gap-x-3 text-sm mb-1">
+          <span className="text-purple-400 font-medium">{company}</span>
+          <span className="text-gray-400">{period}</span>
+          {location && <span className="text-gray-400">| {location}</span>}
+        </div>
       </div>
+
+      <p className="text-gray-300 mb-3">{description}</p>
+
+      <ul className="space-y-2">
+        {highlights.map((highlight, index) => (
+          <li
+            key={index}
+            className="flex items-start gap-2 text-gray-300 text-sm transition-all duration-300 ease-out"
+            style={{
+              transitionDelay: `${100 + index * 50}ms`,
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateX(0)" : "translateX(10px)",
+            }}
+          >
+            <span className="text-purple-400 mt-1">•</span>
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-
-    <p className="text-gray-300 mb-3">{description}</p>
-
-    <ul className="space-y-2">
-      {highlights.map((highlight, index) => (
-        <li
-          key={index}
-          className="flex items-start gap-2 text-gray-300 text-sm"
-        >
-          <span className="text-purple-400 mt-1">•</span>
-          <span>{highlight}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+  );
+};
 
 export default Resume;

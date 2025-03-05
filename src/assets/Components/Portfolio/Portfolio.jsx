@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaCss3,
   FaFigma,
@@ -44,24 +44,54 @@ import KanbanBoard from "../../KanbanBoard.png";
 import MapListToggleImage from '../../../assets/MapListToggleImage.png';
 
 const Portfolio = () => {
+  const [animatedSections, setAnimatedSections] = useState({
+    header: false,
+    technologies: false,
+    projectsTitle: false,
+    projects: false
+  });
+
+  // Animation on page load
+  useEffect(() => {
+    // Animate sections sequentially
+    const sections = ['header', 'technologies', 'projectsTitle', 'projects'];
+    sections.forEach((section, index) => {
+      setTimeout(() => {
+        setAnimatedSections(prev => ({
+          ...prev,
+          [section]: true
+        }));
+      }, 300 + (index * 300)); // Stagger the animations
+    });
+  }, []);
+
   return (
     <div
       id="Portfolio"
       className="min-h-screen p-10 md:p-24 bg-gradient-to-b from-gray-900 to-gray-800"
     >
-      <h1 className="text-2xl md:text-4xl text-white font-bold mb-12 text-center">
+      {/* Header with animation */}
+      <h1 
+        className={`text-2xl md:text-4xl text-white font-bold mb-12 text-center transition-all duration-700 transform ${
+          animatedSections.header ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}
+      >
         Portfolio
       </h1>
 
-      {/* Technology Stack Section */}
-      <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
+      {/* Technology Stack Section with animation */}
+      <div 
+        className={`flex flex-wrap items-center justify-center gap-6 mb-12 transition-all duration-1000 transform ${
+          animatedSections.technologies ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`}
+      >
         <div className="flex flex-wrap md:w-1/1 gap-8 md:p-12 py-10">
           {/* Frontend Technologies */}
           <div className="w-full mb-6">
             <h3 className="text-xl text-white mb-4 text-center">Frontend</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {/* HTML5 */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaHtml5 color="#E34F26" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   HTML5
@@ -69,7 +99,7 @@ const Portfolio = () => {
               </span>
 
               {/* CSS3 */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaCss3 color="#1572B6" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   CSS3
@@ -77,7 +107,7 @@ const Portfolio = () => {
               </span>
 
               {/* JavaScript */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-600 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaJs color="#F7DF1E" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   JavaScript
@@ -85,7 +115,7 @@ const Portfolio = () => {
               </span>
 
               {/* TypeScript */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiTypescript color="#3178C6" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   TypeScript
@@ -93,7 +123,7 @@ const Portfolio = () => {
               </span>
 
               {/* ReactJS */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-600 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaReact color="#61DAFB" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   ReactJS
@@ -101,7 +131,7 @@ const Portfolio = () => {
               </span>
 
               {/* React Native */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-600 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiReact color="#61DAFB" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   React Native
@@ -109,7 +139,7 @@ const Portfolio = () => {
               </span>
 
               {/* React Router */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiReactrouter color="#CA4245" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   React Router
@@ -117,7 +147,7 @@ const Portfolio = () => {
               </span>
 
               {/* TailwindCSS */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiTailwindcss color="#06B6D4" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   TailwindCSS
@@ -125,7 +155,7 @@ const Portfolio = () => {
               </span>
 
               {/* MUI */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiMui color="#007FFF" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Material UI
@@ -133,7 +163,7 @@ const Portfolio = () => {
               </span>
 
               {/* Bootstrap */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaBootstrap color="#7952B3" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Bootstrap
@@ -141,7 +171,7 @@ const Portfolio = () => {
               </span>
 
               {/* SASS */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaSass color="#CC6699" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   SASS
@@ -149,7 +179,7 @@ const Portfolio = () => {
               </span>
 
               {/* Figma */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaFigma color="#F24E1E" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Figma
@@ -163,7 +193,7 @@ const Portfolio = () => {
             <h3 className="text-xl text-white mb-4 text-center">Backend</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {/* NodeJS */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaNodeJs color="#339933" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   NodeJS
@@ -171,7 +201,7 @@ const Portfolio = () => {
               </span>
 
               {/* ExpressJS */}
-              <span className="relative group p-2 bg-white rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiExpress color="#000000" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   ExpressJS
@@ -179,7 +209,7 @@ const Portfolio = () => {
               </span>
 
               {/* C# */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiCsharp color="#239120" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   C#
@@ -187,7 +217,7 @@ const Portfolio = () => {
               </span>
 
               {/* ASP.NET */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiDotnet color="#512BD4" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   ASP.NET
@@ -195,7 +225,7 @@ const Portfolio = () => {
               </span>
 
               {/* Python */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiPython color="#306998" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Python
@@ -203,7 +233,7 @@ const Portfolio = () => {
               </span>
 
               {/* GraphQL */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiGraphql color="#E10098" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   GraphQL
@@ -211,7 +241,7 @@ const Portfolio = () => {
               </span>
 
               {/* Apollo */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiApollographql color="#311C87" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Apollo
@@ -225,7 +255,7 @@ const Portfolio = () => {
             <h3 className="text-xl text-white mb-4 text-center">Databases & ORMs</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {/* MongoDB */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiMongodb color="#47A248" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   MongoDB
@@ -233,7 +263,7 @@ const Portfolio = () => {
               </span>
 
               {/* PostgreSQL */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <DiPostgresql color="#336791" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   PostgreSQL
@@ -241,15 +271,15 @@ const Portfolio = () => {
               </span>
 
               {/* Redis */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
-                <DiRedis color="#FF4438" size={60} />
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
+                <DiRedis color="#FF4438" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Redis
                 </span>
               </span>
 
               {/* Sequelize */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiSequelize color="#52B0E7" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Sequelize
@@ -257,7 +287,7 @@ const Portfolio = () => {
               </span>
 
               {/* Prisma */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiPrisma color="#2D3748" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Prisma
@@ -271,15 +301,15 @@ const Portfolio = () => {
             <h3 className="text-xl text-white mb-4 text-center">DevOps & Tools</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {/* GitHub */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
-                <FaGithub color="#000" size={50} />
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
+                <FaGithub color="#fff" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   GitHub
                 </span>
               </span>
 
               {/* Git */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaGitAlt color="#F05032" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Git
@@ -287,7 +317,7 @@ const Portfolio = () => {
               </span>
 
               {/* Docker */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaDocker color="#2496ED" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Docker
@@ -295,7 +325,7 @@ const Portfolio = () => {
               </span>
 
               {/* AWS */}
-              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <FaAws color="#FF9900" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   AWS
@@ -303,7 +333,7 @@ const Portfolio = () => {
               </span>
 
               {/* Cypress */}
-              <span className="relative group p-2 bg-white rounded-full transition-all duration-300 ease-in-out hover:bg-gray-300 hover:scale-110">
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiCypress color="#17202C" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Cypress
@@ -314,12 +344,21 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Projects Section */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 text-center text-white">
+      {/* Projects Section Title with animation */}
+      <h2 
+        className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 text-center text-white transition-all duration-700 transform ${
+          animatedSections.projectsTitle ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`}
+      >
         Projects
       </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center">
+      {/* Projects Grid with animation */}
+      <div 
+        className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center transition-all duration-700 transform ${
+          animatedSections.projects ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-16 opacity-0 scale-95'
+        }`}
+      >
         {/* Project 1 - Featured Project */}
         <div className="md:col-span-2 lg:col-span-2 bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <div className="flex flex-col md:flex-row gap-6">

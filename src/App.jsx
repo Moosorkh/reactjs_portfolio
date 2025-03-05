@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,9 +15,21 @@ import Resume from "./assets/Components/Resume/Resume";
 import Footer from "./assets/Components/Footer/Footer";
 import "./assets/Components/transition.css";
 
+// ScrollToTop component to reset scroll position on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+};
+
 // Custom component for handling transitions
 const AnimatedRoutes = () => {
   const location = useLocation(); // useLocation should be called inside Router
+  
   return (
     <TransitionGroup>
       <CSSTransition key={location.key} classNames="fade" timeout={300}>
@@ -37,6 +49,7 @@ function App() {
   return (
     <div className="bg-[#171d32] h-auto w-full overflow-hidden">
       <Router>
+        <ScrollToTop /> {/* Add ScrollToTop component */}
         <Navbar />
         <AnimatedRoutes /> {/* Handle transitions and routing */}
         <Footer />

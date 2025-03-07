@@ -404,6 +404,84 @@ const Portfolio = () => {
           </div>
         </div>
 
+        {/* AdoptPaws Project Card */}
+<div className="md:col-span-2 lg:col-span-2 bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+  <div className="flex flex-col md:flex-row gap-6">
+    <div className="md:w-1/2">
+      <img
+        src="https://i.imgur.com/xOBUOkG.jpeg"
+        alt="AdoptPaws Pet Adoption Platform"
+        className="w-full h-64 object-cover rounded-lg"
+      />
+    </div>
+    <div className="md:w-1/2">
+      <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
+        AdoptPaws - Pet Adoption Platform
+      </h3>
+      <p className="text-gray-300 mb-4">
+        A modern, fully responsive pet adoption web application built with React and Material UI. Features include an interactive pet browsing experience with search and filtering, shopping cart functionality for pet adoption, and a tabbed contact interface with integrated maps.
+      </p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">React</span>
+        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">TypeScript</span>
+        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Material UI</span>
+        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Vite</span>
+        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Context API</span>
+        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Responsive Design</span>
+      </div>
+      <div className="flex gap-4">
+        <a
+          href="https://github.com/Moosorkh/adoptpaws-react.git"
+          target="_blank"
+          className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2"
+        >
+          <FaGithub /> GitHub
+        </a>
+        <a
+          href="https://adoptpaws-react.vercel.app/"
+          target="_blank"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2"
+        >
+          <FaExternalLinkAlt /> Live Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+        {/* More Projects Coming Soon Section */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg md:col-span-2 lg:col-span-3">
+          <div className="flex flex-col items-center justify-center py-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">More Projects Coming Soon</h3>
+            
+            {/* Animated Progress Indicator */}
+            <div className="relative w-64 h-4 bg-gray-700 rounded-full mb-8 overflow-hidden">
+              <div className="absolute top-0 left-0 h-full bg-blue-500 rounded-full animate-pulse" style={{width: '70%'}}></div>
+            </div>
+            
+            {/* Animated Icons */}
+            <div className="flex gap-8 mb-8">
+              <div className="animate-bounce">
+                <FaReact color="#61DAFB" size={40} />
+              </div>
+              <div className="animate-bounce" style={{animationDelay: '0.2s'}}>
+                <SiCsharp color="#239120" size={40} />
+              </div>
+              <div className="animate-bounce" style={{animationDelay: '0.4s'}}>
+                <SiDotnet color="#512BD4" size={40} />
+              </div>
+              <div className="animate-bounce" style={{animationDelay: '0.6s'}}>
+                <FaDocker color="#2496ED" size={40} />
+              </div>
+            </div>
+            
+            <p className="text-gray-300 text-center max-w-2xl">
+              I'm currently working on several exciting projects that showcase my full-stack development 
+              skills with React, C#, Entity Framework, and more. Check back soon to see my latest work!
+            </p>
+          </div>
+        </div>
+
         {/* Project 2 - Enhanced Authentication System */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
           <div className="h-48 flex items-center justify-center mb-4 bg-gray-700 rounded-lg overflow-hidden">
@@ -455,39 +533,6 @@ const Portfolio = () => {
               <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Entity Framework</span>
               <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Drag-and-Drop</span>
             </div>
-          </div>
-        </div>
-
-        {/* More Projects Coming Soon Section */}
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg md:col-span-2 lg:col-span-3">
-          <div className="flex flex-col items-center justify-center py-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">More Projects Coming Soon</h3>
-            
-            {/* Animated Progress Indicator */}
-            <div className="relative w-64 h-4 bg-gray-700 rounded-full mb-8 overflow-hidden">
-              <div className="absolute top-0 left-0 h-full bg-blue-500 rounded-full animate-pulse" style={{width: '70%'}}></div>
-            </div>
-            
-            {/* Animated Icons */}
-            <div className="flex gap-8 mb-8">
-              <div className="animate-bounce">
-                <FaReact color="#61DAFB" size={40} />
-              </div>
-              <div className="animate-bounce" style={{animationDelay: '0.2s'}}>
-                <SiCsharp color="#239120" size={40} />
-              </div>
-              <div className="animate-bounce" style={{animationDelay: '0.4s'}}>
-                <SiDotnet color="#512BD4" size={40} />
-              </div>
-              <div className="animate-bounce" style={{animationDelay: '0.6s'}}>
-                <FaDocker color="#2496ED" size={40} />
-              </div>
-            </div>
-            
-            <p className="text-gray-300 text-center max-w-2xl">
-              I'm currently working on several exciting projects that showcase my full-stack development 
-              skills with React, C#, Entity Framework, and more. Check back soon to see my latest work!
-            </p>
           </div>
         </div>
         

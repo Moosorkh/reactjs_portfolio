@@ -133,7 +133,7 @@ const Resume = () => {
               skills, and work experience.
             </p>
             <a
-              href="/Mehdi_Azar_Technical_Resume.pdf"
+              href="https://docs.google.com/document/d/1W8G6sODn2sQppDU7cUr2caa4092zXs-MQDxd_Kbolho/export?format=pdf"
               download="Mehdi_Azar_Technical_Resume.pdf"
               className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg transform hover:scale-105"
             >

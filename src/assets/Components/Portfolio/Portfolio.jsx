@@ -353,106 +353,112 @@ const Portfolio = () => {
         Projects
       </h2>
 
-      {/* Projects Grid with animation */}
+      {/* Projects Grid with animation - IMPROVED VERSION */}
       <div 
         className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center transition-all duration-700 transform ${
           animatedSections.projects ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-16 opacity-0 scale-95'
         }`}
       >
         {/* Project 1 - Featured Project */}
-        <div className="md:col-span-2 lg:col-span-2 bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2">
-              <img
-                src={MapListToggleImage}
-                alt="Map List Toggle"
-                className="w-full h-64 object-cover rounded-lg"
-              />
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src={MapListToggleImage}
+              alt="Map List Toggle"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+            <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Featured
             </div>
-            <div className="md:w-1/2">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-                Mobile-responsive Map Search
-              </h3>
-              <p className="text-gray-300 mb-4">
-                An interactive React application that toggles between a map view and a list view, 
-                showcasing various locations with advanced filtering capabilities and responsive design.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">React</span>
-                <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">JavaScript</span>
-                <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Leaflet</span>
-                <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">CSS</span>
-                <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Responsive Design</span>
-              </div>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/Moosorkh/map-list-toggle.git"
-                  target="_blank"
-                  className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2"
-                >
-                  <FaGithub /> GitHub
-                </a>
-                <a
-                  href="https://map-list-toggle.vercel.app/"
-                  target="_blank"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2"
-                >
-                  <FaExternalLinkAlt /> Live Demo
-                </a>
-              </div>
+          </div>
+          
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              Mobile-responsive Map Search
+            </h3>
+            
+            <p className="text-gray-300 mb-4 line-clamp-3">
+              An interactive React application that toggles between a map view and a list view, 
+              showcasing various locations with advanced filtering capabilities and responsive design.
+            </p>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">JavaScript</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Leaflet</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">CSS</span>
+            </div>
+            
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/Moosorkh/map-list-toggle.git"
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                <FaGithub /> GitHub
+              </a>
+              <a
+                href="https://map-list-toggle.vercel.app/"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Demo
+              </a>
             </div>
           </div>
         </div>
 
         {/* AdoptPaws Project Card */}
-<div className="md:col-span-2 lg:col-span-2 bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-  <div className="flex flex-col md:flex-row gap-6">
-    <div className="md:w-1/2">
-      <img
-        src="https://i.imgur.com/xOBUOkG.jpeg"
-        alt="AdoptPaws Pet Adoption Platform"
-        className="w-full h-64 object-cover rounded-lg"
-      />
-    </div>
-    <div className="md:w-1/2">
-      <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
-        AdoptPaws - Pet Adoption Platform
-      </h3>
-      <p className="text-gray-300 mb-4">
-        A modern, fully responsive pet adoption web application built with React and Material UI. Features include an interactive pet browsing experience with search and filtering, shopping cart functionality for pet adoption, and a tabbed contact interface with integrated maps.
-      </p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">React</span>
-        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">TypeScript</span>
-        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Material UI</span>
-        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Vite</span>
-        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Context API</span>
-        <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Responsive Design</span>
-      </div>
-      <div className="flex gap-4">
-        <a
-          href="https://github.com/Moosorkh/adoptpaws-react.git"
-          target="_blank"
-          className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2"
-        >
-          <FaGithub /> GitHub
-        </a>
-        <a
-          href="https://adoptpaws-react.vercel.app/"
-          target="_blank"
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2"
-        >
-          <FaExternalLinkAlt /> Live Demo
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src="https://i.imgur.com/xOBUOkG.jpeg"
+              alt="AdoptPaws Pet Adoption Platform"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+          </div>
+          
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              AdoptPaws - Pet Adoption
+            </h3>
+            
+            <p className="text-gray-300 mb-4 line-clamp-3">
+              A modern, fully responsive pet adoption web application built with React and Material UI. Features include an interactive pet browsing experience with search and filtering.
+            </p>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">TypeScript</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Material UI</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Vite</span>
+            </div>
+            
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/Moosorkh/adoptpaws-react.git"
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                <FaGithub /> GitHub
+              </a>
+              <a
+                href="https://adoptpaws-react.vercel.app/"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
 
-        {/* More Projects Coming Soon Section */}
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg md:col-span-2 lg:col-span-3">
-          <div className="flex flex-col items-center justify-center py-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">More Projects Coming Soon</h3>
+                {/* More Projects Coming Soon Section */}
+                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl md:col-span-2 lg:col-span-3">
+          <div className="flex flex-col items-center justify-center py-12 px-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">More Projects Coming Soon</h3>
             
             {/* Animated Progress Indicator */}
             <div className="relative w-64 h-4 bg-gray-700 rounded-full mb-8 overflow-hidden">
@@ -461,16 +467,16 @@ const Portfolio = () => {
             
             {/* Animated Icons */}
             <div className="flex gap-8 mb-8">
-              <div className="animate-bounce">
+              <div className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg">
                 <FaReact color="#61DAFB" size={40} />
               </div>
-              <div className="animate-bounce" style={{animationDelay: '0.2s'}}>
+              <div className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg" style={{animationDelay: '0.2s'}}>
                 <SiCsharp color="#239120" size={40} />
               </div>
-              <div className="animate-bounce" style={{animationDelay: '0.4s'}}>
+              <div className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg" style={{animationDelay: '0.4s'}}>
                 <SiDotnet color="#512BD4" size={40} />
               </div>
-              <div className="animate-bounce" style={{animationDelay: '0.6s'}}>
+              <div className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg" style={{animationDelay: '0.6s'}}>
                 <FaDocker color="#2496ED" size={40} />
               </div>
             </div>
@@ -482,89 +488,119 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Project 2 - Enhanced Authentication System */}
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <div className="h-48 flex items-center justify-center mb-4 bg-gray-700 rounded-lg overflow-hidden">
-            <div className="text-center p-6">
-              {/* Updated icon with no background */}
-              <div className="mb-4">
-                <SiCsharp color="#239120" size={60} className="mx-auto" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-white">
-                Enhanced Authentication System
-              </h3>
-            </div>
+        {/* Weather Dashboard */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src={WeatherDashboardImage}
+              alt="Weather Dashboard"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
           </div>
-          <div className="p-4">
-            <p className="text-sm sm:text-base text-gray-300 mb-4">
-              Custom login features for web applications, including tailored messages and 
-              notifications for new users, enhancing user engagement and security measures.
+          
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              Weather Dashboard
+            </h3>
+            
+            <p className="text-gray-300 mb-4 line-clamp-3">
+              A web application enabling users to search and view current weather data 
+              and a 5-day forecast for cities worldwide with local storage functionality.
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">C#</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">ASP.NET</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Entity Framework</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Authentication</span>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">TypeScript</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">TailwindCSS</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Express</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">API</span>
+            </div>
+            
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/Moosorkh/Module-9-Challenge.git"
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                <FaGithub /> GitHub
+              </a>
+              <span className="bg-gray-700 text-gray-400 px-4 py-2 rounded-lg text-sm ml-auto flex items-center">
+                <FaExternalLinkAlt className="mr-2" /> Demo Unavailable
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Project 3 - Interactive Bed Reservation System */}
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <div className="h-48 flex items-center justify-center mb-4 bg-gray-700 rounded-lg overflow-hidden">
-            <div className="text-center p-6">
-              {/* Updated icon with no background */}
-              <div className="mb-4">
-                <FaReact color="#61DAFB" size={60} className="mx-auto" />
+        {/* Enhanced Authentication System */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative h-64 overflow-hidden bg-gray-900">
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-6 relative z-10">
+                <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <SiCsharp color="#239120" size={40} />
+                </div>
+                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Enhanced Authentication System
+                </h3>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-white">
-                Interactive Bed Reservation
-              </h3>
             </div>
+            <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
           </div>
-          <div className="p-4">
-            <p className="text-sm sm:text-base text-gray-300 mb-4">
-              A user-friendly drag-and-drop interface for bed reservations and swapping, 
-              significantly improving user experience and operational efficiency.
+          
+          <div className="p-6">
+            <p className="text-gray-300 mb-4 line-clamp-3">
+              Custom login features for web applications, including tailored messages and 
+              notifications for new users, enhancing user engagement and security measures.
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">React</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">C#</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Entity Framework</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Drag-and-Drop</span>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">C#</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">ASP.NET</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Entity Framework</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Authentication</span>
+            </div>
+            
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <span className="text-gray-400 text-sm flex items-center">
+                <FaCode className="mr-2" /> Private Repository
+              </span>
             </div>
           </div>
         </div>
-        
-        {/* Weather Dashboard - Keep one of the original projects */}
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
-          <img
-            src={WeatherDashboardImage}
-            alt="Weather Dashboard"
-            className="w-full h-48 object-cover rounded-t-lg"
-          />
-          <div className="p-4">
-            <h3 className="text-lg sm:text-xl font-semibold text-white">
-              Weather Dashboard
-            </h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-4">
-              A web application enabling users to search and view current weather data 
-              and a 5-day forecast for cities worldwide with local storage functionality.
-            </p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">TypeScript</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">TailwindCSS</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">Express</span>
-              <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-xs">API Integration</span>
+
+        {/* Interactive Bed Reservation System */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative h-64 overflow-hidden bg-gray-900">
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-6 relative z-10">
+                <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <FaReact color="#61DAFB" size={40} />
+                </div>
+                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Interactive Bed Reservation
+                </h3>
+              </div>
             </div>
-            <div className="mt-3">
-              <a
-                href="https://github.com/Moosorkh/Module-9-Challenge.git"
-                target="_blank"
-                className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2 w-fit"
-              >
-                <FaGithub /> GitHub Repo
-              </a>
+            <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          </div>
+          
+          <div className="p-6">
+            <p className="text-gray-300 mb-4 line-clamp-3">
+              A user-friendly drag-and-drop interface for bed reservations and swapping, 
+              significantly improving user experience and operational efficiency.
+            </p>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">C#</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Entity Framework</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Drag-and-Drop</span>
+            </div>
+            
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <span className="text-gray-400 text-sm flex items-center">
+                <FaCode className="mr-2" /> Private Repository
+              </span>
             </div>
           </div>
         </div>

@@ -36,12 +36,9 @@ import {
   SiReact,
 } from "react-icons/si";
 // Importing project image
-import AdoptPawsImage from "../../AdoptPaws.png";
-import VehicleVanguardImage from "../../VehicleVanguard.png";
-import PersonalPortfolioImage from "../../portfolio_image.png";
 import WeatherDashboardImage from "../../weatherdashboard.png";
-import KanbanBoard from "../../KanbanBoard.png";
 import MapListToggleImage from '../../../assets/MapListToggleImage.png';
+import invoiceTrackerImage from '../../../assets/invoiceTracker.png'
 
 const Portfolio = () => {
   const [animatedSections, setAnimatedSections] = useState({
@@ -50,6 +47,17 @@ const Portfolio = () => {
     projectsTitle: false,
     projects: false
   });
+
+  // Add state to track expanded descriptions
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
+
+  // Function to toggle description expansion
+  const toggleDescription = (cardId) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [cardId]: !prev[cardId]
+    }));
+  };
 
   // Animation on page load
   useEffect(() => {
@@ -378,10 +386,17 @@ const Portfolio = () => {
               Mobile-responsive Map Search
             </h3>
             
-            <p className="text-gray-300 mb-4 line-clamp-3">
+            <p className={`text-gray-300 mb-1 ${expandedDescriptions['map-toggle'] ? '' : 'line-clamp-3'}`}>
               An interactive React application that toggles between a map view and a list view, 
               showcasing various locations with advanced filtering capabilities and responsive design.
             </p>
+            
+            <button 
+              onClick={() => toggleDescription('map-toggle')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+            >
+              {expandedDescriptions['map-toggle'] ? 'Read Less' : 'Read More'}
+            </button>
             
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>
@@ -425,9 +440,16 @@ const Portfolio = () => {
               AdoptPaws - Pet Adoption
             </h3>
             
-            <p className="text-gray-300 mb-4 line-clamp-3">
+            <p className={`text-gray-300 mb-1 ${expandedDescriptions['adopt-paws'] ? '' : 'line-clamp-3'}`}>
               A modern, fully responsive pet adoption web application built with React and Material UI. Features include an interactive pet browsing experience with search and filtering.
             </p>
+            
+            <button 
+              onClick={() => toggleDescription('adopt-paws')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+            >
+              {expandedDescriptions['adopt-paws'] ? 'Read Less' : 'Read More'}
+            </button>
             
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>
@@ -455,8 +477,68 @@ const Portfolio = () => {
           </div>
         </div>
 
-                {/* More Projects Coming Soon Section */}
-                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl md:col-span-2 lg:col-span-3">
+        {/* Invoice Tracker Project Card */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src={invoiceTrackerImage}
+              alt="Invoice Tracker - Advanced CRUD Application"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+          </div>
+          
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              Invoice Tracker - Full Stack CRUD App
+            </h3>
+            
+            <p className={`text-gray-300 mb-1 ${expandedDescriptions['invoice-tracker'] ? '' : 'line-clamp-3'}`}>
+              An invoice tracking application built with the PERN Stack (PostgreSQL, Express, React, Node.js), featuring advanced CRUD operations, JWT authentication, PDF exporting, and Dockerized deployment on Railway.
+              Use the following credentials to login: <br />
+              Email: "test@test.com" <br />
+              Password: "123456" or <br />
+              Simply register a new account to access the app.
+            </p>
+            
+            <button 
+              onClick={() => toggleDescription('invoice-tracker')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+            >
+              {expandedDescriptions['invoice-tracker'] ? 'Read Less' : 'Read More'}
+            </button>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">TypeScript</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Node.js</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Express</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">PostgreSQL</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Prisma</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Docker</span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">Railway</span>
+            </div>
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/Moosorkh/invoice-tracker.git"
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                <FaGithub /> GitHub
+              </a>
+              <a
+                href="https://invoice-tracker.up.railway.app/"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* More Projects Coming Soon Section */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl md:col-span-2 lg:col-span-3">
           <div className="flex flex-col items-center justify-center py-12 px-6">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">More Projects Coming Soon</h3>
             
@@ -481,10 +563,16 @@ const Portfolio = () => {
               </div>
             </div>
             
-            <p className="text-gray-300 text-center max-w-2xl">
+            <p className={`text-gray-300 text-center max-w-2xl ${expandedDescriptions['coming-soon'] ? '' : 'line-clamp-3'}`}>
               I'm currently working on several exciting projects that showcase my full-stack development 
               skills with React, C#, Entity Framework, and more. Check back soon to see my latest work!
             </p>
+            
+            <button 
+              onClick={() => toggleDescription('coming-soon')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mt-2 mb-4"
+            >
+            </button>
           </div>
         </div>
 
@@ -504,10 +592,17 @@ const Portfolio = () => {
               Weather Dashboard
             </h3>
             
-            <p className="text-gray-300 mb-4 line-clamp-3">
+            <p className={`text-gray-300 mb-1 ${expandedDescriptions['weather-dashboard'] ? '' : 'line-clamp-3'}`}>
               A web application enabling users to search and view current weather data 
               and a 5-day forecast for cities worldwide with local storage functionality.
             </p>
+            
+            <button 
+              onClick={() => toggleDescription('weather-dashboard')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+            >
+              {expandedDescriptions['weather-dashboard'] ? 'Read Less' : 'Read More'}
+            </button>
             
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">TypeScript</span>
@@ -548,10 +643,17 @@ const Portfolio = () => {
           </div>
           
           <div className="p-6">
-            <p className="text-gray-300 mb-4 line-clamp-3">
+            <p className={`text-gray-300 mb-1 ${expandedDescriptions['auth-system'] ? '' : 'line-clamp-3'}`}>
               Custom login features for web applications, including tailored messages and 
               notifications for new users, enhancing user engagement and security measures.
             </p>
+            
+            <button 
+              onClick={() => toggleDescription('auth-system')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+            >
+              {expandedDescriptions['auth-system'] ? 'Read Less' : 'Read More'}
+            </button>
             
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">C#</span>
@@ -585,10 +687,17 @@ const Portfolio = () => {
           </div>
           
           <div className="p-6">
-            <p className="text-gray-300 mb-4 line-clamp-3">
+            <p className={`text-gray-300 mb-1 ${expandedDescriptions['bed-reservation'] ? '' : 'line-clamp-3'}`}>
               A user-friendly drag-and-drop interface for bed reservations and swapping, 
               significantly improving user experience and operational efficiency.
             </p>
+            
+            <button 
+              onClick={() => toggleDescription('bed-reservation')}
+              className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+            >
+              {expandedDescriptions['bed-reservation'] ? 'Read Less' : 'Read More'}
+            </button>
             
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">React</span>

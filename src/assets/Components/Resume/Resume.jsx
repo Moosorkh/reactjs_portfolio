@@ -410,7 +410,7 @@ const Resume = () => {
                       <JobExperience
                         title="IT Specialist"
                         company="Various Companies"
-                        period="2008 - 2016"
+                        period="2007 - 2014"
                         location=""
                         description="Provided comprehensive IT support, troubleshooting, and problem-solving across various software and hardware systems."
                         highlights={[

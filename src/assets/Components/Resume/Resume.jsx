@@ -361,7 +361,7 @@ const Resume = () => {
                       <JobExperience
                         title="Full-Stack Developer"
                         company="TTP"
-                        period="09/2024 - 03/2025"
+                        period="09/2024 - Present"
                         location="Rancho Santa Margarita, CA"
                         description="Spearheaded the rapid clearance of development backlog, addressing all outstanding issues within the first month of tenure."
                         highlights={[

@@ -6,3 +6,44 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+/* Dark Reader Compatibility Styles */
+
+/* Add these at the end of your index.css or in a separate CSS file */
+
+/* 1. Handle background-clip text elements when Dark Reader is active */
+html.darkreader .text-transparent.bg-clip-text,
+html[data-darkreader-mode] .text-transparent.bg-clip-text,
+.darkreader .text-transparent.bg-clip-text {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: #5f9bff !important; /* Light blue fallback */
+}
+
+/* 2. Fix for logo in navbar */
+html.darkreader a[href="/"],
+html[data-darkreader-mode] a[href="/"],
+.darkreader a[href="/"] {
+  color: #5f9bff !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+}
+
+/* 3. Fix for footer and any other problematic areas */
+html.darkreader footer .text-transparent.bg-clip-text,
+html[data-darkreader-mode] footer .text-transparent.bg-clip-text,
+.darkreader footer .text-transparent.bg-clip-text {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: #5f9bff !important;
+}
+
+
+/* 5. Use Dark Reader variables when available */
+.darkreader .text-transparent.bg-clip-text,
+html[data-darkreader-mode] .text-transparent.bg-clip-text {
+  color: var(--darkreader-neutral-text, #5f9bff) !important;
+}

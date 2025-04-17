@@ -15,7 +15,7 @@ import {
   FaRoute,
   FaDatabase,
   FaExternalLinkAlt,
-  FaCode
+  FaCode,
 } from "react-icons/fa";
 import { DiRedis, DiPostgresql } from "react-icons/di";
 import {
@@ -35,66 +35,67 @@ import {
   SiCypress,
   SiReact,
   SiShopify,
+  SiNestjs,
 } from "react-icons/si";
 // Importing project image
 import WeatherDashboardImage from "../../weatherdashboard.png";
-import MapListToggleImage from '../../../assets/MapListToggleImage.png';
-import invoiceTrackerImage from '../../../assets/invoiceTracker.png'
-import MaryEclairPatisserie from '../../../assets/MaryEclairPatisserie.png'
+import MapListToggleImage from "../../../assets/MapListToggleImage.png";
+import invoiceTrackerImage from "../../../assets/invoiceTracker.png";
+import MaryEclairPatisserie from "../../../assets/MaryEclairPatisserie.png";
 
 const Portfolio = () => {
   const [animatedSections, setAnimatedSections] = useState({
     header: false,
     technologies: false,
     projectsTitle: false,
-    projects: false
+    projects: false,
   });
 
   // Add state to track expanded descriptions
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
-  
+
   // Add state to track which descriptions need "Read More" buttons
   const [needsReadMore, setNeedsReadMore] = useState({});
-  
+
   // Create refs for each description paragraph
   const descriptionRefs = useRef({});
 
   // Function to toggle description expansion
   const toggleDescription = (cardId) => {
-    setExpandedDescriptions(prev => ({
+    setExpandedDescriptions((prev) => ({
       ...prev,
-      [cardId]: !prev[cardId]
+      [cardId]: !prev[cardId],
     }));
   };
 
   // Animation on page load
   useEffect(() => {
     // Animate sections sequentially
-    const sections = ['header', 'technologies', 'projectsTitle', 'projects'];
+    const sections = ["header", "technologies", "projectsTitle", "projects"];
     sections.forEach((section, index) => {
       setTimeout(() => {
-        setAnimatedSections(prev => ({
+        setAnimatedSections((prev) => ({
           ...prev,
-          [section]: true
+          [section]: true,
         }));
-      }, 300 + (index * 300)); // Stagger the animations
+      }, 300 + index * 300); // Stagger the animations
     });
-    
+
     // Check which descriptions need "Read More" buttons after DOM is fully loaded
     setTimeout(() => {
       checkDescriptionHeights();
     }, 500);
-    
+
     // Recalculate on window resize
-    window.addEventListener('resize', checkDescriptionHeights);
-    return () => window.removeEventListener('resize', checkDescriptionHeights);
+    window.addEventListener("resize", checkDescriptionHeights);
+    return () => window.removeEventListener("resize", checkDescriptionHeights);
   }, []);
-  
+
   // Function to check if description paragraphs exceed their container height
   const checkDescriptionHeights = () => {
     const newNeedsReadMore = {};
-    
-    Object.keys(descriptionRefs.current).forEach(id => {
+
+    Object.keys(descriptionRefs.current).forEach((id) => {
       const element = descriptionRefs.current[id];
       if (element) {
         // Get the line height and calculate the approximate number of lines
@@ -102,15 +103,15 @@ const Portfolio = () => {
         const lineHeight = parseInt(style.lineHeight) || 24; // Default line height if can't be determined
         const height = element.scrollHeight;
         const lineCount = Math.round(height / lineHeight);
-        
+
         // If more than 3 lines, show the "Read More" button
         newNeedsReadMore[id] = lineCount > 3;
       }
     });
-    
+
     setNeedsReadMore(newNeedsReadMore);
   };
-  
+
   // Function to register refs
   const registerRef = (id, el) => {
     if (el) {
@@ -265,6 +266,14 @@ const Portfolio = () => {
                 </span>
               </span>
 
+              {/* NestJS */}
+              <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
+                <SiNestjs color="#E0234E" size={50} />
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+                  NestJS
+                </span>
+              </span>
+
               {/* ExpressJS */}
               <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
                 <SiExpress color="#000000" size={50} />
@@ -403,7 +412,7 @@ const Portfolio = () => {
 
               {/* Cypress */}
               <span className="relative group p-2 rounded-full transition-all duration-300 ease-in-out hover:scale-110">
-                <SiCypress color="#17202C" size={50} />
+                <SiCypress color="#466185" size={50} />
                 <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max text-white text-xs bg-gray-700 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                   Cypress
                 </span>
@@ -426,7 +435,7 @@ const Portfolio = () => {
 
       {/* Projects Grid with animation - IMPROVED VERSION */}
       <div
-        className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 justify-center transition-all duration-700 transform ${
+        className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 justify-center transition-all duration-700 transform ${
           animatedSections.projects
             ? "translate-y-0 opacity-100 scale-100"
             : "translate-y-16 opacity-0 scale-95"
@@ -462,7 +471,8 @@ const Portfolio = () => {
               filtering capabilities and responsive design.
             </p>
 
-            {(needsReadMore["map-toggle"] || expandedDescriptions["map-toggle"]) && (
+            {(needsReadMore["map-toggle"] ||
+              expandedDescriptions["map-toggle"]) && (
               <button
                 onClick={() => toggleDescription("map-toggle")}
                 className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
@@ -532,7 +542,8 @@ const Portfolio = () => {
               browsing experience with search and filtering.
             </p>
 
-            {(needsReadMore["adopt-paws"] || expandedDescriptions["adopt-paws"]) && (
+            {(needsReadMore["adopt-paws"] ||
+              expandedDescriptions["adopt-paws"]) && (
               <button
                 onClick={() => toggleDescription("adopt-paws")}
                 className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
@@ -565,436 +576,465 @@ const Portfolio = () => {
                 <FaGithub /> GitHub
               </a>
               <a
-               href="https://adoptpaws-react.vercel.app/"
-               target="_blank"
-               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
-             >
-               <FaExternalLinkAlt /> Live Demo
-             </a>
-           </div>
-         </div>
-       </div>
+                href="https://adoptpaws-react.vercel.app/"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
 
-       {/* Invoice Tracker Project Card */}
-       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
-         <div className="relative overflow-hidden">
-           <img
-             src={invoiceTrackerImage}
-             alt="Invoice Tracker - Advanced CRUD Application"
-             className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-         </div>
+        {/* Invoice Tracker Project Card */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src={invoiceTrackerImage}
+              alt="Invoice Tracker - Advanced CRUD Application"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+          </div>
 
-         <div className="p-6">
-           <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
-             Invoice Tracker - Full Stack CRUD App
-           </h3>
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              Invoice Tracker - Full Stack CRUD App
+            </h3>
 
-           <p
-             ref={(el) => registerRef("invoice-tracker", el)}
-             className={`text-gray-300 mb-1 ${
-               expandedDescriptions["invoice-tracker"] ? "" : "line-clamp-3"
-             }`}
-           >
-             An invoice tracking application built with the PERN Stack
-             (PostgreSQL, Express, React, Node.js), featuring advanced CRUD
-             operations, JWT authentication, PDF exporting, and Dockerized
-             deployment on Railway. Use the following credentials to login:{" "}
-             <br />
-             Email: "test@test.com" <br />
-             Password: "123456" or <br />
-             Simply register a new account to access the app.
-           </p>
+            <p
+              ref={(el) => registerRef("invoice-tracker", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["invoice-tracker"] ? "" : "line-clamp-3"
+              }`}
+            >
+              An invoice tracking application built with the PERN Stack
+              (PostgreSQL, Express, React, Node.js), featuring advanced CRUD
+              operations, JWT authentication, PDF exporting, and Dockerized
+              deployment on Railway. Use the following credentials to login:{" "}
+              <br />
+              Email: "test@test.com" <br />
+              Password: "123456" or <br />
+              Simply register a new account to access the app.
+            </p>
 
-           {(needsReadMore["invoice-tracker"] || expandedDescriptions["invoice-tracker"]) && (
-             <button
-               onClick={() => toggleDescription("invoice-tracker")}
-               className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
-             >
-               {expandedDescriptions["invoice-tracker"]
-                 ? "Read Less"
-                 : "Read More"}
-             </button>
-           )}
+            {(needsReadMore["invoice-tracker"] ||
+              expandedDescriptions["invoice-tracker"]) && (
+              <button
+                onClick={() => toggleDescription("invoice-tracker")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["invoice-tracker"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
 
-           <div className="flex flex-wrap gap-2 mb-6">
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               React
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               TypeScript
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Node.js
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Express
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               PostgreSQL
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Prisma
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Docker
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Railway
-             </span>
-           </div>
-           <div className="flex gap-4 pt-2 border-t border-gray-700">
-             <a
-               href="https://github.com/Moosorkh/invoice-tracker.git"
-               target="_blank"
-               className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
-             >
-               <FaGithub /> GitHub
-             </a>
-             <a
-               href="https://invoice-tracker.up.railway.app/"
-               target="_blank"
-               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
-             >
-               <FaExternalLinkAlt /> Live Demo
-             </a>
-           </div>
-         </div>
-       </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                React
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                TypeScript
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Node.js
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Express
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                PostgreSQL
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Prisma
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Docker
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Railway
+              </span>
+            </div>
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/Moosorkh/invoice-tracker.git"
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                <FaGithub /> GitHub
+              </a>
+              <a
+                href="https://invoice-tracker.up.railway.app/"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
 
-       {/* Shopify Project Card */}
-       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
-         <div className="relative overflow-hidden">
-           <img
-             src={MaryEclairPatisserie}
-             alt="Mary Éclair Pâtisserie - Shopify Store"
-             className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-           <div className="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-             Shopify
-           </div>
-         </div>
+        {/* Shopify Project Card */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src={MaryEclairPatisserie}
+              alt="Mary Éclair Pâtisserie - Shopify Store"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+            <div className="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Shopify
+            </div>
+          </div>
 
-         <div className="p-6">
-           <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-green-400 transition-colors">
-             Mary Éclair Pâtisserie
-           </h3>
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-green-400 transition-colors">
+              Mary Éclair Pâtisserie
+            </h3>
 
-           <p
-             ref={(el) => registerRef("mary-eclair", el)}
-             className={`text-gray-300 mb-1 ${
-               expandedDescriptions["mary-eclair"] ? "" : "line-clamp-3"
-             }`}
-           >
-             A custom Shopify e-commerce store designed and developed for an
-             upscale French-inspired bakery specializing in artisan éclairs and
-             pastries. Features include custom theme customization, responsive
-             design, SEO optimization, integrated contact forms, and social
-             media integration.
-           </p>
+            <p
+              ref={(el) => registerRef("mary-eclair", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["mary-eclair"] ? "" : "line-clamp-3"
+              }`}
+            >
+              A custom Shopify e-commerce store designed and developed for an
+              upscale French-inspired bakery specializing in artisan éclairs and
+              pastries. Features include custom theme customization, responsive
+              design, SEO optimization, integrated contact forms, and social
+              media integration.
+            </p>
 
-           {(needsReadMore["mary-eclair"] || expandedDescriptions["mary-eclair"]) && (
-             <button
-               onClick={() => toggleDescription("mary-eclair")}
-               className="text-green-400 hover:text-green-300 text-sm font-medium focus:outline-none mb-4"
-             >
-               {expandedDescriptions["mary-eclair"] ? "Read Less" : "Read More"}
-             </button>
-           )}
+            {(needsReadMore["mary-eclair"] ||
+              expandedDescriptions["mary-eclair"]) && (
+              <button
+                onClick={() => toggleDescription("mary-eclair")}
+                className="text-green-400 hover:text-green-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["mary-eclair"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
 
-           <div className="flex flex-wrap gap-2 mb-6">
-             <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
-               Shopify
-             </span>
-             <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
-               Liquid
-             </span>
-             <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
-               HTML5
-             </span>
-             <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
-               CSS3
-             </span>
-             <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
-               SEO
-             </span>
-           </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
+                Shopify
+              </span>
+              <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
+                Liquid
+              </span>
+              <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
+                HTML5
+              </span>
+              <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
+                CSS3
+              </span>
+              <span className="bg-green-900/50 text-green-300 px-3 py-1 rounded-full text-xs font-medium">
+                SEO
+              </span>
+            </div>
 
-           <div className="flex gap-4 pt-2 border-t border-gray-700">
-             <a
-               href="https://github.com/yourusername/mary-eclair-patisserie" // replace with your actual GitHub repo link
-               target="_blank"
-               className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
-             >
-               Password: None
-             </a>
-             <a
-               href="https://maryeclairpatisserie.myshopify.com/" // replace with your actual live Shopify link if live
-               target="_blank"
-               className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
-             >
-               <FaExternalLinkAlt /> Live Store
-             </a>
-           </div>
-         </div>
-       </div>
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/yourusername/mary-eclair-patisserie" // replace with your actual GitHub repo link
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                Password: None
+              </a>
+              <a
+                href="https://maryeclairpatisserie.myshopify.com/" // replace with your actual live Shopify link if live
+                target="_blank"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Store
+              </a>
+            </div>
+          </div>
+        </div>
 
-       {/* More Projects Coming Soon Section */}
-       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl md:col-span-2 lg:col-span-3">
-         <div className="flex flex-col items-center justify-center py-12 px-6">
-           <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
-             More Projects Coming Soon
-           </h3>
+        {/* Weather Dashboard - Updated Card */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative overflow-hidden">
+            <img
+              src={WeatherDashboardImage}
+              alt="Weather Dashboard"
+              className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+          </div>
 
-           {/* Animated Progress Indicator */}
-           <div className="relative w-64 h-4 bg-gray-700 rounded-full mb-8 overflow-hidden">
-             <div
-               className="absolute top-0 left-0 h-full bg-blue-500 rounded-full animate-pulse"
-               style={{ width: "70%" }}
-             ></div>
-           </div>
+          <div className="p-6">
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              Weather Dashboard
+            </h3>
 
-           {/* Animated Icons */}
-           <div className="flex gap-8 mb-8">
-             <div className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg">
-               <FaReact color="#61DAFB" size={40} />
-             </div>
-             <div
-               className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg"
-               style={{ animationDelay: "0.2s" }}
-             >
-               <SiCsharp color="#239120" size={40} />
-             </div>
-             <div
-               className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg"
-               style={{ animationDelay: "0.4s" }}
-             >
-               <SiDotnet color="#512BD4" size={40} />
-             </div>
-             <div
-               className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg"
-               style={{ animationDelay: "0.6s" }}
-             >
-               <FaDocker color="#2496ED" size={40} />
-             </div>
-           </div>
+            <p
+              ref={(el) => registerRef("weather-dashboard", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["weather-dashboard"] ? "" : "line-clamp-3"
+              }`}
+            >
+              A full-stack weather application built with React, Material UI,
+              NestJS, and PostgreSQL. Features include current weather data,
+              5-day forecasts, search history management, and dark/light theme
+              switching. Deployed on Railway with Docker containerization.
+            </p>
 
-           <p
-             ref={(el) => registerRef("coming-soon", el)}
-             className={`text-gray-300 text-center max-w-2xl ${
-               expandedDescriptions["coming-soon"] ? "" : "line-clamp-3"
-             }`}
-           >
-             I'm currently working on several exciting projects that showcase
-             my full-stack development skills with React, C#, Entity Framework,
-             and more. Check back soon to see my latest work!
-           </p>
+            {(needsReadMore["weather-dashboard"] ||
+              expandedDescriptions["weather-dashboard"]) && (
+              <button
+                onClick={() => toggleDescription("weather-dashboard")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["weather-dashboard"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
 
-           {(needsReadMore["coming-soon"] || expandedDescriptions["coming-soon"]) && (
-             <button
-               onClick={() => toggleDescription("coming-soon")}
-               className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mt-2 mb-4"
-             >
-               {expandedDescriptions["coming-soon"] ? "Read Less" : "Read More"}
-             </button>
-           )}
-         </div>
-       </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                React
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                TypeScript
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Material UI
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                NestJS
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                PostgreSQL
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Prisma
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Docker
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Railway
+              </span>
+            </div>
 
-       {/* Weather Dashboard */}
-       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
-         <div className="relative overflow-hidden">
-           <img
-             src={WeatherDashboardImage}
-             alt="Weather Dashboard"
-             className="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-105"
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
-         </div>
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <a
+                href="https://github.com/Moosorkh/Weather_Dashboard"
+                target="_blank"
+                className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
+              >
+                <FaGithub /> GitHub
+              </a>
+              <a
+                href="https://weatherdashboard-production-5c78.up.railway.app/"
+                target="_blank"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto"
+              >
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
 
-         <div className="p-6">
-           <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
-             Weather Dashboard
-           </h3>
+        {/* More Projects Coming Soon Section */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl md:col-span-2 lg:col-span-4">
+          <div className="flex flex-col items-center justify-center py-12 px-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 text-center">
+              More Projects Coming Soon
+            </h3>
 
-           <p
-             ref={(el) => registerRef("weather-dashboard", el)}
-             className={`text-gray-300 mb-1 ${
-               expandedDescriptions["weather-dashboard"] ? "" : "line-clamp-3"
-             }`}
-           >
-             A web application enabling users to search and view current
-             weather data and a 5-day forecast for cities worldwide with local
-             storage functionality.
-           </p>
+            {/* Animated Progress Indicator */}
+            <div className="relative w-64 h-4 bg-gray-700 rounded-full mb-8 overflow-hidden">
+              <div
+                className="absolute top-0 left-0 h-full bg-blue-500 rounded-full animate-pulse"
+                style={{ width: "70%" }}
+              ></div>
+            </div>
 
-           {(needsReadMore["weather-dashboard"] || expandedDescriptions["weather-dashboard"]) && (
-             <button
-               onClick={() => toggleDescription("weather-dashboard")}
-               className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
-             >
-               {expandedDescriptions["weather-dashboard"]
-                 ? "Read Less"
-                 : "Read More"}
-             </button>
-           )}
+            {/* Animated Icons */}
+            <div className="flex gap-8 mb-8">
+              <div className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg">
+                <FaReact color="#61DAFB" size={40} />
+              </div>
+              <div
+                className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg"
+                style={{ animationDelay: "0.2s" }}
+              >
+                <SiCsharp color="#239120" size={40} />
+              </div>
+              <div
+                className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg"
+                style={{ animationDelay: "0.4s" }}
+              >
+                <SiDotnet color="#512BD4" size={40} />
+              </div>
+              <div
+                className="animate-bounce p-3 bg-gray-800 rounded-full shadow-lg"
+                style={{ animationDelay: "0.6s" }}
+              >
+                <FaDocker color="#2496ED" size={40} />
+              </div>
+            </div>
 
-           <div className="flex flex-wrap gap-2 mb-6">
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               TypeScript
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               TailwindCSS
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Express
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               API
-             </span>
-           </div>
+            <p
+              ref={(el) => registerRef("coming-soon", el)}
+              className={`text-gray-300 text-center max-w-2xl ${
+                expandedDescriptions["coming-soon"] ? "" : "line-clamp-3"
+              }`}
+            >
+              I'm currently working on several exciting projects that showcase
+              my full-stack development skills with React, C#, Entity Framework,
+              and more. Check back soon to see my latest work!
+            </p>
 
-           <div className="flex gap-4 pt-2 border-t border-gray-700">
-             <a
-               href="https://github.com/Moosorkh/Module-9-Challenge.git"
-               target="_blank"
-               className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm"
-             >
-               <FaGithub /> GitHub
-             </a>
-             <span className="bg-gray-700 text-gray-400 px-4 py-2 rounded-lg text-sm ml-auto flex items-center">
-               <FaExternalLinkAlt className="mr-2" /> Demo Unavailable
-             </span>
-           </div>
-         </div>
-       </div>
+            {(needsReadMore["coming-soon"] ||
+              expandedDescriptions["coming-soon"]) && (
+              <button
+                onClick={() => toggleDescription("coming-soon")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mt-2 mb-4"
+              >
+                {expandedDescriptions["coming-soon"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
+          </div>
+        </div>
 
-       {/* Enhanced Authentication System */}
-       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
-         <div className="relative h-64 overflow-hidden bg-gray-900">
-           <div className="flex items-center justify-center h-full">
-             <div className="text-center p-6 relative z-10">
-               <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                 <SiCsharp color="#239120" size={40} />
-               </div>
-               <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
-                 Enhanced Authentication System
-               </h3>
-             </div>
-           </div>
-           <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-         </div>
+        {/* Enhanced Authentication System */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative h-64 overflow-hidden bg-gray-900">
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-6 relative z-10">
+                <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <SiCsharp color="#239120" size={40} />
+                </div>
+                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Enhanced Authentication System
+                </h3>
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          </div>
 
-         <div className="p-6">
-           <p
-             ref={(el) => registerRef("auth-system", el)}
-             className={`text-gray-300 mb-1 ${
-               expandedDescriptions["auth-system"] ? "" : "line-clamp-3"
-             }`}
-           >
-             Custom login features for web applications, including tailored
-             messages and notifications for new users, enhancing user
-             engagement and security measures.
-           </p>
+          <div className="p-6">
+            <p
+              ref={(el) => registerRef("auth-system", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["auth-system"] ? "" : "line-clamp-3"
+              }`}
+            >
+              Custom login features for web applications, including tailored
+              messages and notifications for new users, enhancing user
+              engagement and security measures.
+            </p>
 
-           {(needsReadMore["auth-system"] || expandedDescriptions["auth-system"]) && (
-             <button
-               onClick={() => toggleDescription("auth-system")}
-               className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
-             >
-               {expandedDescriptions["auth-system"] ? "Read Less" : "Read More"}
-             </button>
-           )}
+            {(needsReadMore["auth-system"] ||
+              expandedDescriptions["auth-system"]) && (
+              <button
+                onClick={() => toggleDescription("auth-system")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["auth-system"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
 
-           <div className="flex flex-wrap gap-2 mb-6">
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               C#
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               ASP.NET
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Entity Framework
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Authentication
-             </span>
-           </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                C#
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                ASP.NET
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Entity Framework
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Authentication
+              </span>
+            </div>
 
-           <div className="flex gap-4 pt-2 border-t border-gray-700">
-             <span className="text-gray-400 text-sm flex items-center">
-               <FaCode className="mr-2" /> Private Repository
-             </span>
-           </div>
-         </div>
-       </div>
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <span className="text-gray-400 text-sm flex items-center">
+                <FaCode className="mr-2" /> Private Repository
+              </span>
+            </div>
+          </div>
+        </div>
 
-       {/* Interactive Bed Reservation System */}
-       <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
-         <div className="relative h-64 overflow-hidden bg-gray-900">
-           <div className="flex items-center justify-center h-full">
-             <div className="text-center p-6 relative z-10">
-               <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                 <FaReact color="#61DAFB" size={40} />
-               </div>
-               <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
-                 Interactive Bed Reservation
-               </h3>
-             </div>
-           </div>
-           <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-         </div>
+        {/* Interactive Bed Reservation System */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative h-64 overflow-hidden bg-gray-900">
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-6 relative z-10">
+                <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <FaReact color="#61DAFB" size={40} />
+                </div>
+                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Interactive Bed Reservation
+                </h3>
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          </div>
 
-         <div className="p-6">
-           <p
-             ref={(el) => registerRef("bed-reservation", el)}
-             className={`text-gray-300 mb-1 ${
-               expandedDescriptions["bed-reservation"] ? "" : "line-clamp-3"
-             }`}
-           >
-             A user-friendly drag-and-drop interface for bed reservations and
-             swapping, significantly improving user experience and operational
-             efficiency.
-           </p>
+          <div className="p-6">
+            <p
+              ref={(el) => registerRef("bed-reservation", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["bed-reservation"] ? "" : "line-clamp-3"
+              }`}
+            >
+              A user-friendly drag-and-drop interface for bed reservations and
+              swapping, significantly improving user experience and operational
+              efficiency.
+            </p>
 
-           {(needsReadMore["bed-reservation"] || expandedDescriptions["bed-reservation"]) && (
-             <button
-               onClick={() => toggleDescription("bed-reservation")}
-               className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
-             >
-               {expandedDescriptions["bed-reservation"]
-                 ? "Read Less"
-                 : "Read More"}
-             </button>
-           )}
+            {(needsReadMore["bed-reservation"] ||
+              expandedDescriptions["bed-reservation"]) && (
+              <button
+                onClick={() => toggleDescription("bed-reservation")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["bed-reservation"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
 
-           <div className="flex flex-wrap gap-2 mb-6">
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               React
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               C#
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Entity Framework
-             </span>
-             <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-               Drag-and-Drop
-             </span>
-           </div>
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                React
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                C#
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Entity Framework
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Drag-and-Drop
+              </span>
+            </div>
 
-           <div className="flex gap-4 pt-2 border-t border-gray-700">
-             <span className="text-gray-400 text-sm flex items-center">
-               <FaCode className="mr-2" /> Private Repository
-             </span>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- );
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <span className="text-gray-400 text-sm flex items-center">
+                <FaCode className="mr-2" /> Private Repository
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Portfolio;

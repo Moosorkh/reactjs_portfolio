@@ -12,8 +12,6 @@ import {
   FaSass,
   FaDocker,
   FaAws,
-  FaRoute,
-  FaDatabase,
   FaExternalLinkAlt,
   FaCode,
 } from "react-icons/fa";
@@ -37,6 +35,7 @@ import {
   SiShopify,
   SiNestjs,
 } from "react-icons/si";
+import { FaFileAlt } from "react-icons/fa";
 // Importing project image
 import WeatherDashboardImage from "../../weatherdashboard.png";
 import MapListToggleImage from "../../../assets/MapListToggleImage.png";
@@ -904,6 +903,312 @@ const Portfolio = () => {
                   : "Read More"}
               </button>
             )}
+          </div>
+        </div>
+
+        {/* QA and Documentation Project Card */}
+<div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+  <div className="relative h-64 overflow-hidden bg-gray-900">
+    <div className="flex items-center justify-center h-full">
+      <div className="text-center p-6 relative z-10">
+        <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <FaFileAlt color="#FFD700" size={40} />
+        </div>
+        <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+          QA & Technical Documentation
+        </h3>
+      </div>
+    </div>
+    <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+  </div>
+
+  <div className="p-6">
+    <p
+      ref={(el) => registerRef("qa-documentation", el)}
+      className={`text-gray-300 mb-1 ${
+        expandedDescriptions["qa-documentation"] ? "" : "line-clamp-3"
+      }`}
+    >
+      Upcoming project focused on developing comprehensive test cases and technical documentation to support QA processes. Will include creating user guides, API documentation, and system architecture diagrams to enable efficient testing and validation for professional users and development teams.
+    </p>
+
+    {(needsReadMore["qa-documentation"] || expandedDescriptions["qa-documentation"]) && (
+      <button
+        onClick={() => toggleDescription("qa-documentation")}
+        className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+      >
+        {expandedDescriptions["qa-documentation"] ? "Read Less" : "Read More"}
+      </button>
+    )}
+
+    <div className="flex flex-wrap gap-2 mb-6">
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Markdown
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Swagger
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Jira
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Draw.io
+      </span>
+    </div>
+
+    <div className="flex gap-4 pt-2 border-t border-gray-700">
+      <span className="text-gray-400 text-sm flex items-center">
+        <FaCode className="mr-2" /> Internal Documentation
+      </span>
+    </div>
+  </div>
+</div>
+
+        {/* API Design Project Card */}
+<div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+  <div className="relative h-64 overflow-hidden bg-gray-900">
+    <div className="flex items-center justify-center h-full">
+      <div className="text-center p-6 relative z-10">
+        <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <SiDotnet color="#512BD4" size={40} />
+        </div>
+        <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+          API Design & Backend Architecture
+        </h3>
+      </div>
+    </div>
+    <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+  </div>
+
+  <div className="p-6">
+    <p
+      ref={(el) => registerRef("api-design", el)}
+      className={`text-gray-300 mb-1 ${
+        expandedDescriptions["api-design"] ? "" : "line-clamp-3"
+      }`}
+    >
+      In-progress project developing robust RESTful APIs and backend services using C#.NET and ASP.NET Core. Will implement efficient database integration with PostgreSQL, optimize query performance, and ensure secure authentication mechanisms for a seamless user experience.
+    </p>
+
+    {(needsReadMore["api-design"] || expandedDescriptions["api-design"]) && (
+      <button
+        onClick={() => toggleDescription("api-design")}
+        className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+      >
+        {expandedDescriptions["api-design"] ? "Read Less" : "Read More"}
+      </button>
+    )}
+
+    <div className="flex flex-wrap gap-2 mb-6">
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        C#.NET
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        ASP.NET
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        PostgreSQL
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Entity Framework
+      </span>
+    </div>
+
+    <div className="flex gap-4 pt-2 border-t border-gray-700">
+      <span className="text-gray-400 text-sm flex items-center">
+        <FaCode className="mr-2" /> Private Repository
+      </span>
+    </div>
+  </div>
+</div>
+
+        {/* Continuous UI Improvements Project Card */}
+<div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+  <div className="relative h-64 overflow-hidden bg-gray-900">
+    <div className="flex items-center justify-center h-full">
+      <div className="text-center p-6 relative z-10">
+        <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <SiMui color="#007FFF" size={40} />
+        </div>
+        <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+          UI Enhancement Suite
+        </h3>
+      </div>
+    </div>
+    <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+  </div>
+
+  <div className="p-6">
+    <p
+      ref={(el) => registerRef("ui-improvements", el)}
+      className={`text-gray-300 mb-1 ${
+        expandedDescriptions["ui-improvements"] ? "" : "line-clamp-3"
+      }`}
+    >
+       Planned project to implement over a dozen UI enhancements, applying modern design principles and frameworks. Will focus on increasing usability and aesthetic appeal using Material UI and Tailwind CSS, with emphasis on accessibility and responsive design across various devices.
+    </p>
+
+    {(needsReadMore["ui-improvements"] || expandedDescriptions["ui-improvements"]) && (
+      <button
+        onClick={() => toggleDescription("ui-improvements")}
+        className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+      >
+        {expandedDescriptions["ui-improvements"] ? "Read Less" : "Read More"}
+      </button>
+    )}
+
+    <div className="flex flex-wrap gap-2 mb-6">
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Material UI
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        Tailwind CSS
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        ReactJS
+      </span>
+      <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+        UX/UI Design
+      </span>
+    </div>
+
+    <div className="flex gap-4 pt-2 border-t border-gray-700">
+      <span className="text-gray-400 text-sm flex items-center">
+        <FaCode className="mr-2" /> Multiple Repositories
+      </span>
+    </div>
+  </div>
+</div>
+
+        {/* Insurance Selection Interface Project Card */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative h-64 overflow-hidden bg-gray-900">
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-6 relative z-10">
+                <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <SiReact color="#61DAFB" size={40} />
+                </div>
+                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Insurance Selection Interface
+                </h3>
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          </div>
+
+          <div className="p-6">
+            <p
+              ref={(el) => registerRef("insurance-interface", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["insurance-interface"]
+                  ? ""
+                  : "line-clamp-3"
+              }`}
+            >
+              A dynamic insurance selection tool with cascading dropdown menus,
+              where choices are saved and reflected immediately in the UI,
+              facilitating a better user experience. Integrated with PostgreSQL
+              database for persistent storage and real-time updates.
+            </p>
+
+            {(needsReadMore["insurance-interface"] ||
+              expandedDescriptions["insurance-interface"]) && (
+              <button
+                onClick={() => toggleDescription("insurance-interface")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["insurance-interface"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                React
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                PostgreSQL
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Material UI
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                RESTful API
+              </span>
+            </div>
+
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <span className="text-gray-400 text-sm flex items-center">
+                <FaCode className="mr-2" /> Private Repository
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Onboarding Tutorial Project Card */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-blue-900/20 hover:shadow-2xl group">
+          <div className="relative h-64 overflow-hidden bg-gray-900">
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-6 relative z-10">
+                <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <FaReact color="#61DAFB" size={40} />
+                </div>
+                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                  Onboarding Tutorial System
+                </h3>
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-radial from-blue-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          </div>
+
+          <div className="p-6">
+            <p
+              ref={(el) => registerRef("onboarding-tutorial", el)}
+              className={`text-gray-300 mb-1 ${
+                expandedDescriptions["onboarding-tutorial"]
+                  ? ""
+                  : "line-clamp-3"
+              }`}
+            >
+              An interactive tutorial system for first-time users of the
+              platform, guiding them through complex functionalities to enhance
+              user understanding and satisfaction. Implemented using React
+              Joyride library with custom tooltips and progress tracking.
+            </p>
+
+            {(needsReadMore["onboarding-tutorial"] ||
+              expandedDescriptions["onboarding-tutorial"]) && (
+              <button
+                onClick={() => toggleDescription("onboarding-tutorial")}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium focus:outline-none mb-4"
+              >
+                {expandedDescriptions["onboarding-tutorial"]
+                  ? "Read Less"
+                  : "Read More"}
+              </button>
+            )}
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                React
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                Joyride
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                CSS3
+              </span>
+              <span className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                UX Design
+              </span>
+            </div>
+
+            <div className="flex gap-4 pt-2 border-t border-gray-700">
+              <span className="text-gray-400 text-sm flex items-center">
+                <FaCode className="mr-2" /> Private Repository
+              </span>
+            </div>
           </div>
         </div>
 

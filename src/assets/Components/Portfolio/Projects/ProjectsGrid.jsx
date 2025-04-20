@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
+import ComingSoonSection from "./ComingSoonSection";
 import { projects, upcomingProjects } from "../data/projects";
 import AnimatedSection from "../AnimatedSection";
 
@@ -74,6 +75,14 @@ const ProjectsGrid = () => {
             needsReadMore={needsReadMore}
           />
         ))}
+
+        {/* Coming Soon Section */}
+        <ComingSoonSection 
+          registerRef={registerRef}
+          expandedDescriptions={expandedDescriptions}
+          toggleDescription={toggleDescription}
+          needsReadMore={needsReadMore}
+        />
 
         {/* Upcoming Projects */}
         {upcomingProjects.map((project) => (

@@ -68,7 +68,10 @@ export const projects = [
       liveDemo: "https://weatherdashboard-production-5c78.up.railway.app/",
     },
     color: "blue",
-  },
+  }
+];
+
+export const upcomingProjects = [
   {
     id: "bed-reservation",
     title: "Interactive Bed Reservation",
@@ -88,10 +91,7 @@ export const projects = [
     tags: ["C#", "ASP.NET", "Entity Framework", "Authentication"],
     status: "Private Repository",
     color: "blue",
-  }
-];
-
-export const upcomingProjects = [
+  },
   {
     id: "qa-documentation",
     title: "QA & Technical Documentation",

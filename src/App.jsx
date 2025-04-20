@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group"; // Import transition components
 import About from "./assets/Components/About/About";
-import Portfolio from "./assets/Components/Portfolio/Portfolio";
+import Portfolio from "./assets/Components/Portfolio";
 import Contact from "./assets/Components/Contact/Contact";
 import NotFound from "./assets/Components/NotFound/NotFound";
 import Navbar from "./assets/Components/Navbar/Navbar";

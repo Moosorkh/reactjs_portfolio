@@ -1,0 +1,57 @@
+export const techCategories = [
+    {
+      id: "frontend",
+      title: "Frontend",
+      technologies: [
+        { name: "HTML5", icon: "FaHtml5", color: "#E34F26" },
+        { name: "CSS3", icon: "FaCss3", color: "#1572B6" },
+        { name: "JavaScript", icon: "FaJs", color: "#F7DF1E" },
+        { name: "TypeScript", icon: "SiTypescript", color: "#3178C6" },
+        { name: "ReactJS", icon: "FaReact", color: "#61DAFB" },
+        { name: "React Native", icon: "SiReact", color: "#61DAFB" },
+        { name: "React Router", icon: "SiReactrouter", color: "#CA4245" },
+        { name: "TailwindCSS", icon: "SiTailwindcss", color: "#06B6D4" },
+        { name: "Material UI", icon: "SiMui", color: "#007FFF" },
+        { name: "Bootstrap", icon: "FaBootstrap", color: "#7952B3" },
+        { name: "SASS", icon: "FaSass", color: "#CC6699" },
+        { name: "Figma", icon: "FaFigma", color: "#F24E1E" },
+        { name: "Shopify", icon: "SiShopify", color: "#95BF47" },
+      ],
+    },
+    {
+      id: "backend",
+      title: "Backend",
+      technologies: [
+        { name: "NodeJS", icon: "FaNodeJs", color: "#339933" },
+        { name: "NestJS", icon: "SiNestjs", color: "#E0234E" },
+        { name: "ExpressJS", icon: "SiExpress", color: "#000000" },
+        { name: "C#", icon: "SiCsharp", color: "#239120" },
+        { name: "ASP.NET", icon: "SiDotnet", color: "#512BD4" },
+        { name: "Python", icon: "SiPython", color: "#306998" },
+        { name: "GraphQL", icon: "SiGraphql", color: "#E10098" },
+        { name: "Apollo", icon: "SiApollographql", color: "#311C87" },
+      ],
+    },
+    {
+      id: "databases",
+      title: "Databases & ORMs",
+      technologies: [
+        { name: "MongoDB", icon: "SiMongodb", color: "#47A248" },
+        { name: "PostgreSQL", icon: "DiPostgresql", color: "#336791" },
+        { name: "Redis", icon: "DiRedis", color: "#FF4438" },
+        { name: "Sequelize", icon: "SiSequelize", color: "#52B0E7" },
+        { name: "Prisma", icon: "SiPrisma", color: "#2D3748" },
+      ],
+    },
+    {
+      id: "devops",
+      title: "DevOps & Tools",
+      technologies: [
+        { name: "GitHub", icon: "FaGithub", color: "#ffffff" },
+        { name: "Git", icon: "FaGitAlt", color: "#F05032" },
+        { name: "Docker", icon: "FaDocker", color: "#2496ED" },
+        { name: "AWS", icon: "FaAws", color: "#FF9900" },
+        { name: "Cypress", icon: "SiCypress", color: "#466185" },
+      ],
+    },
+  ];

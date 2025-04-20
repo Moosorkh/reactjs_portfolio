@@ -38,35 +38,18 @@ const ProjectCard = ({
     return null;
   };
 
-  // Get color-specific classes
-  const getBorderHoverClass = () => {
-    return color === "green" ? "hover:border-green-500" : "hover:border-blue-500";
-  };
-
-  const getShadowHoverClass = () => {
-    return color === "green" ? "hover:shadow-green-900/20" : "hover:shadow-blue-900/20";
-  };
-
-  const getTitleHoverClass = () => {
-    return color === "green" ? "group-hover:text-green-400" : "group-hover:text-blue-400";
-  };
-
-  const getButtonClass = () => {
-    return color === "green" ? "text-green-400 hover:text-green-300" : "text-blue-400 hover:text-blue-300";
-  };
-
-  const getLiveButtonClass = () => {
-    return color === "green" 
-      ? "bg-green-600 hover:bg-green-700 text-white" 
-      : "bg-blue-600 hover:bg-blue-700 text-white";
-  };
-
-  const getBadgeClass = () => {
-    return color === "green" ? "bg-green-600" : "bg-blue-600";
+  // Get color-specific classes based on the color prop
+  const getColorClasses = {
+    borderHover: color === "green" ? "hover:border-green-500" : "hover:border-blue-500",
+    shadowHover: color === "green" ? "hover:shadow-green-900/20" : "hover:shadow-blue-900/20",
+    titleHover: color === "green" ? "group-hover:text-green-400" : "group-hover:text-blue-400",
+    button: color === "green" ? "text-green-400 hover:text-green-300" : "text-blue-400 hover:text-blue-300",
+    liveButton: color === "green" ? "bg-green-600 hover:bg-green-700" : "bg-blue-600 hover:bg-blue-700",
+    badge: color === "green" ? "bg-green-600" : "bg-blue-600"
   };
 
   return (
-    <div className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 ${getBorderHoverClass()} transition-all duration-300 ${getShadowHoverClass()} hover:shadow-2xl group`}>
+    <div className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 ${getColorClasses.borderHover} transition-all duration-300 ${getColorClasses.shadowHover} hover:shadow-2xl group flex flex-col`}>
       {image ? (
         <div className="relative overflow-hidden">
           <img
@@ -81,7 +64,7 @@ const ProjectCard = ({
             </div>
           )}
           {badge && (
-            <div className={`absolute top-4 left-4 ${getBadgeClass()} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+            <div className={`absolute top-4 left-4 ${getColorClasses.badge} text-white text-xs font-bold px-3 py-1 rounded-full`}>
               {badge}
             </div>
           )}
@@ -93,7 +76,7 @@ const ProjectCard = ({
               <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 {renderIcon()}
               </div>
-              <h3 className={`text-xl font-semibold text-white ${getTitleHoverClass()} transition-colors`}>
+              <h3 className={`text-xl font-semibold text-white ${getColorClasses.titleHover} transition-colors`}>
                 {title}
               </h3>
             </div>
@@ -102,9 +85,9 @@ const ProjectCard = ({
         </div>
       )}
 
-      <div className="p-6">
+      <div className="p-6 flex-grow flex flex-col">
         {image && (
-          <h3 className={`text-xl md:text-2xl font-semibold text-white mb-3 ${getTitleHoverClass()} transition-colors`}>
+          <h3 className={`text-xl md:text-2xl font-semibold text-white mb-3 ${getColorClasses.titleHover} transition-colors`}>
             {title}
           </h3>
         )}
@@ -121,7 +104,7 @@ const ProjectCard = ({
         {(needsReadMore[id] || expandedDescriptions[id]) && (
           <button
             onClick={() => toggleDescription(id)}
-            className={`${getButtonClass()} text-sm font-medium focus:outline-none mb-4`}
+            className={`${getColorClasses.button} text-sm font-medium focus:outline-none mb-4`}
           >
             {expandedDescriptions[id] ? "Read Less" : "Read More"}
           </button>
@@ -129,7 +112,10 @@ const ProjectCard = ({
 
         <ProjectTags tags={tags} color={color} />
 
-        <div className="flex gap-4 pt-2 border-t border-gray-700">
+        {/* This spacer ensures consistent height */}
+        <div className="flex-grow"></div>
+
+        <div className="flex gap-4 pt-2 border-t border-gray-700 mt-auto">
           {links?.github ? (
             <a
               href={links.github}
@@ -139,21 +125,23 @@ const ProjectCard = ({
             >
               <FaGithub /> GitHub
             </a>
-          ) : status ? (
+          ) : (
             <span className="text-gray-400 text-sm flex items-center">
-              <FaCode className="mr-2" /> {status}
+              <FaCode className="mr-2" /> {status || "Private Repository"}
             </span>
-          ) : null}
+          )}
 
-          {links?.liveDemo && (
+          {links?.liveDemo ? (
             <a
               href={links.liveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${getLiveButtonClass()} px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto`}
+              className={`${getColorClasses.liveButton} text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto`}
             >
               <FaExternalLinkAlt /> {id === "mary-eclair" ? "Live Store" : "Live Demo"}
             </a>
+          ) : (
+            <div className="ml-auto"></div>
           )}
         </div>
       </div>

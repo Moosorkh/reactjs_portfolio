@@ -1,8 +1,8 @@
 import React from "react";
 
 const ProjectTags = ({ tags, color = "blue" }) => {
-  // Map color prop to specific Tailwind classes
-  const getColorClasses = () => {
+  // Get color-specific classes
+  const getTagColorClasses = () => {
     switch (color) {
       case "green":
         return "bg-green-900/50 text-green-300";
@@ -17,7 +17,7 @@ const ProjectTags = ({ tags, color = "blue" }) => {
       {tags.map((tag) => (
         <span
           key={tag}
-          className={`${getColorClasses()} px-3 py-1 rounded-full text-xs font-medium`}
+          className={`${getTagColorClasses()} px-3 py-1 rounded-full text-xs font-medium`}
         >
           {tag}
         </span>

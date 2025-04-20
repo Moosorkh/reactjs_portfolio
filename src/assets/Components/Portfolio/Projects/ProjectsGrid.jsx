@@ -52,48 +52,56 @@ const ProjectsGrid = () => {
 
   // Check which descriptions need "Read More" buttons after DOM is fully loaded
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       checkDescriptionHeights();
     }, 500);
     
     // Recalculate on window resize
     window.addEventListener("resize", checkDescriptionHeights);
-    return () => window.removeEventListener("resize", checkDescriptionHeights);
+    return () => {
+      window.removeEventListener("resize", checkDescriptionHeights);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <AnimatedSection delay={600} className="mt-12">
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Changed from grid to flex wrap layout */}
+      <div className="flex flex-wrap gap-6">
         {/* Completed Projects */}
         {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            registerRef={registerRef}
-            expandedDescriptions={expandedDescriptions}
-            toggleDescription={toggleDescription}
-            needsReadMore={needsReadMore}
-          />
+          <div key={project.id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
+            <ProjectCard
+              project={project}
+              registerRef={registerRef}
+              expandedDescriptions={expandedDescriptions}
+              toggleDescription={toggleDescription}
+              needsReadMore={needsReadMore}
+            />
+          </div>
         ))}
 
         {/* Coming Soon Section */}
-        <ComingSoonSection 
-          registerRef={registerRef}
-          expandedDescriptions={expandedDescriptions}
-          toggleDescription={toggleDescription}
-          needsReadMore={needsReadMore}
-        />
-
-        {/* Upcoming Projects */}
-        {upcomingProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
+        <div className="w-full md:w-[calc(100%-12px)] lg:w-[calc(100%-18px)]">
+          <ComingSoonSection 
             registerRef={registerRef}
             expandedDescriptions={expandedDescriptions}
             toggleDescription={toggleDescription}
             needsReadMore={needsReadMore}
           />
+        </div>
+
+        {/* Upcoming Projects */}
+        {upcomingProjects.map((project) => (
+          <div key={project.id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]">
+            <ProjectCard
+              project={project}
+              registerRef={registerRef}
+              expandedDescriptions={expandedDescriptions}
+              toggleDescription={toggleDescription}
+              needsReadMore={needsReadMore}
+            />
+          </div>
         ))}
       </div>
     </AnimatedSection>

@@ -38,8 +38,35 @@ const ProjectCard = ({
     return null;
   };
 
+  // Get color-specific classes
+  const getBorderHoverClass = () => {
+    return color === "green" ? "hover:border-green-500" : "hover:border-blue-500";
+  };
+
+  const getShadowHoverClass = () => {
+    return color === "green" ? "hover:shadow-green-900/20" : "hover:shadow-blue-900/20";
+  };
+
+  const getTitleHoverClass = () => {
+    return color === "green" ? "group-hover:text-green-400" : "group-hover:text-blue-400";
+  };
+
+  const getButtonClass = () => {
+    return color === "green" ? "text-green-400 hover:text-green-300" : "text-blue-400 hover:text-blue-300";
+  };
+
+  const getLiveButtonClass = () => {
+    return color === "green" 
+      ? "bg-green-600 hover:bg-green-700 text-white" 
+      : "bg-blue-600 hover:bg-blue-700 text-white";
+  };
+
+  const getBadgeClass = () => {
+    return color === "green" ? "bg-green-600" : "bg-blue-600";
+  };
+
   return (
-    <div className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-${color}-500 transition-all duration-300 hover:shadow-${color}-900/20 hover:shadow-2xl group`}>
+    <div className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700 ${getBorderHoverClass()} transition-all duration-300 ${getShadowHoverClass()} hover:shadow-2xl group`}>
       {image ? (
         <div className="relative overflow-hidden">
           <img
@@ -54,7 +81,7 @@ const ProjectCard = ({
             </div>
           )}
           {badge && (
-            <div className={`absolute top-4 left-4 bg-${color}-600 text-white text-xs font-bold px-3 py-1 rounded-full`}>
+            <div className={`absolute top-4 left-4 ${getBadgeClass()} text-white text-xs font-bold px-3 py-1 rounded-full`}>
               {badge}
             </div>
           )}
@@ -66,7 +93,7 @@ const ProjectCard = ({
               <div className="w-20 h-20 mx-auto bg-blue-900/30 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 {renderIcon()}
               </div>
-              <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+              <h3 className={`text-xl font-semibold text-white ${getTitleHoverClass()} transition-colors`}>
                 {title}
               </h3>
             </div>
@@ -77,7 +104,7 @@ const ProjectCard = ({
 
       <div className="p-6">
         {image && (
-          <h3 className={`text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-${color}-400 transition-colors`}>
+          <h3 className={`text-xl md:text-2xl font-semibold text-white mb-3 ${getTitleHoverClass()} transition-colors`}>
             {title}
           </h3>
         )}
@@ -94,7 +121,7 @@ const ProjectCard = ({
         {(needsReadMore[id] || expandedDescriptions[id]) && (
           <button
             onClick={() => toggleDescription(id)}
-            className={`text-${color}-400 hover:text-${color}-300 text-sm font-medium focus:outline-none mb-4`}
+            className={`${getButtonClass()} text-sm font-medium focus:outline-none mb-4`}
           >
             {expandedDescriptions[id] ? "Read Less" : "Read More"}
           </button>
@@ -113,8 +140,8 @@ const ProjectCard = ({
               <FaGithub /> GitHub
             </a>
           ) : status ? (
-            <span className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
-              {status}
+            <span className="text-gray-400 text-sm flex items-center">
+              <FaCode className="mr-2" /> {status}
             </span>
           ) : null}
 
@@ -123,7 +150,7 @@ const ProjectCard = ({
               href={links.liveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              className={`bg-${color}-600 hover:bg-${color}-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto`}
+              className={`${getLiveButtonClass()} px-4 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm ml-auto`}
             >
               <FaExternalLinkAlt /> {id === "mary-eclair" ? "Live Store" : "Live Demo"}
             </a>

@@ -1,5 +1,4 @@
 // Import project images
-//import WeatherDashboardImage from "../../assets/WeatherDashboardImage.png";
 import WeatherDashboardImage from "../../../../assets/weatherdashboard.png";
 import MapListToggleImage from "../../../../assets/MapListToggleImage.png";
 import invoiceTrackerImage from "../../../../assets/invoiceTracker.png";

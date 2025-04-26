@@ -3,6 +3,7 @@ import WeatherDashboardImage from "../../../../assets/weatherdashboard.png";
 import MapListToggleImage from "../../../../assets/MapListToggleImage.png";
 import invoiceTrackerImage from "../../../../assets/invoiceTracker.png";
 import MaryEclairPatisserie from "../../../../assets/MaryEclairPatisserie.png";
+import ETA from "../../../../assets/ETA.png";
 
 export const projects = [
   {
@@ -67,6 +68,20 @@ export const projects = [
       liveDemo: "https://weatherdashboard-production-5c78.up.railway.app/",
     },
     color: "blue",
+  },
+  {
+    id: "exercise-tracking-api",
+    title: "ETA - Exercise Tracking API",
+    description: "A comprehensive backend API built with NestJS and PostgreSQL for tracking exercises with social features. Users can create, save, favorite, and rate exercises. Features include JWT authentication, Prisma ORM integration, and complete Swagger documentation. The API implements modern design patterns and robust error handling.",
+    image: ETA, 
+    tags: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Docker", "Swagger", "JWT"],
+    links: {
+      github: "https://github.com/Moosorkh/prehab-api",
+      liveDemo: "https://social-media-api-production-5c29.up.railway.app/api", 
+    },
+    color: "blue",
+    icon: "SiNestjs", 
+    iconColor: "#E0234E", 
   }
 ];
 

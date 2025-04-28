@@ -374,34 +374,35 @@ const Resume = () => {
                         delay={0}
                       />
 
-                      {/* Job 2 */}
+                      {/* Megasys Updated */}
                       <JobExperience
-                        title="Software Developer"
-                        company="Megasys .Inc"
+                        title="Full-Stack Developer / DevOps / Content Writer"
+                        company="Megasys Inc"
                         period="01/2020 - 09/2024"
-                        location="Anaheim, California"
-                        description="Led full-stack development for financial services applications, focusing on robust backend development using C# and SQL alongside front-end work with React."
+                        location="Anaheim, CA"
+                        description="Progressed from web development and DevOps tasks into full-stack financial application development using ReactJS, C#.NET, Entity Framework, and SQL Server."
                         highlights={[
-                          "Spearheaded development initiatives, integrating front-end technologies with a C# backend, emphasizing secure and efficient data transactions.",
-                          "Contributed to DevOps tasks, including setting up CI/CD pipelines with Docker and GitHub, and optimizing AWS configurations for performance.",
-                          "Performed UI testing and improvements, increasing test efficiency by 40% through the use of Playwright.",
-                          "Participated in Agile development cycles, collaborating closely with the team to prioritize features, address bugs, and deploy updates swiftly.",
+                          "Built secure payment and authentication modules integrated with SQL Server backend.",
+                          "Co-led a team of three, mentoring a junior developer while contributing to cross-team UI/UX improvements.",
+                          "Developed and implemented a UI testing framework using Playwright, improving test coverage and efficiency by 40%.",
+                          "Participated actively in Agile development cycles, code reviews, and Git-based source control workflows.",
                         ]}
                         delay={1}
                       />
 
-                      {/* Job 3 */}
+                      {/* AdIQ Updated */}
                       <JobExperience
-                        title="Web Designer"
+                        title="Web Developer / SEO Specialist"
                         company="AdIQ"
-                        period="08/2016 - 07/2019"
+                        period="08/2016 - 01/2019"
                         location="Costa Mesa, CA"
-                        description="Designed and developed responsive SEO-optimized websites for small businesses."
+                        description="Designed and developed SEO-optimized websites and custom automation tools to increase client visibility and internal production efficiency."
                         highlights={[
-                          "Increased search rankings by 25% and organic traffic by 30%",
-                          "Implemented solutions using HTML, CSS, JavaScript, and SEO tools",
-                          "Integrated SQL databases and WordPress for dynamic website functionality",
-                          "Created custom hashtag generation tools for social media engagement",
+                          "Increased client search rankings by 25% and organic traffic by 30% through full on-page and technical SEO optimization.",
+                          "Led and mentored the web team, introducing automation workflows that raised production output by 80%.",
+                          "Developed custom text processing, keyword generation, and SEO reporting tools to reduce manual workload.",
+                          "Integrated SQL databases with WordPress for dynamic content delivery and client-friendly content management.",
+                          "Recognized as the top performer in the technical team for three consecutive semi-annual evaluations.",
                         ]}
                         delay={2}
                       />

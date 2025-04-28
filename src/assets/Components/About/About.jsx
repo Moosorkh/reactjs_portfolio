@@ -73,7 +73,7 @@ const About = () => {
               </div>
               
               <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-                Full Stack Developer, Data Analyst & UI/UX Expert
+                Full Stack Developer
               </h1>
               
               <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-6">

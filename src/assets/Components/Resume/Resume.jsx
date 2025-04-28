@@ -464,30 +464,41 @@ const Resume = () => {
                           <span className="text-green-400 mt-1">•</span>
                           <span>
                             Completed intensive coursework in JavaScript,
-                            Node.js, React, SQL, MongoDB, Python, HTML5, CSS3,
-                            and Git, focusing on both MERN and PERN stacks.
+                            Node.js, React, SQL, MongoDB, and Python focusing on
+                            both MERN and PERN stacks.
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-green-400 mt-1">•</span>
                           <span>
-                            Developed practical skills through project-based
-                            learning, emphasizing Agile methodologies and
-                            RESTful API design.
+                            Regularly elected by peers to lead project teams
+                            across all major and semi-major projects, ensuring
+                            quality and timely delivery.
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-green-400 mt-1">•</span>
                           <span>
-                            Enhanced data handling and client-side interactions
-                            using GraphQL, Apollo Server, and React Routing.
+                            Led teams through full software development life
+                            cycles including planning, development, testing, and
+                            deployment.
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-green-400 mt-1">•</span>
                           <span>
-                            Mastered database interactions with ORMs like
-                            Prisma, Sequelize, and Mongoose.
+                            Developed RESTful APIs, managed databases with
+                            Prisma, Sequelize, and Mongoose, and enhanced
+                            client-side data interaction with GraphQL and Apollo
+                            Server.
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-400 mt-1">•</span>
+                          <span>
+                            Gained practical experience in CI/CD processes,
+                            containerization with Docker, and end-to-end testing
+                            using Cypress.
                           </span>
                         </li>
                       </ul>
@@ -515,33 +526,6 @@ const Resume = () => {
                           View Certificate
                         </a>
                       </div>
-                    </div>
-
-                    <div className="bg-gray-700/30 rounded-lg p-5 transition-all duration-300 ease-in-out transform hover:shadow-md">
-                      <h3 className="text-xl font-bold mb-3">
-                        Continuing Education & Certifications
-                      </h3>
-                      <p className="text-gray-300 mb-4">
-                        Actively participating in online courses, workshops, and
-                        industry forums to stay updated with emerging
-                        technologies and best practices in software development.
-                      </p>
-                      <ul className="space-y-2 text-gray-300">
-                        <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
-                          <span>
-                            Regular participation in workshops and webinars on
-                            modern web development
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
-                          <span>
-                            Self-directed learning through online platforms and
-                            technical documentation
-                          </span>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>

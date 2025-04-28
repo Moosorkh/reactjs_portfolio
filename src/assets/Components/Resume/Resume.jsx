@@ -551,28 +551,57 @@ const Resume = () => {
                     </div>
 
                     <p className="text-gray-300 leading-relaxed mb-6">
-                      Innovative full-stack developer with extensive experience
-                      in building responsive and scalable web applications
-                      across diverse technology stacks. Proficient in advanced
-                      JavaScript frameworks and technologies, including React,
-                      TypeScript, and Node.js, with a solid background in both
-                      MERN and PERN stacks.
+                      <b>Full-stack engineer</b> crafting <b>reliable</b>,{" "}
+                      <b>high-performance</b> web and financial systems. Adept
+                      at steering projects from concept to deployment, I combine
+                      strong technical skills with a pragmatic, execution-first
+                      mindset developed through years of frontline development
+                      experience.
                     </p>
 
                     <p className="text-gray-300 leading-relaxed mb-6">
-                      Recent projects have demonstrated a strong capability in
-                      utilizing C#, ASP.NET, and ReactNative for comprehensive
-                      backend-to-frontend integration. Highly skilled in
-                      managing and optimizing databases using Entity Framework,
-                      PostgreSQL, and other ORMs like Prisma and Sequelize.
+                      My toolkit spans modern <b>JavaScript ecosystems</b> (
+                      <b>React</b>, <b>TypeScript</b>, <b>Node.js</b>), robust
+                      backend architectures (<b>C#.NET</b>, <b>ASP.NET</b>,{" "}
+                      <b>Entity Framework</b>), and dynamic <b>CMS platforms</b>{" "}
+                      (<b>WordPress</b>, <b>Joomla</b>, <b>Shopify</b>). I
+                      specialize in building scalable <b>APIs</b>, integrating{" "}
+                      <b>relational and non-relational databases</b>, and
+                      crafting user-centered frontend experiences with{" "}
+                      <b>Tailwind CSS</b>, <b>MUI</b>, and custom UI libraries.
+                    </p>
+
+                    <p className="text-gray-300 leading-relaxed mb-6">
+                      Across multiple organizations, I consistently earned{" "}
+                      <b>leadership roles</b>, mentoring{" "}
+                      <b>junior developers</b>, co-leading <b>Agile squads</b>,
+                      and architecting <b>testing workflows</b> that accelerated
+                      delivery without sacrificing quality. At <b>UCI</b>, peers
+                      repeatedly chose me to lead capstone teams, driving
+                      software projects from <b>wireframe</b> to{" "}
+                      <b>live deployment</b> while meeting aggressive deadlines.
+                    </p>
+
+                    <p className="text-gray-300 leading-relaxed mb-6">
+                      Comfortable in fast-moving environments, I implemented{" "}
+                      <b>Playwright-based testing pipelines</b>, automated{" "}
+                      <b>SEO reporting tools</b>, and containerized deployments
+                      with <b>Docker</b>. My focus remains on measurable
+                      improvements: <b>faster releases</b>,{" "}
+                      <b>cleaner codebases</b>, and{" "}
+                      <b>production-grade reliability</b>.
                     </p>
 
                     <p className="text-gray-300 leading-relaxed">
-                      Expert in creating intuitive user interfaces and seamless
-                      user experiences using ReactJS, MUI, and Tailwind CSS.
-                      Proven track record in leading development teams through
-                      rapid development cycles and implementing CI/CD pipelines
-                      for streamlined deployment and testing processes.
+                      Recently, I deepened my backend specialization with{" "}
+                      <b>PostgreSQL optimizations</b>,{" "}
+                      <b>Entity Framework enhancements</b>, and{" "}
+                      <b>C#.NET enterprise systems</b>. Additionally, I leverage{" "}
+                      <b>AI-driven tools</b> like <b>GitHub Copilot</b> and{" "}
+                      <b>LangChain</b> to augment development velocity, and I
+                      design <b>e-commerce experiences</b> via custom{" "}
+                      <b>Shopify Liquid builds</b> and{" "}
+                      <b>Storefront API integrations</b>.
                     </p>
                   </div>
                 </div>

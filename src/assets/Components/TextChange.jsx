@@ -5,8 +5,8 @@ const TextChange = ({ typingSpeed = 70, pauseTime = 2000, cursorBlinkSpeed = 400
   const texts = [
     "Hi there!",
     "Welcome to my portfolio!",
-    "I'm a Full Stack Developer",
-    "Specialized in React, TypeScript & C# and more...",
+    "I'm a Software Developer, specializing in",
+    "Full Stack Development and all modern technologies.",
     "Building modern web applications"
   ];
 

@@ -3,9 +3,23 @@ import WeatherDashboardImage from "../../../../assets/weatherdashboard.png";
 import MapListToggleImage from "../../../../assets/MapListToggleImage.png";
 import invoiceTrackerImage from "../../../../assets/invoiceTracker.png";
 import MaryEclairPatisserie from "../../../../assets/MaryEclairPatisserie.png";
+import sweetCreations from "../../../../assets/sweetCreations.png";
 import ETA from "../../../../assets/ETA.png";
 
 export const projects = [
+  {
+    id: "mary-karimzadeh-portfolio",
+    title: "Mary's Sweet Creations",
+    description: "A fully responsive portfolio website for a professional pastry chef, featuring a custom image carousel with swipe functionality, LinkedIn-style profile modal, and smooth animations. Built with React, Material UI, and TypeScript, showcasing pastry creations with an elegant UI/UX design.",
+    image: sweetCreations, // Add a screenshot of the website to your assets
+    featured: true,
+    tags: ["React", "TypeScript", "Material UI", "CSS", "Responsive Design"],
+    links: {
+      github: "https://github.com/Moosorkh/pastry-dreams", // Replace with actual GitHub repo if available
+      liveDemo: "https://www.chef-mary.com/", // Replace with actual deployment URL
+    },
+    color: "blue",
+  },
   {
     id: "map-toggle",
     title: "Mobile-responsive Map Search",

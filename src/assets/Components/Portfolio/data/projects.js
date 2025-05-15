@@ -9,7 +9,7 @@ import ETA from "../../../../assets/ETA.png";
 export const projects = [
   {
     id: "mary-karimzadeh-portfolio",
-    title: "Mary's Sweet Creations",
+    title: "Mary's Sweet Creations.",
     description: "A fully responsive portfolio website for a professional pastry chef, featuring a custom image carousel with swipe functionality, LinkedIn-style profile modal, and smooth animations. Built with React, Material UI, and TypeScript, showcasing pastry creations with an elegant UI/UX design.",
     image: sweetCreations, // Add a screenshot of the website to your assets
     featured: true,

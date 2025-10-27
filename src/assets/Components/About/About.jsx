@@ -1,32 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import avatar from "../../7358602-removebg-preview.png";
 import TextChange from "../TextChange";
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaCode, 
-  FaLaptopCode, 
-  FaArrowRight, 
-  FaGithub, 
+import {
+  FaReact,
+  FaNodeJs,
+  FaCode,
+  FaLaptopCode,
+  FaArrowRight,
+  FaGithub,
   FaLinkedin,
   FaDatabase // Added as replacement for Entity Framework
 } from "react-icons/fa";
 import { SiTypescript, SiCsharp, SiDotnet } from "react-icons/si"; // Removed SiEntityframework, added SiDotnet
 
+gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
   const navigate = useNavigate();
   const [animatedElements, setAnimatedElements] = useState({});
-  
+  const heroRef = useRef(null);
+  const skillsRef = useRef(null);
+
   useEffect(() => {
+    // GSAP Animations
+    const ctx = gsap.context(() => {
+      // Hero section animations
+      gsap.from(".hero-title", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out"
+      });
+
+      gsap.from(".hero-subtitle", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 0.3,
+        ease: "power3.out"
+      });
+
+      gsap.from(".hero-image", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1,
+        delay: 0.5,
+        ease: "back.out(1.7)"
+      });
+
+      // Skill cards with stagger
+      gsap.from(".skill-card", {
+        scrollTrigger: {
+          trigger: ".skills-section",
+          start: "top 80%",
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+    });
+
     // Initialize all elements as visible for initial animation
     const elements = document.querySelectorAll('.animate-on-scroll');
     const initialState = {};
-    
+
     elements.forEach((el, index) => {
       initialState[`element-${index}`] = false;
-      
+
       // Set a timeout to animate elements sequentially on first load
       setTimeout(() => {
         setAnimatedElements(prev => ({
@@ -35,15 +81,17 @@ const About = () => {
         }));
       }, 300 + (index * 150));
     });
-    
+
     setAnimatedElements(initialState);
-    
+
+    return () => ctx.revert();
+
     // Add scroll listener for elements that come into view later
     const handleScroll = () => {
       elements.forEach((el, index) => {
         const rect = el.getBoundingClientRect();
         const isVisible = rect.top < window.innerHeight * 0.85;
-        
+
         if (isVisible) {
           setAnimatedElements(prev => ({
             ...prev,
@@ -52,7 +100,7 @@ const About = () => {
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -68,19 +116,19 @@ const About = () => {
           {/* Left side with text */}
           <div className="md:w-7/12 space-y-6 animate-on-scroll" id="element-0">
             <div className={`transition-all duration-1000 ease-out ${animatedElements['element-0'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <div className="mb-4">
+              <div className="mb-4 hero-subtitle">
                 <TextChange />
               </div>
-              
-              <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+
+              <h1 className="hero-title text-3xl md:text-5xl font-bold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
                 Full Stack Developer
               </h1>
-              
-              <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-6">
-                With a solid foundation in both <span className="text-blue-400 font-medium">frontend</span> and <span className="text-blue-400 font-medium">backend</span> development, 
+
+              <p className="hero-subtitle text-base md:text-lg text-gray-300 leading-relaxed mb-6">
+                With a solid foundation in both <span className="text-blue-400 font-medium">frontend</span> and <span className="text-blue-400 font-medium">backend</span> development,
                 I focus on crafting dynamic and scalable web applications. Let's work together to bring your ideas to life!
               </p>
-              
+
               <div className="flex flex-wrap gap-3 mb-6">
                 <span className="px-3 py-1 text-sm rounded-full bg-blue-900/50 text-blue-300 border border-blue-700 flex items-center">
                   <FaReact className="mr-1" />
@@ -103,7 +151,7 @@ const About = () => {
                   Entity Framework
                 </span>
               </div>
-              
+
               <div className="flex flex-wrap gap-4 pt-4">
                 <button
                   onClick={() => navigate("/contact")}
@@ -112,7 +160,7 @@ const About = () => {
                   Contact Me
                   <FaArrowRight />
                 </button>
-                
+
                 <button
                   onClick={() => navigate("/portfolio")}
                   className="flex items-center justify-center gap-2 py-3 px-6 bg-gray-800 text-white font-medium rounded-full border border-gray-600 hover:bg-gray-700 transform hover:scale-105 transition-all duration-300 ease-in-out"
@@ -121,19 +169,19 @@ const About = () => {
                   <FaArrowRight />
                 </button>
               </div>
-              
+
               <div className="flex gap-4 mt-6">
-                <a 
-                  href="https://github.com/Moosorkh" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Moosorkh"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
                 >
                   <FaGithub size={20} />
                 </a>
-                <a 
-                  href="https://www.linkedin.com/in/irdmousa/" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/irdmousa/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
                 >
@@ -142,13 +190,13 @@ const About = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Right side with avatar */}
           <div className="md:w-5/12 flex justify-center animate-on-scroll" id="element-1">
             <div className={`relative transition-all duration-1000 ease-out ${animatedElements['element-1'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
               <img
-                className="w-64 md:w-80 rounded-full border-4 border-gray-800 shadow-2xl relative z-10"
+                className="hero-image w-64 md:w-80 rounded-full border-4 border-gray-800 shadow-2xl relative z-10"
                 src={avatar}
                 alt="Profile Avatar"
               />
@@ -156,7 +204,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      
+
       {/* About Me Content Section */}
       <div className="container mx-auto px-6 md:px-12 py-16">
         <div className="max-w-4xl mx-auto">
@@ -168,24 +216,24 @@ const About = () => {
                   About Me
                 </span>
               </h2>
-              
+
               <div className="bg-gray-800/50 p-6 md:p-8 rounded-xl shadow-lg mb-10">
                 <p className="text-base md:text-lg leading-relaxed mb-6">
-                  I'm a passionate full-stack developer with hands-on experience in building responsive and scalable web applications across diverse technology stacks. 
+                  I'm a passionate full-stack developer with hands-on experience in building responsive and scalable web applications across diverse technology stacks.
                   My work includes both frontend and backend development, with a focus on creating intuitive user experiences while solving complex technical challenges.
                 </p>
-                
+
                 <p className="text-base md:text-lg leading-relaxed mb-6">
-                  A background in <strong className="text-blue-400">full-stack development</strong> ensures my ability to bridge the gap between beautiful design and robust functionality. 
+                  A background in <strong className="text-blue-400">full-stack development</strong> ensures my ability to bridge the gap between beautiful design and robust functionality.
                   Whether architecting scalable systems, optimizing performance, or creating seamless UI interactions, I aim to continually push boundaries and deliver exceptional results.
                 </p>
               </div>
             </div>
           </div>
-          
+
           {/* Experience Cards */}
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="animate-on-scroll" id="element-3">
+          <div className="skills-section grid md:grid-cols-2 gap-6 mb-10">
+            <div className="skill-card animate-on-scroll" id="element-3">
               <div className={`bg-gray-800/80 rounded-xl p-6 h-full transition-all duration-1000 ease-out ${animatedElements['element-3'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                 <div className="p-3 bg-blue-500/20 rounded-full w-14 h-14 flex items-center justify-center mb-5">
                   <FaLaptopCode className="text-blue-400 text-2xl" />
@@ -214,8 +262,8 @@ const About = () => {
                 </ul>
               </div>
             </div>
-            
-            <div className="animate-on-scroll" id="element-4">
+
+            <div className="skill-card animate-on-scroll" id="element-4">
               <div className={`bg-gray-800/80 rounded-xl p-6 h-full transition-all duration-1000 ease-out ${animatedElements['element-4'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                 <div className="p-3 bg-purple-500/20 rounded-full w-14 h-14 flex items-center justify-center mb-5">
                   <FaReact className="text-purple-400 text-2xl" />
@@ -248,7 +296,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Call to Action */}
           <div className="animate-on-scroll" id="element-5">
             <div className={`bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-8 rounded-xl shadow-lg text-center transition-all duration-1000 ease-out ${animatedElements['element-5'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>

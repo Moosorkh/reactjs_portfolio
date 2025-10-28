@@ -8,11 +8,11 @@ const Portfolio = () => {
   return (
     <div
       id="Portfolio"
-      className="min-h-screen p-10 md:p-24 bg-gradient-to-b from-gray-900 to-gray-800"
+      className="min-h-screen p-10 md:p-24 bg-gradient-to-b from-bg-primary to-bg-secondary transition-colors duration-300"
     >
       {/* Header with animation */}
       <AnimatedSection className="text-center">
-        <h1 className="text-2xl md:text-4xl text-white font-bold mb-12">
+        <h1 className="text-2xl md:text-4xl text-text-primary font-bold mb-12">
           Portfolio
         </h1>
       </AnimatedSection>
@@ -22,7 +22,7 @@ const Portfolio = () => {
 
       {/* Projects Section Title */}
       <AnimatedSection delay={500} className="text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 text-white">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-16 gradient-text">
           Projects
         </h2>
       </AnimatedSection>

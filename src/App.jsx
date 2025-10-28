@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group"; // Import transition components
+import { ThemeProvider } from "./context/ThemeContext";
 import About from "./assets/Components/About/About";
 import Portfolio from "./assets/Components/Portfolio";
 import Contact from "./assets/Components/Contact/Contact";
@@ -47,14 +48,16 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <div className="bg-[#171d32] h-auto w-full overflow-hidden">
-      <Router>
-        <ScrollToTop /> {/* Add ScrollToTop component */}
-        <Navbar />
-        <AnimatedRoutes /> {/* Handle transitions and routing */}
-        <Footer />
-      </Router>
-    </div>
+    <ThemeProvider>
+      <div className="bg-bg-primary min-h-screen w-full overflow-hidden transition-colors duration-300">
+        <Router>
+          <ScrollToTop /> {/* Add ScrollToTop component */}
+          <Navbar />
+          <AnimatedRoutes /> {/* Handle transitions and routing */}
+          <Footer />
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 

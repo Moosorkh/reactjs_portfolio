@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { RiMenu2Line, RiCloseLine } from "@remixicon/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,17 +37,17 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? "py-3 bg-gray-900/95 backdrop-blur-md shadow-lg" 
-          : "py-5 bg-gray-900/80 backdrop-blur-sm"
+          ? "py-3 bg-bg-secondary/95 backdrop-blur-md shadow-lg" 
+          : "py-5 bg-bg-secondary/80 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
           <Link 
             to="/" 
-            className="relative text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 hover:from-blue-500 hover:to-purple-600 transition-all duration-300"
+            className="relative text-2xl font-bold tracking-wider gradient-text transition-all duration-300"
           >
             Mehdi's Portfolio
           </Link>
@@ -77,12 +78,13 @@ const Navbar = () => {
             </li>
           </ul>
           
-          <div className="flex items-center gap-4 pl-4 border-l border-gray-700">
+          <div className="flex items-center gap-4 pl-4 border-l border-border-primary">
+            <ThemeToggle />
             <a 
               href="https://github.com/Moosorkh" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-text-secondary hover:text-text-primary transition-colors"
               aria-label="GitHub Profile"
             >
               <FaGithub size={20} />
@@ -91,7 +93,7 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/irdmousa/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-text-secondary hover:text-text-primary transition-colors"
               aria-label="LinkedIn Profile"
             >
               <FaLinkedin size={20} />
@@ -102,7 +104,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+          className="md:hidden p-2 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           {menuOpen ? (
@@ -115,8 +117,8 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-96 border-t border-gray-800" : "max-h-0"
+        className={`md:hidden absolute top-full left-0 w-full bg-bg-secondary/95 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? "max-h-[32rem] border-t border-border-primary" : "max-h-0"
         }`}
       >
         <div className="container mx-auto px-6 py-4">
@@ -143,12 +145,13 @@ const Navbar = () => {
             </li>
           </ul>
           
-          <div className="flex justify-center gap-6 pt-4 border-t border-gray-800">
+          <div className="flex justify-center items-center gap-6 pt-4 border-t border-border-primary">
+            <ThemeToggle />
             <a 
               href="https://github.com/Moosorkh" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors p-2"
+              className="text-text-secondary hover:text-text-primary transition-colors p-2"
               aria-label="GitHub Profile"
             >
               <FaGithub size={24} />
@@ -157,7 +160,7 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/irdmousa/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors p-2"
+              className="text-text-secondary hover:text-text-primary transition-colors p-2"
               aria-label="LinkedIn Profile"
             >
               <FaLinkedin size={24} />
@@ -173,17 +176,17 @@ const Navbar = () => {
 const NavLink = ({ to, active, children }) => (
   <>
     {active ? (
-      <span className="relative py-2 text-blue-400 font-semibold cursor-default">
+      <span className="relative py-2 text-primary font-semibold cursor-default">
         {children}
-        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded"></span>
+        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-secondary rounded"></span>
       </span>
     ) : (
       <Link 
         to={to} 
-        className="relative py-2 text-gray-300 hover:text-white transition-colors duration-300"
+        className="relative py-2 text-text-secondary hover:text-text-primary transition-colors duration-300 group"
       >
         {children}
-        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded transition-all duration-300 group-hover:w-full"></span>
+        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded transition-all duration-300 group-hover:w-full"></span>
       </Link>
     )}
   </>
@@ -193,13 +196,13 @@ const NavLink = ({ to, active, children }) => (
 const MobileNavLink = ({ to, active, children }) => (
   <>
     {active ? (
-      <span className="block py-2 px-4 text-blue-400 font-semibold bg-blue-900/20 rounded-lg">
+      <span className="block py-2 px-4 text-primary font-semibold bg-primary/10 rounded-lg">
         {children}
       </span>
     ) : (
       <Link 
         to={to} 
-        className="block py-2 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors duration-300"
+        className="block py-2 px-4 text-text-secondary hover:text-text-primary hover:bg-bg-tertiary rounded-lg transition-colors duration-300"
       >
         {children}
       </Link>

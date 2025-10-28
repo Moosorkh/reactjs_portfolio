@@ -7,15 +7,15 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-900 text-white border-t border-gray-800">
+    <footer className="bg-bg-secondary text-text-primary border-t border-border-primary transition-colors duration-300">
       <div className="container mx-auto pt-12 pb-8 px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            <h3 className="text-xl font-bold mb-4 gradient-text">
               Mehdi's Portfolio
             </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-text-secondary mb-6 leading-relaxed">
               Full-stack developer specializing in creating modern, responsive web applications 
               with React, TypeScript, C#, and other cutting-edge technologies.
             </p>
@@ -60,13 +60,13 @@ const Footer = () => {
         </div>
         
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent my-6"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-border-primary to-transparent my-6"></div>
         
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <div className="flex flex-col md:flex-row justify-between items-center text-text-secondary text-sm">
           <p>&copy; {currentYear} Mehdi. All Rights Reserved.</p>
           <p className="mt-2 md:mt-0">
-            Designed with <span className="text-red-500">♥</span> using React & TailwindCSS
+            Designed with <span className="text-error">♥</span> using React & TailwindCSS
           </p>
         </div>
       </div>
@@ -81,7 +81,7 @@ const SocialLink = ({ href, icon, label }) => (
     target="_blank" 
     rel="noopener noreferrer"
     aria-label={label}
-    className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition-colors duration-300 text-gray-400 hover:text-white"
+    className="bg-bg-tertiary p-2 rounded-full hover:bg-bg-elevated transition-colors duration-300 text-text-secondary hover:text-primary"
   >
     {icon}
   </a>
@@ -90,14 +90,14 @@ const SocialLink = ({ href, icon, label }) => (
 const FooterLink = ({ to, children }) => (
   <Link 
     to={to} 
-    className="text-gray-400 hover:text-blue-400 transition-colors duration-300 inline-block"
+    className="text-text-secondary hover:text-primary transition-colors duration-300 inline-block"
   >
     {children}
   </Link>
 );
 
 const SkillBadge = ({ icon, name }) => (
-  <div className="bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1 text-sm text-gray-300">
+  <div className="bg-bg-tertiary px-3 py-1 rounded-full flex items-center gap-1 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">
     <span className="text-blue-400">{icon}</span>
     <span>{name}</span>
   </div>

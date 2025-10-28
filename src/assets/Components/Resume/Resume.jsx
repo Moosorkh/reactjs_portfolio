@@ -119,11 +119,10 @@ const Resume = () => {
         {/* Header Section */}
         <div className="animate-on-scroll" id="element-0">
           <div
-            className={`text-center mb-10 transition-all duration-1000 ease-out ${
-              animatedElements["element-0"]
+            className={`text-center mb-10 transition-all duration-1000 ease-out ${animatedElements["element-0"]
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-12"
-            }`}
+              }`}
           >
             <h1 className="text-3xl md:text-5xl font-bold mb-4 gradient-text">
               Resume
@@ -146,11 +145,10 @@ const Resume = () => {
         {/* Filter Navigation */}
         <div className="animate-on-scroll" id="element-1">
           <div
-            className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ease-out ${
-              animatedElements["element-1"]
+            className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ease-out ${animatedElements["element-1"]
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-12"
-            }`}
+              }`}
           >
             <FilterButton
               active={activeSection === "all"}
@@ -181,30 +179,26 @@ const Resume = () => {
 
         {/* Resume Content with transition */}
         <div
-          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 ease-in-out transform ${
-            tabChanging ? "opacity-0 scale-95" : "opacity-100 scale-100"
-          }`}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 ease-in-out transform ${tabChanging ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
         >
           {/* Technical Skills */}
           <div
-            className={`${
-              activeSection === "skills"
+            className={`${activeSection === "skills"
                 ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
                 : activeSection === "experience" ||
                   activeSection === "education"
-                ? "hidden md:hidden"
-                : "md:col-span-3 lg:col-span-1"
-            } transition-all duration-500 ease-in-out ${
-              isActive("skills") || activeSection === "all" ? "block" : "hidden"
-            }`}
+                  ? "hidden md:hidden"
+                  : "md:col-span-3 lg:col-span-1"
+              } transition-all duration-500 ease-in-out ${isActive("skills") || activeSection === "all" ? "block" : "hidden"
+              }`}
           >
             <div className="animate-on-scroll" id="element-2">
               <div
-                className={`card p-6 md:p-8 h-full transition-all duration-1000 ease-out ${
-                  animatedElements["element-2"]
+                className={`card p-6 md:p-8 h-full transition-all duration-1000 ease-out ${animatedElements["element-2"]
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-primary/20 rounded-lg">
@@ -329,25 +323,23 @@ const Resume = () => {
 
           {/* Work Experience & Education */}
           <div
-            className={`${
-              activeSection === "skills"
+            className={`${activeSection === "skills"
                 ? "hidden md:hidden"
                 : activeSection === "experience" ||
                   activeSection === "education"
-                ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
-                : "md:col-span-3 lg:col-span-2"
-            } transition-all duration-500 ease-in-out`}
+                  ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
+                  : "md:col-span-3 lg:col-span-2"
+              } transition-all duration-500 ease-in-out`}
           >
             <div className="space-y-8">
               {/* Professional Experience */}
               <div className={`${isActive("experience") ? "block" : "hidden"}`}>
                 <div className="animate-on-scroll" id="element-3">
                   <div
-                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${
-                      animatedElements["element-3"]
+                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-3"]
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-12"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
                       <div className="p-2 bg-secondary/20 rounded-lg">
@@ -430,11 +422,10 @@ const Resume = () => {
               <div className={`${isActive("education") ? "block" : "hidden"}`}>
                 <div className="animate-on-scroll" id="element-4">
                   <div
-                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${
-                      animatedElements["element-4"]
+                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-4"]
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-12"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
                       <div className="p-2 bg-success/20 rounded-lg">
@@ -537,11 +528,10 @@ const Resume = () => {
               >
                 <div className="animate-on-scroll" id="element-5">
                   <div
-                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${
-                      animatedElements["element-5"]
+                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-5"]
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-12"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
                       <div className="p-2 bg-primary/20 rounded-lg">
@@ -618,11 +608,10 @@ const Resume = () => {
 const FilterButton = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${
-      active
+    className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${active
         ? "btn-primary"
         : "bg-bg-tertiary text-text-secondary hover:bg-bg-elevated hover:text-text-primary"
-    }`}
+      }`}
   >
     {children}
   </button>
@@ -656,9 +645,8 @@ const JobExperience = ({
 
   return (
     <div
-      className={`border-l-2 border-secondary/50 pl-5 relative transition-all duration-500 ease-out transform ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      }`}
+      className={`border-l-2 border-secondary/50 pl-5 relative transition-all duration-500 ease-out transform ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+        }`}
     >
       <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-secondary"></div>
       <div className="mb-2">

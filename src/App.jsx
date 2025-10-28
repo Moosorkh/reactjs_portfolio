@@ -19,18 +19,18 @@ import "./assets/Components/transition.css";
 // ScrollToTop component to reset scroll position on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
+
   return null;
 };
 
 // Custom component for handling transitions
 const AnimatedRoutes = () => {
   const location = useLocation(); // useLocation should be called inside Router
-  
+
   return (
     <TransitionGroup>
       <CSSTransition key={location.key} classNames="fade" timeout={300}>

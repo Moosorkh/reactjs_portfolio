@@ -5,7 +5,7 @@ import { SiCsharp, SiTypescript, SiTailwindcss } from "react-icons/si";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-bg-secondary text-text-primary border-t border-border-primary transition-colors duration-300">
       <div className="container mx-auto pt-12 pb-8 px-6">
@@ -16,7 +16,7 @@ const Footer = () => {
               Mehdi's Portfolio
             </h3>
             <p className="text-text-secondary mb-6 leading-relaxed">
-              Full-stack developer specializing in creating modern, responsive web applications 
+              Full-stack developer specializing in creating modern, responsive web applications
               with React, TypeScript, C#, and other cutting-edge technologies.
             </p>
             <div className="flex gap-4">
@@ -25,7 +25,7 @@ const Footer = () => {
               <SocialLink href="mailto:Moosorkh@Gmail.com" icon={<FaEnvelope size={18} />} label="Email" />
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
@@ -44,7 +44,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          
+
           {/* Skills */}
           <div>
             <h3 className="text-xl font-bold mb-4">Technology Stack</h3>
@@ -58,10 +58,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-border-primary to-transparent my-6"></div>
-        
+
         {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center text-text-secondary text-sm">
           <p>&copy; {currentYear} Mehdi. All Rights Reserved.</p>
@@ -76,9 +76,9 @@ const Footer = () => {
 
 // Helper Components
 const SocialLink = ({ href, icon, label }) => (
-  <a 
-    href={href} 
-    target="_blank" 
+  <a
+    href={href}
+    target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
     className="bg-bg-tertiary p-2 rounded-full hover:bg-bg-elevated transition-colors duration-300 text-text-secondary hover:text-primary"
@@ -88,8 +88,8 @@ const SocialLink = ({ href, icon, label }) => (
 );
 
 const FooterLink = ({ to, children }) => (
-  <Link 
-    to={to} 
+  <Link
+    to={to}
     className="text-text-secondary hover:text-primary transition-colors duration-300 inline-block"
   >
     {children}

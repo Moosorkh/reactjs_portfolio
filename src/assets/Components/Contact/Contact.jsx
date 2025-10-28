@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 const Contact = () => {
   const form = useRef();
   const [animatedElements, setAnimatedElements] = useState({});
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,7 +21,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const {name, email, subject, message} = formData;
+  const { name, email, subject, message } = formData;
 
   const [errors, setErrors] = useState({
     name: "",
@@ -35,10 +35,10 @@ const Contact = () => {
     // Initialize elements as not animated
     const elements = ['header', 'cards', 'form'];
     const initialState = {};
-    
+
     elements.forEach((el) => initialState[el] = false);
     setAnimatedElements(initialState);
-    
+
     // Trigger animations with staggered timing
     elements.forEach((el, index) => {
       setTimeout(() => {
@@ -152,26 +152,24 @@ const Contact = () => {
       {/* Add extra padding at the top to prevent header overlap - increased from pt-24 to pt-32 */}
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-12">
         {/* Contact Header with animation */}
-        <div 
-          className={`text-center mb-10 transition-all duration-700 transform ${
-            animatedElements.header ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-          }`}
+        <div
+          className={`text-center mb-10 transition-all duration-700 transform ${animatedElements.header ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+            }`}
         >
           <h1 className="text-3xl md:text-5xl font-bold mb-4 gradient-text">
             Get In Touch
           </h1>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-            Have a project in mind or want to discuss a collaboration opportunity? 
+            Have a project in mind or want to discuss a collaboration opportunity?
             I'd love to hear from you!
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Info Cards with animation */}
-          <div 
-            className={`md:col-span-1 space-y-6 transition-all duration-700 transform ${
-              animatedElements.cards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-            }`}
+          <div
+            className={`md:col-span-1 space-y-6 transition-all duration-700 transform ${animatedElements.cards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+              }`}
           >
             {/* Email Card */}
             <div className="card card-hover p-6">
@@ -185,7 +183,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* LinkedIn Card */}
             <div className="card card-hover p-6">
               <div className="flex items-center space-x-4">
@@ -194,9 +192,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary">LinkedIn</h3>
-                  <a 
-                    href="https://www.linkedin.com/in/irdmousa/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/in/irdmousa/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-text-secondary hover:text-primary transition-colors"
                   >
@@ -205,7 +203,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* GitHub Card */}
             <div className="card card-hover p-6">
               <div className="flex items-center space-x-4">
@@ -214,9 +212,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary">GitHub</h3>
-                  <a 
-                    href="https://github.com/Moosorkh" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/Moosorkh"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-text-secondary hover:text-primary transition-colors"
                   >
@@ -228,10 +226,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Form with animation */}
-          <div 
-            className={`md:col-span-2 transition-all duration-700 transform ${
-              animatedElements.form ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-            }`}
+          <div
+            className={`md:col-span-2 transition-all duration-700 transform ${animatedElements.form ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+              }`}
           >
             <div className="card p-6 md:p-8">
               {formStatus.submitted && formStatus.success ? (
@@ -257,7 +254,7 @@ const Contact = () => {
                   onSubmit={handleSubmit}
                 >
                   <h2 className="text-2xl font-bold mb-6 text-text-primary">Send Me a Message</h2>
-                  
+
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Name Field - Added min-h-[76px] to preserve space for error messages */}
                     <div className="min-h-[76px]">
@@ -268,9 +265,8 @@ const Contact = () => {
                         Name
                       </label>
                       <input
-                        className={`w-full px-4 py-3 bg-bg-tertiary border ${
-                          errors.name ? "border-error" : "border-border-primary"
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
+                        className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.name ? "border-error" : "border-border-primary"
+                          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
                         id="name"
                         name="name"
                         type="text"
@@ -295,9 +291,8 @@ const Contact = () => {
                         Email
                       </label>
                       <input
-                        className={`w-full px-4 py-3 bg-bg-tertiary border ${
-                          errors.email ? "border-error" : "border-border-primary"
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
+                        className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.email ? "border-error" : "border-border-primary"
+                          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
                         id="email"
                         name="email"
                         type="email"
@@ -323,9 +318,8 @@ const Contact = () => {
                       Subject
                     </label>
                     <input
-                      className={`w-full px-4 py-3 bg-bg-tertiary border ${
-                        errors.subject ? "border-error" : "border-border-primary"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
+                      className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.subject ? "border-error" : "border-border-primary"
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
                       id="subject"
                       name="subject"
                       type="text"
@@ -350,9 +344,8 @@ const Contact = () => {
                       Message
                     </label>
                     <textarea
-                      className={`w-full px-4 py-3 bg-bg-tertiary border ${
-                        errors.message ? "border-error" : "border-border-primary"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary h-40 transition-colors duration-200`}
+                      className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.message ? "border-error" : "border-border-primary"
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary h-40 transition-colors duration-200`}
                       id="message"
                       name="message"
                       placeholder="Your message"
@@ -389,7 +382,7 @@ const Contact = () => {
                       )}
                     </button>
                   </div>
-                  
+
                   {formStatus.submitted && !formStatus.success && (
                     <div className="bg-error/20 border border-error text-error px-4 py-3 rounded-lg">
                       {formStatus.message}

@@ -34,19 +34,18 @@ const Navbar = () => {
   const isCurrentPath = (path) => location.pathname === path;
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "py-3 bg-bg-secondary/95 backdrop-blur-md shadow-lg" 
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? "py-3 bg-bg-secondary/95 backdrop-blur-md shadow-lg"
           : "py-5 bg-bg-secondary/80 backdrop-blur-sm"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="relative text-2xl font-bold tracking-wider gradient-text transition-all duration-300"
           >
             Mehdi's Portfolio
@@ -77,21 +76,21 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          
+
           <div className="flex items-center gap-4 pl-4 border-l border-border-primary">
             <ThemeToggle />
-            <a 
-              href="https://github.com/Moosorkh" 
-              target="_blank" 
+            <a
+              href="https://github.com/Moosorkh"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-text-primary transition-colors"
               aria-label="GitHub Profile"
             >
               <FaGithub size={20} />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/irdmousa/" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/irdmousa/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-text-primary transition-colors"
               aria-label="LinkedIn Profile"
@@ -102,7 +101,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden p-2 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -116,10 +115,9 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-bg-secondary/95 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-[32rem] border-t border-border-primary" : "max-h-0"
-        }`}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-bg-secondary/95 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[32rem] border-t border-border-primary" : "max-h-0"
+          }`}
       >
         <div className="container mx-auto px-6 py-4">
           <ul className="space-y-4 mb-6">
@@ -144,21 +142,21 @@ const Navbar = () => {
               </MobileNavLink>
             </li>
           </ul>
-          
+
           <div className="flex justify-center items-center gap-6 pt-4 border-t border-border-primary">
             <ThemeToggle />
-            <a 
-              href="https://github.com/Moosorkh" 
-              target="_blank" 
+            <a
+              href="https://github.com/Moosorkh"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-text-primary transition-colors p-2"
               aria-label="GitHub Profile"
             >
               <FaGithub size={24} />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/irdmousa/" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/irdmousa/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-text-primary transition-colors p-2"
               aria-label="LinkedIn Profile"
@@ -181,8 +179,8 @@ const NavLink = ({ to, active, children }) => (
         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-secondary rounded"></span>
       </span>
     ) : (
-      <Link 
-        to={to} 
+      <Link
+        to={to}
         className="relative py-2 text-text-secondary hover:text-text-primary transition-colors duration-300 group"
       >
         {children}
@@ -200,8 +198,8 @@ const MobileNavLink = ({ to, active, children }) => (
         {children}
       </span>
     ) : (
-      <Link 
-        to={to} 
+      <Link
+        to={to}
         className="block py-2 px-4 text-text-secondary hover:text-text-primary hover:bg-bg-tertiary rounded-lg transition-colors duration-300"
       >
         {children}

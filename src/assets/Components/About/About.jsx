@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import avatar from "../../7358602-removebg-preview.png";
 import TextChange from "../TextChange";
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaCode, 
-  FaLaptopCode, 
-  FaArrowRight, 
-  FaGithub, 
+import {
+  FaReact,
+  FaNodeJs,
+  FaCode,
+  FaLaptopCode,
+  FaArrowRight,
+  FaGithub,
   FaLinkedin,
   FaDatabase // Added as replacement for Entity Framework
 } from "react-icons/fa";
@@ -18,15 +18,15 @@ import { SiTypescript, SiCsharp, SiDotnet } from "react-icons/si"; // Removed Si
 const About = () => {
   const navigate = useNavigate();
   const [animatedElements, setAnimatedElements] = useState({});
-  
+
   useEffect(() => {
     // Initialize all elements as visible for initial animation
     const elements = document.querySelectorAll('.animate-on-scroll');
     const initialState = {};
-    
+
     elements.forEach((el, index) => {
       initialState[`element-${index}`] = false;
-      
+
       // Set a timeout to animate elements sequentially on first load
       setTimeout(() => {
         setAnimatedElements(prev => ({
@@ -35,15 +35,15 @@ const About = () => {
         }));
       }, 300 + (index * 150));
     });
-    
+
     setAnimatedElements(initialState);
-    
+
     // Add scroll listener for elements that come into view later
     const handleScroll = () => {
       elements.forEach((el, index) => {
         const rect = el.getBoundingClientRect();
         const isVisible = rect.top < window.innerHeight * 0.85;
-        
+
         if (isVisible) {
           setAnimatedElements(prev => ({
             ...prev,
@@ -52,7 +52,7 @@ const About = () => {
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -71,16 +71,16 @@ const About = () => {
               <div className="mb-4">
                 <TextChange />
               </div>
-              
+
               <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight gradient-text">
                 Full Stack Developer
               </h1>
-              
+
               <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-6">
-                With a solid foundation in both <span className="text-primary font-medium">frontend</span> and <span className="text-primary font-medium">backend</span> development, 
+                With a solid foundation in both <span className="text-primary font-medium">frontend</span> and <span className="text-primary font-medium">backend</span> development,
                 I focus on crafting dynamic and scalable web applications. Let's work together to bring your ideas to life!
               </p>
-              
+
               <div className="flex flex-wrap gap-3 mb-6">
                 <span className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary border border-primary/30 flex items-center hover:bg-primary/20 transition-colors">
                   <FaReact className="mr-1" />
@@ -103,7 +103,7 @@ const About = () => {
                   Entity Framework
                 </span>
               </div>
-              
+
               <div className="flex flex-wrap gap-4 pt-4">
                 <button
                   onClick={() => navigate("/contact")}
@@ -112,7 +112,7 @@ const About = () => {
                   Contact Me
                   <FaArrowRight />
                 </button>
-                
+
                 <button
                   onClick={() => navigate("/portfolio")}
                   className="btn-secondary flex items-center justify-center gap-2"
@@ -121,19 +121,19 @@ const About = () => {
                   <FaArrowRight />
                 </button>
               </div>
-              
+
               <div className="flex gap-4 mt-6">
-                <a 
-                  href="https://github.com/Moosorkh" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Moosorkh"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-bg-tertiary rounded-full hover:bg-bg-elevated hover:text-primary transition-all"
                 >
                   <FaGithub size={20} />
                 </a>
-                <a 
-                  href="https://www.linkedin.com/in/irdmousa/" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/irdmousa/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-bg-tertiary rounded-full hover:bg-bg-elevated hover:text-primary transition-all"
                 >
@@ -142,7 +142,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Right side with avatar */}
           <div className="md:w-5/12 flex justify-center animate-on-scroll" id="element-1">
             <div className={`relative transition-all duration-1000 ease-out ${animatedElements['element-1'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
@@ -156,7 +156,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      
+
       {/* About Me Content Section */}
       <div className="container mx-auto px-6 md:px-12 py-16">
         <div className="max-w-4xl mx-auto">
@@ -168,21 +168,21 @@ const About = () => {
                   About Me
                 </span>
               </h2>
-              
+
               <div className="card p-6 md:p-8 mb-10 hover:shadow-lg transition-shadow">
                 <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-6">
-                  I'm a passionate full-stack developer with hands-on experience in building responsive and scalable web applications across diverse technology stacks. 
+                  I'm a passionate full-stack developer with hands-on experience in building responsive and scalable web applications across diverse technology stacks.
                   My work includes both frontend and backend development, with a focus on creating intuitive user experiences while solving complex technical challenges.
                 </p>
-                
+
                 <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-6">
-                  A background in <strong className="text-primary">full-stack development</strong> ensures my ability to bridge the gap between beautiful design and robust functionality. 
+                  A background in <strong className="text-primary">full-stack development</strong> ensures my ability to bridge the gap between beautiful design and robust functionality.
                   Whether architecting scalable systems, optimizing performance, or creating seamless UI interactions, I aim to continually push boundaries and deliver exceptional results.
                 </p>
               </div>
             </div>
           </div>
-          
+
           {/* Experience Cards */}
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <div className="animate-on-scroll" id="element-3">
@@ -214,7 +214,7 @@ const About = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="animate-on-scroll" id="element-4">
               <div className={`card card-hover p-6 h-full transition-all duration-1000 ease-out ${animatedElements['element-4'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                 <div className="p-3 bg-secondary/20 rounded-full w-14 h-14 flex items-center justify-center mb-5">
@@ -248,7 +248,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Call to Action */}
           <div className="animate-on-scroll" id="element-5">
             <div className={`glass p-8 rounded-xl shadow-lg text-center border-2 border-primary/20 transition-all duration-1000 ease-out ${animatedElements['element-5'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>

@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 const Contact = () => {
   const form = useRef();
   const [animatedElements, setAnimatedElements] = useState({});
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,7 +21,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const {name, email, subject, message} = formData;
+  const { name, email, subject, message } = formData;
 
   const [errors, setErrors] = useState({
     name: "",
@@ -35,10 +35,10 @@ const Contact = () => {
     // Initialize elements as not animated
     const elements = ['header', 'cards', 'form'];
     const initialState = {};
-    
+
     elements.forEach((el) => initialState[el] = false);
     setAnimatedElements(initialState);
-    
+
     // Trigger animations with staggered timing
     elements.forEach((el, index) => {
       setTimeout(() => {
@@ -147,78 +147,76 @@ const Contact = () => {
   return (
     <div
       id="Contact"
-      className="flex flex-col justify-center items-center bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen"
+      className="flex flex-col justify-center items-center bg-gradient-to-b from-bg-primary to-bg-secondary text-text-primary min-h-screen transition-colors duration-300"
     >
       {/* Add extra padding at the top to prevent header overlap - increased from pt-24 to pt-32 */}
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-12">
         {/* Contact Header with animation */}
-        <div 
-          className={`text-center mb-10 transition-all duration-700 transform ${
-            animatedElements.header ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-          }`}
+        <div
+          className={`text-center mb-10 transition-all duration-700 transform ${animatedElements.header ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+            }`}
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 gradient-text">
             Get In Touch
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss a collaboration opportunity? 
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+            Have a project in mind or want to discuss a collaboration opportunity?
             I'd love to hear from you!
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Info Cards with animation */}
-          <div 
-            className={`md:col-span-1 space-y-6 transition-all duration-700 transform ${
-              animatedElements.cards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-            }`}
+          <div
+            className={`md:col-span-1 space-y-6 transition-all duration-700 transform ${animatedElements.cards ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+              }`}
           >
             {/* Email Card */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]">
+            <div className="card card-hover p-6">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-blue-600/20 rounded-full">
-                  <FaEnvelope className="text-blue-400 text-2xl" />
+                <div className="p-3 bg-primary/20 rounded-full">
+                  <FaEnvelope className="text-primary text-2xl" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">Email</h3>
-                  <p className="text-gray-300">Moosorkh@Gmail.com</p>
+                  <h3 className="text-lg font-semibold text-text-primary">Email</h3>
+                  <p className="text-text-secondary">Moosorkh@Gmail.com</p>
                 </div>
               </div>
             </div>
-            
+
             {/* LinkedIn Card */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]">
+            <div className="card card-hover p-6">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-blue-600/20 rounded-full">
-                  <FaLinkedin className="text-blue-400 text-2xl" />
+                <div className="p-3 bg-primary/20 rounded-full">
+                  <FaLinkedin className="text-primary text-2xl" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">LinkedIn</h3>
-                  <a 
-                    href="https://www.linkedin.com/in/irdmousa/" 
-                    target="_blank" 
+                  <h3 className="text-lg font-semibold text-text-primary">LinkedIn</h3>
+                  <a
+                    href="https://www.linkedin.com/in/irdmousa/"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-text-secondary hover:text-primary transition-colors"
                   >
                     Connect with me
                   </a>
                 </div>
               </div>
             </div>
-            
+
             {/* GitHub Card */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]">
+            <div className="card card-hover p-6">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-blue-600/20 rounded-full">
-                  <FaGithub className="text-blue-400 text-2xl" />
+                <div className="p-3 bg-primary/20 rounded-full">
+                  <FaGithub className="text-primary text-2xl" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">GitHub</h3>
-                  <a 
-                    href="https://github.com/Moosorkh" 
-                    target="_blank" 
+                  <h3 className="text-lg font-semibold text-text-primary">GitHub</h3>
+                  <a
+                    href="https://github.com/Moosorkh"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-text-secondary hover:text-primary transition-colors"
                   >
                     View my projects
                   </a>
@@ -228,24 +226,23 @@ const Contact = () => {
           </div>
 
           {/* Contact Form with animation */}
-          <div 
-            className={`md:col-span-2 transition-all duration-700 transform ${
-              animatedElements.form ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-            }`}
+          <div
+            className={`md:col-span-2 transition-all duration-700 transform ${animatedElements.form ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+              }`}
           >
-            <div className="bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+            <div className="card p-6 md:p-8">
               {formStatus.submitted && formStatus.success ? (
                 <div className="flex flex-col items-center justify-center py-10 text-center">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 animate-bounce">
-                    <FaPaperPlane className="text-white text-xl" />
+                  <div className="w-16 h-16 bg-success rounded-full flex items-center justify-center mb-6 animate-bounce">
+                    <FaPaperPlane className="text-text-inverse text-xl" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">Message Sent!</h3>
-                  <p className="text-gray-300 mb-6">
+                  <h3 className="text-2xl font-bold mb-4 text-text-primary">Message Sent!</h3>
+                  <p className="text-text-secondary mb-6">
                     Thank you for reaching out. I'll get back to you as soon as possible.
                   </p>
                   <button
                     onClick={() => setFormStatus({ submitted: false, success: false, message: "" })}
-                    className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                    className="btn-primary"
                   >
                     Send Another Message
                   </button>
@@ -256,21 +253,20 @@ const Contact = () => {
                   className="space-y-6"
                   onSubmit={handleSubmit}
                 >
-                  <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
-                  
+                  <h2 className="text-2xl font-bold mb-6 text-text-primary">Send Me a Message</h2>
+
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Name Field - Added min-h-[76px] to preserve space for error messages */}
                     <div className="min-h-[76px]">
                       <label
-                        className="block text-sm font-medium mb-2"
+                        className="block text-sm font-medium mb-2 text-text-primary"
                         htmlFor="name"
                       >
                         Name
                       </label>
                       <input
-                        className={`w-full px-4 py-3 bg-gray-700 border ${
-                          errors.name ? "border-red-500" : "border-gray-600"
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+                        className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.name ? "border-error" : "border-border-primary"
+                          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
                         id="name"
                         name="name"
                         type="text"
@@ -281,7 +277,7 @@ const Contact = () => {
                       />
                       <div className="h-5 mt-1">
                         {errors.name && (
-                          <p className="text-red-500 text-xs">{errors.name}</p>
+                          <p className="text-error text-xs">{errors.name}</p>
                         )}
                       </div>
                     </div>
@@ -289,15 +285,14 @@ const Contact = () => {
                     {/* Email Field - Added min-h-[76px] to preserve space for error messages */}
                     <div className="min-h-[76px]">
                       <label
-                        className="block text-sm font-medium mb-2"
+                        className="block text-sm font-medium mb-2 text-text-primary"
                         htmlFor="email"
                       >
                         Email
                       </label>
                       <input
-                        className={`w-full px-4 py-3 bg-gray-700 border ${
-                          errors.email ? "border-red-500" : "border-gray-600"
-                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+                        className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.email ? "border-error" : "border-border-primary"
+                          } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
                         id="email"
                         name="email"
                         type="email"
@@ -308,7 +303,7 @@ const Contact = () => {
                       />
                       <div className="h-5 mt-1">
                         {errors.email && (
-                          <p className="text-red-500 text-xs">{errors.email}</p>
+                          <p className="text-error text-xs">{errors.email}</p>
                         )}
                       </div>
                     </div>
@@ -317,15 +312,14 @@ const Contact = () => {
                   {/* Subject Field - Added min-h-[76px] to preserve space for error messages */}
                   <div className="min-h-[76px]">
                     <label
-                      className="block text-sm font-medium mb-2"
+                      className="block text-sm font-medium mb-2 text-text-primary"
                       htmlFor="subject"
                     >
                       Subject
                     </label>
                     <input
-                      className={`w-full px-4 py-3 bg-gray-700 border ${
-                        errors.subject ? "border-red-500" : "border-gray-600"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white`}
+                      className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.subject ? "border-error" : "border-border-primary"
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary transition-colors duration-200`}
                       id="subject"
                       name="subject"
                       type="text"
@@ -336,7 +330,7 @@ const Contact = () => {
                     />
                     <div className="h-5 mt-1">
                       {errors.subject && (
-                        <p className="text-red-500 text-xs">{errors.subject}</p>
+                        <p className="text-error text-xs">{errors.subject}</p>
                       )}
                     </div>
                   </div>
@@ -344,15 +338,14 @@ const Contact = () => {
                   {/* Message Field - Added min-h-[76px] to preserve space for error messages */}
                   <div className="min-h-[76px]">
                     <label
-                      className="block text-sm font-medium mb-2"
+                      className="block text-sm font-medium mb-2 text-text-primary"
                       htmlFor="message"
                     >
                       Message
                     </label>
                     <textarea
-                      className={`w-full px-4 py-3 bg-gray-700 border ${
-                        errors.message ? "border-red-500" : "border-gray-600"
-                      } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white h-40`}
+                      className={`w-full px-4 py-3 bg-bg-tertiary border ${errors.message ? "border-error" : "border-border-primary"
+                        } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary h-40 transition-colors duration-200`}
                       id="message"
                       name="message"
                       placeholder="Your message"
@@ -362,7 +355,7 @@ const Contact = () => {
                     ></textarea>
                     <div className="h-5 mt-1">
                       {errors.message && (
-                        <p className="text-red-500 text-xs">{errors.message}</p>
+                        <p className="text-error text-xs">{errors.message}</p>
                       )}
                     </div>
                   </div>
@@ -370,13 +363,13 @@ const Contact = () => {
                   {/* Submit Button */}
                   <div>
                     <button
-                      className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition-all duration-300 flex items-center justify-center disabled:opacity-70"
+                      className="w-full md:w-auto btn-primary flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
                       type="submit"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
                         <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-text-inverse" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                           </svg>
@@ -389,9 +382,9 @@ const Contact = () => {
                       )}
                     </button>
                   </div>
-                  
+
                   {formStatus.submitted && !formStatus.success && (
-                    <div className="bg-red-500/20 border border-red-500 text-red-300 px-4 py-3 rounded-lg">
+                    <div className="bg-error/20 border border-error text-error px-4 py-3 rounded-lg">
                       {formStatus.message}
                     </div>
                   )}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { RiMenu2Line, RiCloseLine } from "@remixicon/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,31 +34,35 @@ const Navbar = () => {
   const isCurrentPath = (path) => location.pathname === path;
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? "py-3 bg-gray-900/95 backdrop-blur-md shadow-lg" 
-          : "py-5 bg-gray-900/80 backdrop-blur-sm"
-      }`}
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
+          ? "py-2 bg-bg-secondary/98 backdrop-blur-xl shadow-2xl border-b border-border-primary"
+          : "py-4 bg-bg-secondary/70 backdrop-blur-md"
+        }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
+        {/* Premium Logo with glow effect */}
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
-          <Link 
-            to="/" 
-            className="relative text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 hover:from-blue-500 hover:to-purple-600 transition-all duration-300"
+          <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-all duration-500"></div>
+          <Link
+            to="/"
+            className="relative flex items-center gap-2"
           >
-            Mehdi's Portfolio
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-glow transition-all duration-300">
+              <span className="text-white font-bold text-lg">M</span>
+            </div>
+            <span className="text-xl md:text-2xl font-bold tracking-tight gradient-text">
+              Mehdi Irdmousa
+            </span>
           </Link>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <ul className="flex space-x-8 text-lg font-medium">
+        {/* Desktop Menu with modern styling */}
+        <div className="hidden lg:flex items-center gap-6">
+          <ul className="flex space-x-1 text-sm font-medium bg-bg-tertiary/50 rounded-full px-2 py-1 border border-border-primary">
             <li>
               <NavLink to="/" active={isCurrentPath("/")}>
-                About Me
+                About
               </NavLink>
             </li>
             <li>
@@ -76,33 +81,36 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-          
-          <div className="flex items-center gap-4 pl-4 border-l border-gray-700">
-            <a 
-              href="https://github.com/Moosorkh" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="GitHub Profile"
-            >
-              <FaGithub size={20} />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/irdmousa/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label="LinkedIn Profile"
-            >
-              <FaLinkedin size={20} />
-            </a>
+
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <div className="flex gap-1">
+              <a
+                href="https://github.com/Moosorkh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg bg-bg-tertiary border border-border-primary hover:bg-bg-elevated hover:border-primary hover:text-primary hover:shadow-lg transition-all duration-300"
+                aria-label="GitHub Profile"
+              >
+                <FaGithub size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/irdmousa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg bg-bg-tertiary border border-border-primary hover:bg-bg-elevated hover:border-primary hover:text-primary hover:shadow-lg transition-all duration-300"
+                aria-label="LinkedIn Profile"
+              >
+                <FaLinkedin size={18} />
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+          className="md:hidden p-2 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           {menuOpen ? (
@@ -114,10 +122,9 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-96 border-t border-gray-800" : "max-h-0"
-        }`}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-bg-secondary/95 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[32rem] border-t border-border-primary" : "max-h-0"
+          }`}
       >
         <div className="container mx-auto px-6 py-4">
           <ul className="space-y-4 mb-6">
@@ -142,22 +149,23 @@ const Navbar = () => {
               </MobileNavLink>
             </li>
           </ul>
-          
-          <div className="flex justify-center gap-6 pt-4 border-t border-gray-800">
-            <a 
-              href="https://github.com/Moosorkh" 
-              target="_blank" 
+
+          <div className="flex justify-center items-center gap-6 pt-4 border-t border-border-primary">
+            <ThemeToggle />
+            <a
+              href="https://github.com/Moosorkh"
+              target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors p-2"
+              className="text-text-secondary hover:text-text-primary transition-colors p-2"
               aria-label="GitHub Profile"
             >
               <FaGithub size={24} />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/irdmousa/" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/irdmousa/"
+              target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors p-2"
+              className="text-text-secondary hover:text-text-primary transition-colors p-2"
               aria-label="LinkedIn Profile"
             >
               <FaLinkedin size={24} />
@@ -169,37 +177,35 @@ const Navbar = () => {
   );
 };
 
-// Desktop NavLink Component
+// Modern Desktop NavLink Component
 const NavLink = ({ to, active, children }) => (
   <>
     {active ? (
-      <span className="relative py-2 text-blue-400 font-semibold cursor-default">
+      <span className="relative px-4 py-2 text-text-primary font-semibold cursor-default bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20">
         {children}
-        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded"></span>
       </span>
     ) : (
-      <Link 
-        to={to} 
-        className="relative py-2 text-gray-300 hover:text-white transition-colors duration-300"
+      <Link
+        to={to}
+        className="relative px-4 py-2 text-text-secondary hover:text-text-primary transition-all duration-300 group rounded-full hover:bg-bg-elevated"
       >
         {children}
-        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded transition-all duration-300 group-hover:w-full"></span>
       </Link>
     )}
   </>
 );
 
-// Mobile NavLink Component
+// Enhanced Mobile NavLink Component
 const MobileNavLink = ({ to, active, children }) => (
   <>
     {active ? (
-      <span className="block py-2 px-4 text-blue-400 font-semibold bg-blue-900/20 rounded-lg">
+      <span className="block py-3 px-5 text-text-primary font-semibold bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl border-l-4 border-primary">
         {children}
       </span>
     ) : (
-      <Link 
-        to={to} 
-        className="block py-2 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors duration-300"
+      <Link
+        to={to}
+        className="block py-3 px-5 text-text-secondary hover:text-text-primary hover:bg-bg-tertiary rounded-xl transition-all duration-300 hover:border-l-4 hover:border-primary/50"
       >
         {children}
       </Link>

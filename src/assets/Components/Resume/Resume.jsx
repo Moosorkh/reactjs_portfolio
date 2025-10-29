@@ -113,29 +113,28 @@ const Resume = () => {
   return (
     <div
       id="resume"
-      className="min-h-screen p-6 md:px-10 lg:px-20 pt-24 pb-16 text-white bg-gradient-to-b from-gray-900 to-gray-800"
+      className="min-h-screen p-6 md:px-10 lg:px-20 pt-24 pb-16 text-text-primary bg-gradient-to-b from-bg-primary to-bg-secondary transition-colors duration-300"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Header Section */}
         <div className="animate-on-scroll" id="element-0">
           <div
-            className={`text-center mb-10 transition-all duration-1000 ease-out ${
-              animatedElements["element-0"]
+            className={`text-center mb-10 transition-all duration-1000 ease-out ${animatedElements["element-0"]
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-12"
-            }`}
+              }`}
           >
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 gradient-text">
               Resume
             </h1>
-            <p className="text-gray-300 max-w-2xl mx-auto mb-6">
+            <p className="text-text-secondary max-w-2xl mx-auto mb-6">
               A comprehensive overview of my professional journey, technical
               skills, and work experience.
             </p>
             <a
               href="https://docs.google.com/document/d/1isg-Y1_idZHA35qVe4st7yB0c-MGRwgQ0O6SxmKkNfc/export?format=pdf"
               download="Mehdi_Azar_Technical_Resume.pdf"
-              className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg transform hover:scale-105"
+              className="btn-primary inline-flex items-center justify-center"
             >
               <IoDownloadOutline className="mr-2 text-xl" />
               Download Resume
@@ -146,11 +145,10 @@ const Resume = () => {
         {/* Filter Navigation */}
         <div className="animate-on-scroll" id="element-1">
           <div
-            className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ease-out ${
-              animatedElements["element-1"]
+            className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ease-out ${animatedElements["element-1"]
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-12"
-            }`}
+              }`}
           >
             <FilterButton
               active={activeSection === "all"}
@@ -181,34 +179,30 @@ const Resume = () => {
 
         {/* Resume Content with transition */}
         <div
-          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 ease-in-out transform ${
-            tabChanging ? "opacity-0 scale-95" : "opacity-100 scale-100"
-          }`}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500 ease-in-out transform ${tabChanging ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
         >
           {/* Technical Skills */}
           <div
-            className={`${
-              activeSection === "skills"
+            className={`${activeSection === "skills"
                 ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
                 : activeSection === "experience" ||
                   activeSection === "education"
-                ? "hidden md:hidden"
-                : "md:col-span-3 lg:col-span-1"
-            } transition-all duration-500 ease-in-out ${
-              isActive("skills") || activeSection === "all" ? "block" : "hidden"
-            }`}
+                  ? "hidden md:hidden"
+                  : "md:col-span-3 lg:col-span-1"
+              } transition-all duration-500 ease-in-out ${isActive("skills") || activeSection === "all" ? "block" : "hidden"
+              }`}
           >
             <div className="animate-on-scroll" id="element-2">
               <div
-                className={`bg-gray-800/70 rounded-xl p-6 md:p-8 shadow-lg h-full transition-all duration-1000 ease-out ${
-                  animatedElements["element-2"]
+                className={`card p-6 md:p-8 h-full transition-all duration-1000 ease-out ${animatedElements["element-2"]
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-blue-600/20 rounded-lg">
-                    <IoCodeSlashOutline className="text-blue-400 text-xl" />
+                  <div className="p-2 bg-primary/20 rounded-lg">
+                    <IoCodeSlashOutline className="text-primary text-xl" />
                   </div>
                   <h2 className="text-2xl font-bold">Technical Skills</h2>
                 </div>
@@ -216,7 +210,7 @@ const Resume = () => {
                 <div className="space-y-6">
                   {/* Frontend Skills */}
                   <div className="transition-all duration-300 ease-in-out">
-                    <h3 className="text-lg font-semibold mb-3 text-blue-400">
+                    <h3 className="text-lg font-semibold mb-3 text-primary">
                       Frontend
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -247,7 +241,7 @@ const Resume = () => {
 
                   {/* Backend Skills */}
                   <div className="transition-all duration-300 ease-in-out">
-                    <h3 className="text-lg font-semibold mb-3 text-blue-400">
+                    <h3 className="text-lg font-semibold mb-3 text-primary">
                       Backend
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -273,7 +267,7 @@ const Resume = () => {
 
                   {/* Database Skills */}
                   <div className="transition-all duration-300 ease-in-out">
-                    <h3 className="text-lg font-semibold mb-3 text-blue-400">
+                    <h3 className="text-lg font-semibold mb-3 text-primary">
                       Database
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -298,7 +292,7 @@ const Resume = () => {
 
                   {/* DevOps & Tools */}
                   <div className="transition-all duration-300 ease-in-out">
-                    <h3 className="text-lg font-semibold mb-3 text-blue-400">
+                    <h3 className="text-lg font-semibold mb-3 text-primary">
                       DevOps & Tools
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -329,29 +323,27 @@ const Resume = () => {
 
           {/* Work Experience & Education */}
           <div
-            className={`${
-              activeSection === "skills"
+            className={`${activeSection === "skills"
                 ? "hidden md:hidden"
                 : activeSection === "experience" ||
                   activeSection === "education"
-                ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
-                : "md:col-span-3 lg:col-span-2"
-            } transition-all duration-500 ease-in-out`}
+                  ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
+                  : "md:col-span-3 lg:col-span-2"
+              } transition-all duration-500 ease-in-out`}
           >
             <div className="space-y-8">
               {/* Professional Experience */}
               <div className={`${isActive("experience") ? "block" : "hidden"}`}>
                 <div className="animate-on-scroll" id="element-3">
                   <div
-                    className={`bg-gray-800/70 rounded-xl p-6 md:p-8 shadow-lg transition-all duration-1000 ease-out ${
-                      animatedElements["element-3"]
+                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-3"]
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-12"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="p-2 bg-purple-600/20 rounded-lg">
-                        <IoBusinessOutline className="text-purple-400 text-xl" />
+                      <div className="p-2 bg-secondary/20 rounded-lg">
+                        <IoBusinessOutline className="text-secondary text-xl" />
                       </div>
                       <h2 className="text-2xl font-bold">Work Experience</h2>
                     </div>
@@ -430,38 +422,37 @@ const Resume = () => {
               <div className={`${isActive("education") ? "block" : "hidden"}`}>
                 <div className="animate-on-scroll" id="element-4">
                   <div
-                    className={`bg-gray-800/70 rounded-xl p-6 md:p-8 shadow-lg transition-all duration-1000 ease-out ${
-                      animatedElements["element-4"]
+                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-4"]
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-12"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="p-2 bg-green-600/20 rounded-lg">
-                        <IoSchoolOutline className="text-green-400 text-xl" />
+                      <div className="p-2 bg-success/20 rounded-lg">
+                        <IoSchoolOutline className="text-success text-xl" />
                       </div>
                       <h2 className="text-2xl font-bold">Education</h2>
                     </div>
 
-                    <div className="bg-gray-700/30 rounded-lg p-5 mb-6 transition-all duration-300 ease-in-out transform hover:shadow-md">
+                    <div className="bg-bg-tertiary rounded-lg p-5 mb-6 transition-all duration-300 ease-in-out transform hover:shadow-md">
                       <div className="md:flex justify-between items-start mb-4">
                         <div>
                           <h3 className="text-xl font-bold">
                             Certificate in Full Stack Web Development
                           </h3>
-                          <p className="text-blue-400">
+                          <p className="text-primary">
                             University of California, Irvine – Division of
                             Continuing Education
                           </p>
                         </div>
-                        <p className="text-gray-400 mt-2 md:mt-0">
+                        <p className="text-text-secondary mt-2 md:mt-0">
                           June 2024 - December 2024
                         </p>
                       </div>
 
-                      <ul className="space-y-2 text-gray-300">
+                      <ul className="space-y-2 text-text-secondary">
                         <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
+                          <span className="text-success mt-1">•</span>
                           <span>
                             Completed intensive coursework in JavaScript,
                             Node.js, React, SQL, MongoDB, and Python focusing on
@@ -469,7 +460,7 @@ const Resume = () => {
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
+                          <span className="text-success mt-1">•</span>
                           <span>
                             Regularly elected by peers to lead project teams
                             across all major and semi-major projects, ensuring
@@ -477,7 +468,7 @@ const Resume = () => {
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
+                          <span className="text-success mt-1">•</span>
                           <span>
                             Led teams through full software development life
                             cycles including planning, development, testing, and
@@ -485,7 +476,7 @@ const Resume = () => {
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
+                          <span className="text-success mt-1">•</span>
                           <span>
                             Developed RESTful APIs, managed databases with
                             Prisma, Sequelize, and Mongoose, and enhanced
@@ -494,7 +485,7 @@ const Resume = () => {
                           </span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <span className="text-green-400 mt-1">•</span>
+                          <span className="text-success mt-1">•</span>
                           <span>
                             Gained practical experience in CI/CD processes,
                             containerization with Docker, and end-to-end testing
@@ -507,7 +498,7 @@ const Resume = () => {
                           href="https://www.parchment.com/u/award/7f4583f379bc1cf88ec2d305dea1ad1c"
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow transform hover:scale-105 hover:shadow-md"
+                          className="btn-primary inline-flex items-center justify-center"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -537,71 +528,70 @@ const Resume = () => {
               >
                 <div className="animate-on-scroll" id="element-5">
                   <div
-                    className={`bg-gray-800/70 rounded-xl p-6 md:p-8 shadow-lg transition-all duration-1000 ease-out ${
-                      animatedElements["element-5"]
+                    className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-5"]
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-12"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="p-2 bg-blue-600/20 rounded-lg">
-                        <FaReact className="text-blue-400 text-xl" />
+                      <div className="p-2 bg-primary/20 rounded-lg">
+                        <FaReact className="text-primary text-xl" />
                       </div>
                       <h2 className="text-2xl font-bold">Career Summary</h2>
                     </div>
 
-                    <p className="text-gray-300 leading-relaxed mb-6">
-                      <b>Full-stack engineer</b> crafting <b>reliable</b>,{" "}
-                      <b>high-performance</b> web and financial systems. Adept
+                    <p className="text-text-secondary leading-relaxed mb-6">
+                      <b className="text-text-primary">Full-stack engineer</b> crafting <b className="text-text-primary">reliable</b>,{" "}
+                      <b className="text-text-primary">high-performance</b> web and financial systems. Adept
                       at steering projects from concept to deployment, I combine
                       strong technical skills with a pragmatic, execution-first
                       mindset developed through years of frontline development
                       experience.
                     </p>
 
-                    <p className="text-gray-300 leading-relaxed mb-6">
-                      My toolkit spans modern <b>JavaScript ecosystems</b> (
-                      <b>React</b>, <b>TypeScript</b>, <b>Node.js</b>), robust
-                      backend architectures (<b>C#.NET</b>, <b>ASP.NET</b>,{" "}
-                      <b>Entity Framework</b>), and dynamic <b>CMS platforms</b>{" "}
-                      (<b>WordPress</b>, <b>Joomla</b>, <b>Shopify</b>). I
-                      specialize in building scalable <b>APIs</b>, integrating{" "}
-                      <b>relational and non-relational databases</b>, and
+                    <p className="text-text-secondary leading-relaxed mb-6">
+                      My toolkit spans modern <b className="text-text-primary">JavaScript ecosystems</b> (
+                      <b className="text-text-primary">React</b>, <b className="text-text-primary">TypeScript</b>, <b className="text-text-primary">Node.js</b>), robust
+                      backend architectures (<b className="text-text-primary">C#.NET</b>, <b className="text-text-primary">ASP.NET</b>,{" "}
+                      <b className="text-text-primary">Entity Framework</b>), and dynamic <b className="text-text-primary">CMS platforms</b>{" "}
+                      (<b className="text-text-primary">WordPress</b>, <b className="text-text-primary">Joomla</b>, <b className="text-text-primary">Shopify</b>). I
+                      specialize in building scalable <b className="text-text-primary">APIs</b>, integrating{" "}
+                      <b className="text-text-primary">relational and non-relational databases</b>, and
                       crafting user-centered frontend experiences with{" "}
-                      <b>Tailwind CSS</b>, <b>MUI</b>, and custom UI libraries.
+                      <b className="text-text-primary">Tailwind CSS</b>, <b className="text-text-primary">MUI</b>, and custom UI libraries.
                     </p>
 
-                    <p className="text-gray-300 leading-relaxed mb-6">
+                    <p className="text-text-secondary leading-relaxed mb-6">
                       Across multiple organizations, I consistently earned{" "}
-                      <b>leadership roles</b>, mentoring{" "}
-                      <b>junior developers</b>, co-leading <b>Agile squads</b>,
-                      and architecting <b>testing workflows</b> that accelerated
-                      delivery without sacrificing quality. At <b>UCI</b>, peers
+                      <b className="text-text-primary">leadership roles</b>, mentoring{" "}
+                      <b className="text-text-primary">junior developers</b>, co-leading <b className="text-text-primary">Agile squads</b>,
+                      and architecting <b className="text-text-primary">testing workflows</b> that accelerated
+                      delivery without sacrificing quality. At <b className="text-text-primary">UCI</b>, peers
                       repeatedly chose me to lead capstone teams, driving
-                      software projects from <b>wireframe</b> to{" "}
-                      <b>live deployment</b> while meeting aggressive deadlines.
+                      software projects from <b className="text-text-primary">wireframe</b> to{" "}
+                      <b className="text-text-primary">live deployment</b> while meeting aggressive deadlines.
                     </p>
 
-                    <p className="text-gray-300 leading-relaxed mb-6">
+                    <p className="text-text-secondary leading-relaxed mb-6">
                       Comfortable in fast-moving environments, I implemented{" "}
-                      <b>Playwright-based testing pipelines</b>, automated{" "}
-                      <b>SEO reporting tools</b>, and containerized deployments
-                      with <b>Docker</b>. My focus remains on measurable
-                      improvements: <b>faster releases</b>,{" "}
-                      <b>cleaner codebases</b>, and{" "}
-                      <b>production-grade reliability</b>.
+                      <b className="text-text-primary">Playwright-based testing pipelines</b>, automated{" "}
+                      <b className="text-text-primary">SEO reporting tools</b>, and containerized deployments
+                      with <b className="text-text-primary">Docker</b>. My focus remains on measurable
+                      improvements: <b className="text-text-primary">faster releases</b>,{" "}
+                      <b className="text-text-primary">cleaner codebases</b>, and{" "}
+                      <b className="text-text-primary">production-grade reliability</b>.
                     </p>
 
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-text-secondary leading-relaxed">
                       Recently, I deepened my backend specialization with{" "}
-                      <b>PostgreSQL optimizations</b>,{" "}
-                      <b>Entity Framework enhancements</b>, and{" "}
-                      <b>C#.NET enterprise systems</b>. Additionally, I leverage{" "}
-                      <b>AI-driven tools</b> like <b>GitHub Copilot</b> and{" "}
-                      <b>LangChain</b> to augment development velocity, and I
-                      design <b>e-commerce experiences</b> via custom{" "}
-                      <b>Shopify Liquid builds</b> and{" "}
-                      <b>Storefront API integrations</b>.
+                      <b className="text-text-primary">PostgreSQL optimizations</b>,{" "}
+                      <b className="text-text-primary">Entity Framework enhancements</b>, and{" "}
+                      <b className="text-text-primary">C#.NET enterprise systems</b>. Additionally, I leverage{" "}
+                      <b className="text-text-primary">AI-driven tools</b> like <b className="text-text-primary">GitHub Copilot</b> and{" "}
+                      <b className="text-text-primary">LangChain</b> to augment development velocity, and I
+                      design <b className="text-text-primary">e-commerce experiences</b> via custom{" "}
+                      <b className="text-text-primary">Shopify Liquid builds</b> and{" "}
+                      <b className="text-text-primary">Storefront API integrations</b>.
                     </p>
                   </div>
                 </div>
@@ -618,18 +608,17 @@ const Resume = () => {
 const FilterButton = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${
-      active
-        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105"
-        : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-    }`}
+    className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${active
+        ? "btn-primary"
+        : "bg-bg-tertiary text-text-secondary hover:bg-bg-elevated hover:text-text-primary"
+      }`}
   >
     {children}
   </button>
 );
 
 const SkillBadge = ({ name, icon }) => (
-  <div className="bg-gray-700/70 px-3 py-1 rounded-full flex items-center gap-2 text-sm transition-all duration-300 hover:bg-gray-600/70 hover:scale-105 cursor-default">
+  <div className="bg-bg-tertiary px-3 py-1 rounded-full flex items-center gap-2 text-sm transition-all duration-300 hover:bg-bg-elevated hover:scale-105 cursor-default text-text-secondary hover:text-text-primary">
     {icon}
     <span>{name}</span>
   </div>
@@ -656,34 +645,33 @@ const JobExperience = ({
 
   return (
     <div
-      className={`border-l-2 border-purple-600/50 pl-5 relative transition-all duration-500 ease-out transform ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      }`}
+      className={`border-l-2 border-secondary/50 pl-5 relative transition-all duration-500 ease-out transform ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+        }`}
     >
-      <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-600"></div>
+      <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-secondary"></div>
       <div className="mb-2">
-        <h3 className="text-xl font-bold">{title}</h3>
+        <h3 className="text-xl font-bold text-text-primary">{title}</h3>
         <div className="flex flex-wrap items-center gap-x-3 text-sm mb-1">
-          <span className="text-purple-400 font-medium">{company}</span>
-          <span className="text-gray-400">{period}</span>
-          {location && <span className="text-gray-400">| {location}</span>}
+          <span className="text-secondary font-medium">{company}</span>
+          <span className="text-text-secondary">{period}</span>
+          {location && <span className="text-text-secondary">| {location}</span>}
         </div>
       </div>
 
-      <p className="text-gray-300 mb-3">{description}</p>
+      <p className="text-text-secondary mb-3">{description}</p>
 
       <ul className="space-y-2">
         {highlights.map((highlight, index) => (
           <li
             key={index}
-            className="flex items-start gap-2 text-gray-300 text-sm transition-all duration-300 ease-out"
+            className="flex items-start gap-2 text-text-secondary text-sm transition-all duration-300 ease-out"
             style={{
               transitionDelay: `${100 + index * 50}ms`,
               opacity: visible ? 1 : 0,
               transform: visible ? "translateX(0)" : "translateX(10px)",
             }}
           >
-            <span className="text-purple-400 mt-1">•</span>
+            <span className="text-secondary mt-1">•</span>
             <span>{highlight}</span>
           </li>
         ))}

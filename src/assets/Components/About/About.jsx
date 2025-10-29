@@ -36,7 +36,9 @@ import {
   SiKubernetes,
   SiGraphql,
   SiJest,
-  SiNextdotjs
+  SiNextdotjs,
+  SiPhp,
+  SiLaravel
 } from "react-icons/si";
 
 const About = () => {
@@ -136,6 +138,14 @@ const About = () => {
                 <span className="badge badge-primary">
                   <FaNodeJs className="mr-1.5" />
                   Node.js
+                </span>
+                <span className="badge badge-primary">
+                  <SiPhp className="mr-1.5" />
+                  PHP
+                </span>
+                <span className="badge badge-primary">
+                  <SiLaravel className="mr-1.5" />
+                  Laravel
                 </span>
                 <span className="badge badge-primary">
                   <SiCsharp className="mr-1.5" />
@@ -309,13 +319,13 @@ const About = () => {
                   icon: <FaServer />,
                   gradient: "from-green-500 to-emerald-400",
                   description: "Architecting robust, scalable server-side applications and APIs.",
-                  details: "I build high-performance backend systems using Node.js and C#/.NET, focusing on clean architecture, security, and scalability. My expertise includes RESTful API design, GraphQL implementation, and microservices architecture.",
+                  details: "I build high-performance backend systems using Node.js, PHP/Laravel, and C#/.NET, focusing on clean architecture, security, and scalability. My expertise includes RESTful API design, GraphQL implementation, and microservices architecture.",
                   projects: [
+                    { name: "Host Guest Platform", tech: ["Laravel", "PHP", "MySQL", "AWS"], description: "Full-stack homestay booking platform with identity verification, payment processing, and real-time messaging" },
                     { name: "Invoice Management API", tech: ["Node.js", "Express", "PostgreSQL"], description: "RESTful API for invoice tracking with authentication and email notifications" },
-                    { name: "Authentication Service", tech: ["C#", ".NET Core", "JWT"], description: "Secure authentication system with role-based access control" },
-                    { name: "GraphQL Gateway", tech: ["Node.js", "GraphQL", "Apollo"], description: "Unified API gateway aggregating multiple microservices" }
+                    { name: "Authentication Service", tech: ["C#", ".NET Core", "JWT"], description: "Secure authentication system with role-based access control" }
                   ],
-                  tools: ["Node.js", "Express", "C#", ".NET Core", "GraphQL", "REST APIs", "Microservices"]
+                  tools: ["Node.js", "Express", "PHP", "Laravel", "C#", ".NET Core", "GraphQL", "REST APIs", "Microservices"]
                 })}
               />
 
@@ -369,13 +379,13 @@ const About = () => {
                   icon: <FaAws />,
                   gradient: "from-orange-500 to-yellow-400",
                   description: "Deploying and managing scalable cloud infrastructure.",
-                  details: "I leverage AWS services to build scalable, resilient applications. My expertise includes containerization with Docker, orchestration with Kubernetes, and serverless architectures for cost-effective solutions.",
+                  details: "I leverage AWS services to build scalable, resilient applications. My expertise includes containerization with Docker, orchestration with Kubernetes, serverless architectures, and AI-powered services like AWS Rekognition and Textract for document verification.",
                   projects: [
+                    { name: "Host Guest Identity Verification", tech: ["AWS Rekognition", "AWS Textract", "PHP"], description: "AI-powered identity verification system using facial recognition and document scanning" },
                     { name: "Microservices Platform", tech: ["AWS", "Docker", "Kubernetes"], description: "Containerized microservices deployed on EKS with auto-scaling" },
-                    { name: "Serverless API", tech: ["AWS Lambda", "API Gateway", "DynamoDB"], description: "Cost-effective serverless backend with pay-per-use pricing" },
-                    { name: "CI/CD Pipeline", tech: ["AWS", "Docker", "GitHub Actions"], description: "Automated deployment pipeline to AWS ECS" }
+                    { name: "Serverless API", tech: ["AWS Lambda", "API Gateway", "DynamoDB"], description: "Cost-effective serverless backend with pay-per-use pricing" }
                   ],
-                  tools: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "Terraform", "CloudFormation"]
+                  tools: ["AWS (EC2, S3, Lambda, RDS, Rekognition, Textract)", "Docker", "Kubernetes", "Terraform", "CloudFormation"]
                 })}
               />
 
@@ -763,90 +773,90 @@ const About = () => {
   );
 };
 
-      // Skill Card Component with Visual Concepts
-      const SkillCard = ({icon, title, gradient, description, concept, skills, animationId, isAnimated, onClick}) => {
+// Skill Card Component with Visual Concepts
+const SkillCard = ({ icon, title, gradient, description, concept, skills, animationId, isAnimated, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-      return (
-      <div
-        className={`animate-on-scroll transition-all duration-1000 ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-        id={animationId}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={onClick}
-      >
-        <div className="group card card-interactive p-6 h-full bg-gradient-to-br from-bg-elevated to-bg-secondary border-2 border-border-primary hover:border-primary/50 transition-all duration-500 cursor-pointer">
+  return (
+    <div
+      className={`animate-on-scroll transition-all duration-1000 ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+      id={animationId}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+    >
+      <div className="group card card-interactive p-6 h-full bg-gradient-to-br from-bg-elevated to-bg-secondary border-2 border-border-primary hover:border-primary/50 transition-all duration-500 cursor-pointer">
 
-          {/* Header with Icon */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className={`p-4 bg-gradient-to-br ${gradient} rounded-2xl text-white text-3xl shadow-lg group-hover:scale-110 group-hover:shadow-glow transition-all duration-500`}>
-              {icon}
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-text-primary group-hover:text-primary transition-colors">
-                {title}
-              </h3>
-              <p className="text-sm text-text-tertiary">{description}</p>
-            </div>
+        {/* Header with Icon */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className={`p-4 bg-gradient-to-br ${gradient} rounded-2xl text-white text-3xl shadow-lg group-hover:scale-110 group-hover:shadow-glow transition-all duration-500`}>
+            {icon}
           </div>
-
-          {/* Concept Label */}
-          <div className="mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-full">
-              <FaPalette className="text-primary text-xs" />
-              <span className="text-xs font-medium text-primary">{concept}</span>
-            </div>
+          <div className="flex-1">
+            <h3 className="text-xl font-bold text-text-primary group-hover:text-primary transition-colors">
+              {title}
+            </h3>
+            <p className="text-sm text-text-tertiary">{description}</p>
           </div>
+        </div>
 
-          {/* Skills List with Progress Bars */}
-          <div className="space-y-4">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="group/skill"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary text-sm group-hover/skill:scale-110 transition-transform">
-                      {skill.icon}
-                    </span>
-                    <span className="text-sm font-medium text-text-secondary group-hover/skill:text-text-primary transition-colors">
-                      {skill.name}
-                    </span>
-                  </div>
-                  <span className="text-xs font-semibold text-text-tertiary">
-                    {skill.level}%
+        {/* Concept Label */}
+        <div className="mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/30 rounded-full">
+            <FaPalette className="text-primary text-xs" />
+            <span className="text-xs font-medium text-primary">{concept}</span>
+          </div>
+        </div>
+
+        {/* Skills List with Progress Bars */}
+        <div className="space-y-4">
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="group/skill"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-primary text-sm group-hover/skill:scale-110 transition-transform">
+                    {skill.icon}
+                  </span>
+                  <span className="text-sm font-medium text-text-secondary group-hover/skill:text-text-primary transition-colors">
+                    {skill.name}
                   </span>
                 </div>
-
-                {/* Animated Progress Bar */}
-                <div className="h-2 bg-bg-tertiary rounded-full overflow-hidden">
-                  <div
-                    className={`h-full bg-gradient-to-r ${gradient} rounded-full transition-all duration-1000 ease-out ${isAnimated && isHovered ? 'opacity-100' : 'opacity-80'
-                      }`}
-                    style={{
-                      width: isAnimated ? `${skill.level}%` : '0%',
-                      transition: `width 1s ease-out ${index * 150}ms`
-                    }}
-                  />
-                </div>
+                <span className="text-xs font-semibold text-text-tertiary">
+                  {skill.level}%
+                </span>
               </div>
-            ))}
-          </div>
 
-          {/* Hover Effect - Show More Info */}
-          <div className={`mt-6 pt-6 border-t border-border-primary transition-all duration-300 ${isHovered ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0 overflow-hidden'
-            }`}>
-            <p className="text-xs text-text-tertiary italic flex items-center justify-center gap-2">
-              <FaArrowRight className="text-primary" />
-              Click to view projects and details
-            </p>
-          </div>
-
+              {/* Animated Progress Bar */}
+              <div className="h-2 bg-bg-tertiary rounded-full overflow-hidden">
+                <div
+                  className={`h-full bg-gradient-to-r ${gradient} rounded-full transition-all duration-1000 ease-out ${isAnimated && isHovered ? 'opacity-100' : 'opacity-80'
+                    }`}
+                  style={{
+                    width: isAnimated ? `${skill.level}%` : '0%',
+                    transition: `width 1s ease-out ${index * 150}ms`
+                  }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Hover Effect - Show More Info */}
+        <div className={`mt-6 pt-6 border-t border-border-primary transition-all duration-300 ${isHovered ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0 overflow-hidden'
+          }`}>
+          <p className="text-xs text-text-tertiary italic flex items-center justify-center gap-2">
+            <FaArrowRight className="text-primary" />
+            Click to view projects and details
+          </p>
+        </div>
+
       </div>
-      );
+    </div>
+  );
 };
 
-      export default About;
+export default About;

@@ -25,11 +25,11 @@ export const techCategories = [
         { name: "NodeJS", icon: "FaNodeJs", color: "#339933" },
         { name: "NestJS", icon: "SiNestjs", color: "#E0234E" },
         { name: "ExpressJS", icon: "SiExpress", color: "#000000" },
+        { name: "Laravel", icon: "SiLaravel", color: "#FF2D20" },
+        { name: "PHP", icon: "FaPhp", color: "#777BB4" },
         { name: "C#", icon: "SiCsharp", color: "#239120" },
         { name: "ASP.NET", icon: "SiDotnet", color: "#512BD4" },
         { name: "Python", icon: "SiPython", color: "#306998" },
-        { name: "GraphQL", icon: "SiGraphql", color: "#E10098" },
-        { name: "Apollo", icon: "SiApollographql", color: "#311C87" },
       ],
     },
     {
@@ -38,6 +38,7 @@ export const techCategories = [
       technologies: [
         { name: "MongoDB", icon: "SiMongodb", color: "#47A248" },
         { name: "PostgreSQL", icon: "DiPostgresql", color: "#336791" },
+        { name: "MySQL", icon: "SiMysql", color: "#4479A1" },
         { name: "Redis", icon: "DiRedis", color: "#FF4438" },
         { name: "Sequelize", icon: "SiSequelize", color: "#52B0E7" },
         { name: "Prisma", icon: "SiPrisma", color: "#2D3748" },

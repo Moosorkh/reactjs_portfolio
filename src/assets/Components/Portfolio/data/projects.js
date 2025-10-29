@@ -8,6 +8,20 @@ import ETA from "../../../../assets/ETA.png";
 
 export const projects = [
   {
+    id: "host-guest-platform",
+    title: "Host Guest - Homestay Booking Platform",
+    description: "A comprehensive full-stack homestay booking platform built with Laravel and PHP, featuring AI-powered identity verification using AWS Rekognition and Textract, integrated payment processing (PayPal, Authorize.Net), real-time messaging, Google Maps integration, and Firebase authentication. Implements modern Laravel ecosystem tools including Livewire for reactive components, Sanctum for API security, and Horizon for queue management.",
+    image: "https://test.hostguest.net/assets/images/outdoors.jpg",
+    featured: true,
+    tags: ["Laravel", "PHP", "MySQL", "AWS", "Rekognition", "Textract", "Tailwind CSS", "Vite", "Firebase", "PayPal"],
+    links: {
+      github: "https://github.com/Host-Guest/web_app",
+      liveDemo: "https://test.hostguest.net/",
+    },
+    color: "purple",
+    badge: "Enterprise",
+  },
+  {
     id: "mary-karimzadeh-portfolio",
     title: "Mary's Sweet Creations.",
     description: "A fully responsive portfolio website for a professional pastry chef, featuring a custom image carousel with swipe functionality, LinkedIn-style profile modal, and smooth animations. Built with React, Material UI, and TypeScript, showcasing pastry creations with an elegant UI/UX design.",
@@ -87,15 +101,15 @@ export const projects = [
     id: "exercise-tracking-api",
     title: "ETA - Exercise Tracking API",
     description: "A comprehensive backend API built with NestJS and PostgreSQL for tracking exercises with social features. Users can create, save, favorite, and rate exercises. Features include JWT authentication, Prisma ORM integration, and complete Swagger documentation. The API implements modern design patterns and robust error handling.",
-    image: ETA, 
+    image: ETA,
     tags: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Docker", "Swagger", "JWT"],
     links: {
       github: "https://github.com/Moosorkh/prehab-api",
-      liveDemo: "https://social-media-api-production-5c29.up.railway.app/api", 
+      liveDemo: "https://social-media-api-production-5c29.up.railway.app/api",
     },
     color: "blue",
-    icon: "SiNestjs", 
-    iconColor: "#E0234E", 
+    icon: "SiNestjs",
+    iconColor: "#E0234E",
   }
 ];
 

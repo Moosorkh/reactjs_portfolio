@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaReact, FaNodeJs } from "react-icons/fa";
-import { SiCsharp, SiTypescript, SiTailwindcss } from "react-icons/si";
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
+import { SiCsharp, SiTypescript, SiTailwindcss, SiLaravel } from "react-icons/si";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ const Footer = () => {
             </h3>
             <p className="text-text-secondary mb-6 leading-relaxed">
               Full-stack developer specializing in creating modern, responsive web applications
-              with React, TypeScript, C#, and other cutting-edge technologies.
+              with React, Node.js, Laravel, TypeScript, C#, and other cutting-edge technologies.
             </p>
             <div className="flex gap-4">
               <SocialLink href="https://github.com/Moosorkh" icon={<FaGithub size={18} />} label="GitHub" />
@@ -52,8 +52,9 @@ const Footer = () => {
               <SkillBadge icon={<FaReact />} name="React" />
               <SkillBadge icon={<SiTypescript />} name="TypeScript" />
               <SkillBadge icon={<FaNodeJs />} name="Node.js" />
+              <SkillBadge icon={<SiLaravel />} name="Laravel" />
+              <SkillBadge icon={<FaPhp />} name="PHP" />
               <SkillBadge icon={<SiCsharp />} name="C#" />
-              <SkillBadge icon={<FaCode />} name="ASP.NET" />
               <SkillBadge icon={<SiTailwindcss />} name="TailwindCSS" />
             </div>
           </div>

@@ -1,19 +1,20 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const TextChange = ({ typingSpeed = 70, pauseTime = 2000, cursorBlinkSpeed = 400, fadeDuration = 1000 }) => {
-  const texts = [
+  // Move texts outside component or memoize to prevent recreation
+  const textsRef = useRef([
     "Hi there!",
     "Welcome to my portfolio!",
-    "I'm a Software Developer",
-    "Specializing in Full Stack Development",
-    "Building modern web applications"
-  ];
+    "I'm a Full-Stack Developer",
+    "Specializing in Modern Web Development",
+    "Building scalable applications with React, Laravel & Cloud"
+  ]);
 
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cursorVisible, setCursorVisible] = useState(true);
   const [opacity, setOpacity] = useState(1);
-  const isTypingRef = useRef(false);
+  const timeoutsRef = useRef([]);
 
   // Cursor blinking effect
   useEffect(() => {
@@ -23,51 +24,62 @@ const TextChange = ({ typingSpeed = 70, pauseTime = 2000, cursorBlinkSpeed = 400
     return () => clearInterval(cursorInterval);
   }, [cursorBlinkSpeed]);
 
-  const handleTypingEffect = useCallback(() => {
-    if (isTypingRef.current) return;
-    isTypingRef.current = true;
-
+  // Typing effect with proper cleanup
+  useEffect(() => {
+    const texts = textsRef.current;
     const currentText = texts[currentIndex];
+    let charIndex = 0;
 
-    // Typing Effect
-    const typeText = (charIndex = 0) => {
+    // Clear all pending timeouts
+    const clearTimeouts = () => {
+      timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+      timeoutsRef.current = [];
+    };
+
+    // Typing function
+    const typeNextChar = () => {
       if (charIndex <= currentText.length) {
         setDisplayText(currentText.substring(0, charIndex));
-        setTimeout(() => typeText(charIndex + 1), typingSpeed);
+        charIndex++;
+        const timeout = setTimeout(typeNextChar, typingSpeed);
+        timeoutsRef.current.push(timeout);
       } else {
-        setTimeout(() => fadeText(), pauseTime);
+        // Pause before fading
+        const timeout = setTimeout(startFade, pauseTime);
+        timeoutsRef.current.push(timeout);
       }
     };
 
-    // Fade Effect
-    const fadeText = () => {
+    // Fade out and move to next text
+    const startFade = () => {
       setOpacity(0);
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setDisplayText("");
         setOpacity(1);
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        isTypingRef.current = false;
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
       }, fadeDuration);
+      timeoutsRef.current.push(timeout);
     };
 
-    typeText();
-  }, [currentIndex, texts, typingSpeed, pauseTime, fadeDuration]);
+    typeNextChar();
 
-  useEffect(() => {
-    handleTypingEffect();
-  }, [currentIndex, handleTypingEffect]);
+    // Cleanup function
+    return () => {
+      clearTimeouts();
+    };
+  }, [currentIndex, typingSpeed, pauseTime, fadeDuration]);
 
   return (
     <div className="min-h-[7rem] md:min-h-[9rem] flex items-center">
       <div className="relative">
         <span
-          className="text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold transition-opacity duration-700"
+          className="text-3xl md:text-4xl gradient-text font-bold transition-opacity duration-700"
           style={{ opacity }}
         >
           {displayText}
         </span>
         <span
-          className={`inline-block w-2 h-8 md:h-9 ml-1 bg-blue-400 ${cursorVisible ? 'opacity-100' : 'opacity-0'} transition-opacity`}
+          className={`inline-block w-2 h-8 md:h-9 ml-1 bg-primary ${cursorVisible ? 'opacity-100' : 'opacity-0'} transition-opacity`}
           style={{ verticalAlign: 'middle' }}
         ></span>
       </div>

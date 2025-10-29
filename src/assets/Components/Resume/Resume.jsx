@@ -30,6 +30,9 @@ import {
   SiPrisma,
   SiFirebase,
   SiCypress,
+  SiPhp,
+  SiLaravel,
+  SiMysql,
 } from "react-icons/si";
 
 const Resume = () => {
@@ -84,8 +87,11 @@ const Resume = () => {
       "Express.js": <SiExpress className="text-white" />,
       "C#": <SiCsharp className="text-[#239120]" />,
       "ASP.NET": <SiDotnet className="text-[#512BD4]" />,
+      PHP: <SiPhp className="text-[#777BB4]" />,
+      Laravel: <SiLaravel className="text-[#FF2D20]" />,
       MongoDB: <SiMongodb className="text-[#47A248]" />,
       PostgreSQL: <SiPostgresql className="text-[#336791]" />,
+      MySQL: <SiMysql className="text-[#4479A1]" />,
       TailwindCSS: <SiTailwindcss className="text-[#06B6D4]" />,
       MUI: <SiMui className="text-[#007FFF]" />,
       Bootstrap: <FaBootstrap className="text-[#7952B3]" />,
@@ -120,8 +126,8 @@ const Resume = () => {
         <div className="animate-on-scroll" id="element-0">
           <div
             className={`text-center mb-10 transition-all duration-1000 ease-out ${animatedElements["element-0"]
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
               }`}
           >
             <h1 className="text-3xl md:text-5xl font-bold mb-4 gradient-text">
@@ -146,8 +152,8 @@ const Resume = () => {
         <div className="animate-on-scroll" id="element-1">
           <div
             className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-1000 ease-out ${animatedElements["element-1"]
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
               }`}
           >
             <FilterButton
@@ -185,19 +191,19 @@ const Resume = () => {
           {/* Technical Skills */}
           <div
             className={`${activeSection === "skills"
-                ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
-                : activeSection === "experience" ||
-                  activeSection === "education"
-                  ? "hidden md:hidden"
-                  : "md:col-span-3 lg:col-span-1"
+              ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
+              : activeSection === "experience" ||
+                activeSection === "education"
+                ? "hidden md:hidden"
+                : "md:col-span-3 lg:col-span-1"
               } transition-all duration-500 ease-in-out ${isActive("skills") || activeSection === "all" ? "block" : "hidden"
               }`}
           >
             <div className="animate-on-scroll" id="element-2">
               <div
                 className={`card p-6 md:p-8 h-full transition-all duration-1000 ease-out ${animatedElements["element-2"]
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
                   }`}
               >
                 <div className="flex items-center gap-3 mb-6">
@@ -253,6 +259,14 @@ const Resume = () => {
                         name="Express.js"
                         icon={renderSkillIcon("Express.js")}
                       />
+                      <SkillBadge
+                        name="PHP"
+                        icon={renderSkillIcon("PHP")}
+                      />
+                      <SkillBadge
+                        name="Laravel"
+                        icon={renderSkillIcon("Laravel")}
+                      />
                       <SkillBadge name="C#" icon={renderSkillIcon("C#")} />
                       <SkillBadge
                         name="ASP.NET"
@@ -278,6 +292,10 @@ const Resume = () => {
                       <SkillBadge
                         name="PostgreSQL"
                         icon={renderSkillIcon("PostgreSQL")}
+                      />
+                      <SkillBadge
+                        name="MySQL"
+                        icon={renderSkillIcon("MySQL")}
                       />
                       <SkillBadge
                         name="Sequelize"
@@ -324,11 +342,11 @@ const Resume = () => {
           {/* Work Experience & Education */}
           <div
             className={`${activeSection === "skills"
-                ? "hidden md:hidden"
-                : activeSection === "experience" ||
-                  activeSection === "education"
-                  ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
-                  : "md:col-span-3 lg:col-span-2"
+              ? "hidden md:hidden"
+              : activeSection === "experience" ||
+                activeSection === "education"
+                ? "md:col-span-3 lg:col-span-3 md:mx-auto md:max-w-3xl"
+                : "md:col-span-3 lg:col-span-2"
               } transition-all duration-500 ease-in-out`}
           >
             <div className="space-y-8">
@@ -337,8 +355,8 @@ const Resume = () => {
                 <div className="animate-on-scroll" id="element-3">
                   <div
                     className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-3"]
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-12"
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-12"
                       }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -349,11 +367,31 @@ const Resume = () => {
                     </div>
 
                     <div className="space-y-8">
+
+                      {/* Host Guest Project */}
+                      <JobExperience
+                        title="Full-Stack Developer - Host Guest Platform"
+                        company="Professional Project"
+                        period="06/2025 - Present"
+                        location="Remote"
+                        description="Developed a comprehensive homestay booking platform using Laravel and PHP, featuring advanced AI-powered identity verification and payment processing systems."
+                        highlights={[
+                          "Built full-stack application with Laravel, PHP, and MySQL handling booking workflows and user management",
+                          "Integrated AWS Rekognition for facial recognition and AWS Textract for document verification",
+                          "Implemented secure payment processing with PayPal and Authorize.Net APIs",
+                          "Developed real-time messaging system using Laravel Echo and Pusher",
+                          "Integrated Google Maps API for location-based services and property visualization",
+                          "Utilized Laravel ecosystem: Livewire for reactive components, Sanctum for API authentication, Horizon for queue management",
+                          "Deployed AWS services (S3 for storage, SES for email notifications) with optimized infrastructure",
+                        ]}
+                        delay={0}
+                      />
+
                       {/* Job 1 */}
                       <JobExperience
                         title="Full-Stack Developer"
                         company="TTP"
-                        period="09/2024 - Present"
+                        period="09/2024 - 05/2025"
                         location="Rancho Santa Margarita, CA"
                         description="Spearheaded the rapid clearance of development backlog, addressing all outstanding issues within the first month of tenure."
                         highlights={[
@@ -363,7 +401,7 @@ const Resume = () => {
                           "Led UI improvements utilizing MUI, Tailwind CSS, and ReactJS",
                           "Contributed to backend development with C#, Entity Framework, and PostgreSQL",
                         ]}
-                        delay={0}
+                        delay={1}
                       />
 
                       {/* Megasys Updated */}
@@ -379,7 +417,7 @@ const Resume = () => {
                           "Developed and implemented a UI testing framework using Playwright, improving test coverage and efficiency by 40%.",
                           "Participated actively in Agile development cycles, code reviews, and Git-based source control workflows.",
                         ]}
-                        delay={1}
+                        delay={2}
                       />
 
                       {/* AdIQ Updated */}
@@ -396,7 +434,7 @@ const Resume = () => {
                           "Integrated SQL databases with WordPress for dynamic content delivery and client-friendly content management.",
                           "Recognized as the top performer in the technical team for three consecutive semi-annual evaluations.",
                         ]}
-                        delay={2}
+                        delay={3}
                       />
 
                       {/* Job 4 */}
@@ -411,7 +449,7 @@ const Resume = () => {
                           "Assisted in deployment and management of network solutions",
                           "Contributed to robust and efficient IT infrastructure",
                         ]}
-                        delay={3}
+                        delay={4}
                       />
                     </div>
                   </div>
@@ -423,8 +461,8 @@ const Resume = () => {
                 <div className="animate-on-scroll" id="element-4">
                   <div
                     className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-4"]
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-12"
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-12"
                       }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -529,8 +567,8 @@ const Resume = () => {
                 <div className="animate-on-scroll" id="element-5">
                   <div
                     className={`card p-6 md:p-8 transition-all duration-1000 ease-out ${animatedElements["element-5"]
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-12"
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-12"
                       }`}
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -609,8 +647,8 @@ const FilterButton = ({ active, onClick, children }) => (
   <button
     onClick={onClick}
     className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${active
-        ? "btn-primary"
-        : "bg-bg-tertiary text-text-secondary hover:bg-bg-elevated hover:text-text-primary"
+      ? "btn-primary"
+      : "bg-bg-tertiary text-text-secondary hover:bg-bg-elevated hover:text-text-primary"
       }`}
   >
     {children}

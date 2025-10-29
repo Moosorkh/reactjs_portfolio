@@ -38,7 +38,8 @@ import {
   SiJest,
   SiNextdotjs,
   SiPhp,
-  SiLaravel
+  SiLaravel,
+  SiMysql
 } from "react-icons/si";
 
 const About = () => {
@@ -104,9 +105,6 @@ const About = () => {
             <div className={`transition-all duration-1000 ease-out ${animatedElements['element-0'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
               {/* Animated greeting */}
               <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary mb-4 animate-pulse">
-                  👋 Available for hire
-                </span>
                 <TextChange />
               </div>
 
@@ -338,9 +336,9 @@ const About = () => {
                 concept="Data Architecture & Performance"
                 skills={[
                   { name: "PostgreSQL", icon: <SiPostgresql />, level: 87 },
+                  { name: "MySQL", icon: <SiMysql />, level: 88 },
                   { name: "MongoDB", icon: <SiMongodb />, level: 83 },
-                  { name: "Redis Cache", icon: <SiRedis />, level: 78 },
-                  { name: "Entity Framework", icon: <SiDotnet />, level: 85 }
+                  { name: "Redis Cache", icon: <SiRedis />, level: 78 }
                 ]}
                 animationId="element-11"
                 isAnimated={animatedElements['element-11']}
@@ -576,6 +574,10 @@ const About = () => {
                     Recent Projects
                   </h4>
                   <ul className="space-y-3 text-text-secondary">
+                    <li className="flex items-start gap-3 group cursor-default">
+                      <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
+                      <span className="group-hover:text-text-primary transition-colors">Host Guest Platform with AI identity verification (Laravel, PHP, AWS)</span>
+                    </li>
                     <li className="flex items-start gap-3 group cursor-default">
                       <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
                       <span className="group-hover:text-text-primary transition-colors">Mobile-responsive map search with React & Leaflet</span>

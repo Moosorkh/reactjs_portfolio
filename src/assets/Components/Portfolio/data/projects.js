@@ -55,7 +55,7 @@ export const projects = [
     tags: ["React", "TypeScript", "Material UI", "Vite"],
     links: {
       github: "https://github.com/Moosorkh/adoptpaws-react.git",
-      liveDemo: "https://adoptpaws-react.vercel.app/",
+      liveDemo: "https://adoptpaws.up.railway.app/",
     },
     color: "blue",
   },

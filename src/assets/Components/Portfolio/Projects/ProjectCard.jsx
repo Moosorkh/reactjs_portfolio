@@ -1,8 +1,6 @@
-import React from "react";
 import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
-import * as FaIcons from "react-icons/fa";
-import * as SiIcons from "react-icons/si";
 import ProjectTags from "./ProjectTags";
+import { getIconComponent } from "../../icons/iconRegistry";
 
 const ProjectCard = ({ 
   project, 
@@ -28,14 +26,8 @@ const ProjectCard = ({
 
   // Render dynamic icon
   const renderIcon = () => {
-    if (icon?.startsWith("Fa")) {
-      const IconComponent = FaIcons[icon];
-      return <IconComponent color={iconColor} size={40} />;
-    } else if (icon?.startsWith("Si")) {
-      const IconComponent = SiIcons[icon];
-      return <IconComponent color={iconColor} size={40} />;
-    }
-    return null;
+    const IconComponent = getIconComponent(icon);
+    return IconComponent ? <IconComponent color={iconColor} size={40} /> : null;
   };
 
   // Get color-specific classes based on the color prop

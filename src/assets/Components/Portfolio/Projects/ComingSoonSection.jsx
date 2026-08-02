@@ -1,7 +1,5 @@
-import React from "react";
 import { comingSoonInfo } from "../data/projects";
-import * as FaIcons from "react-icons/fa";
-import * as SiIcons from "react-icons/si";
+import { getIconComponent } from "../../icons/iconRegistry";
 
 const ComingSoonSection = ({ 
   registerRef, 
@@ -12,15 +10,9 @@ const ComingSoonSection = ({
   // Function to render dynamic icons
   const renderIcon = (iconData) => {
     const { icon, color } = iconData;
-    
-    if (icon.startsWith("Fa")) {
-      const IconComponent = FaIcons[icon];
-      return <IconComponent color={color} size={40} />;
-    } else if (icon.startsWith("Si")) {
-      const IconComponent = SiIcons[icon];
-      return <IconComponent color={color} size={40} />;
-    }
-    return null;
+    const IconComponent = getIconComponent(icon);
+
+    return IconComponent ? <IconComponent color={color} size={40} /> : null;
   };
 
   return (

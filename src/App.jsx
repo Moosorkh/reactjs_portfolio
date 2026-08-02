@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,14 +7,15 @@ import {
 } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group"; // Import transition components
 import { ThemeProvider } from "./context/ThemeContext";
-import About from "./assets/Components/About/About";
-import Portfolio from "./assets/Components/Portfolio";
-import Contact from "./assets/Components/Contact/Contact";
-import NotFound from "./assets/Components/NotFound/NotFound";
 import Navbar from "./assets/Components/Navbar/Navbar";
-import Resume from "./assets/Components/Resume/Resume";
 import Footer from "./assets/Components/Footer/Footer";
 import "./assets/Components/transition.css";
+
+const About = lazy(() => import("./assets/Components/About/About"));
+const Portfolio = lazy(() => import("./assets/Components/Portfolio"));
+const Contact = lazy(() => import("./assets/Components/Contact/Contact"));
+const NotFound = lazy(() => import("./assets/Components/NotFound/NotFound"));
+const Resume = lazy(() => import("./assets/Components/Resume/Resume"));
 
 // ScrollToTop component to reset scroll position on route change
 const ScrollToTop = () => {
@@ -32,17 +33,19 @@ const AnimatedRoutes = () => {
   const location = useLocation(); // useLocation should be called inside Router
 
   return (
-    <TransitionGroup>
-      <CSSTransition key={location.key} classNames="fade" timeout={300}>
-        <Routes location={location}>
-          <Route path="/" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </CSSTransition>
-    </TransitionGroup>
+    <Suspense fallback={<div className="min-h-[60vh]" />}>
+      <TransitionGroup>
+        <CSSTransition key={location.key} classNames="fade" timeout={300}>
+          <Routes location={location}>
+            <Route path="/" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CSSTransition>
+      </TransitionGroup>
+    </Suspense>
   );
 };
 

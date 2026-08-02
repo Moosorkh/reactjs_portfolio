@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const navItems = [
-  { label: "About Me", to: "/" },
+  { label: "Home", to: "/" },
   { label: "Portfolio", to: "/portfolio" },
   { label: "Resume", to: "/resume" },
   { label: "Contact", to: "/contact" },
@@ -10,7 +10,6 @@ const navItems = [
 
 const Navbar = () => {
   const location = useLocation();
-  const onHome = location.pathname === "/";
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--line)] bg-[rgba(10,9,8,0.76)] backdrop-blur-2xl">

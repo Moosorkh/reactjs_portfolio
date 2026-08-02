@@ -1,103 +1,10 @@
 import { Link } from "react-router-dom";
 import avatar from "../../7358602-removebg-preview.png";
-import WeatherDashboardImage from "../../weatherdashboard.png";
-import MapListToggleImage from "../../MapListToggleImage.png";
-import invoiceTrackerImage from "../../invoiceTracker.png";
-import sweetCreations from "../../sweetCreations.png";
-
-const featuredProjects = [
-  {
-    id: "host-guest",
-    title: "Host Guest - Homestay Booking Platform",
-    blurb:
-      "Laravel booking platform with AI identity verification, payments, and real-time messaging.",
-    image: "https://test.hostguest.net/assets/images/outdoors.jpg",
-    tags: ["Laravel", "PHP", "AWS", "Firebase"],
-  },
-  {
-    id: "weather-dashboard",
-    title: "Weather Dashboard",
-    blurb:
-      "Weather experience with history, forecasts, and a responsive dark UI.",
-    image: WeatherDashboardImage,
-    tags: ["React", "TypeScript", "NestJS", "PostgreSQL"],
-  },
-  {
-    id: "map-search",
-    title: "Mobile-responsive Map Search",
-    blurb:
-      "Map and list toggle with filtering and mobile-first interactions.",
-    image: MapListToggleImage,
-    tags: ["React", "Leaflet", "JavaScript"],
-  },
-  {
-    id: "invoice-tracker",
-    title: "Invoice Tracker",
-    blurb:
-      "PERN stack invoice CRUD app with auth, PDF export, and deployment.",
-    image: invoiceTrackerImage,
-    tags: ["React", "Prisma", "PostgreSQL", "Docker"],
-  },
-  {
-    id: "sweet-creations",
-    title: "Mary's Sweet Creations",
-    blurb:
-      "Elegant pastry portfolio with swipeable carousel and polished media flow.",
-    image: sweetCreations,
-    tags: ["React", "MUI", "Responsive Design"],
-  },
-];
 
 const stats = [
   { label: "experience", value: "8+ years" },
   { label: "shipped", value: "15+ projects" },
   { label: "focus", value: "web platforms" },
-];
-
-const stackColumns = [
-  {
-    title: "Frontend",
-    items: ["React", "TypeScript", "Tailwind CSS", "Material UI", "Next.js"],
-  },
-  {
-    title: "Backend",
-    items: ["Node.js", "NestJS", "Laravel / PHP", "C# / ASP.NET", "REST APIs"],
-  },
-  {
-    title: "Data",
-    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Prisma"],
-  },
-  {
-    title: "Infra",
-    items: ["AWS", "Docker", "GitHub Actions", "Vercel", "Railway"],
-  },
-];
-
-const experience = [
-  {
-    year: "2025 - now",
-    title: "Full-Stack Developer · Host Guest",
-    description:
-      "Built the booking platform end to end with AI verification, payments, and messaging.",
-  },
-  {
-    year: "2024 - 2025",
-    title: "Full-Stack Developer · TTP",
-    description:
-      "Shipped map search, authentication, and interactive reservation workflows.",
-  },
-  {
-    year: "2020 - 2024",
-    title: "Full-Stack Developer / DevOps · Megasys",
-    description:
-      "Worked on financial apps in C#/.NET and introduced testing workflows and delivery improvements.",
-  },
-  {
-    year: "2016 - 2019",
-    title: "Web Developer / SEO · AdIQ",
-    description:
-      "Built SEO-focused websites and automation tooling, improving search performance and output.",
-  },
 ];
 
 const About = () => {
@@ -163,57 +70,11 @@ const About = () => {
           </div>
         </section>
 
-        <section id="work" className="section">
-          <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4">
-            <h2 className="editor-title">Selected work</h2>
-            <span className="mono text-[12px] tracking-[0.14em] text-[var(--muted)]">
-              01 / PROJECTS
-            </span>
-          </div>
-          <div className="grid gap-8">
-            {featuredProjects.map((project, index) => (
-              <article
-                key={project.id}
-                className="grid gap-6 border-b border-[var(--line)] pb-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center"
-              >
-                <div className="overflow-hidden border border-[var(--line)] bg-[var(--surface)]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
-                  />
-                </div>
-                <div>
-                  <div className="mono mb-3 text-[11px] tracking-[0.14em] text-[var(--accent)]">
-                    0{index + 1}
-                  </div>
-                  <h3 className="display mb-4 text-[clamp(28px,3.4vw,44px)] font-bold leading-[1.05]">
-                    {project.title}
-                  </h3>
-                  <p className="mb-5 max-w-xl text-[16px] leading-[1.6] text-[var(--muted)]">
-                    {project.blurb}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="mono rounded-full border border-[var(--line)] px-3 py-1 text-[11px] text-[var(--text)]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section id="about" className="section">
           <div className="mb-10 flex flex-wrap items-baseline justify-between gap-4">
-            <h2 className="editor-title">About</h2>
+            <h2 className="editor-title">About Me</h2>
             <span className="mono text-[12px] tracking-[0.14em] text-[var(--muted)]">
-              02 / PROFILE
+              01 / PROFILE
             </span>
           </div>
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
@@ -236,95 +97,68 @@ const About = () => {
                 and prefer architectures that stay maintainable once the first
                 version ships.
               </p>
+              <p className="max-w-3xl text-[16.5px] leading-[1.75] text-[var(--muted)]">
+                I care less about novelty for its own sake and more about
+                reliable systems, sharp UX, and delivery that survives real
+                production use.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-3">
+                <Link
+                  to="/portfolio"
+                  className="surface inline-flex items-center px-5 py-3 mono text-[12px] uppercase tracking-[0.14em] text-[var(--text)] transition-colors hover:border-[var(--accent)]"
+                >
+                  View Portfolio
+                </Link>
+                <Link
+                  to="/resume"
+                  className="inline-flex items-center border-b border-[var(--accent)] pb-1 mono text-[12px] uppercase tracking-[0.14em] text-[var(--text)]"
+                >
+                  Read Resume
+                </Link>
+              </div>
             </div>
           </div>
         </section>
-
-        <section id="stack" className="section">
-          <div className="mb-10 flex flex-wrap items-baseline justify-between gap-4">
-            <h2 className="editor-title">Stack</h2>
+        <section className="section pb-24">
+          <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4">
+            <h2 className="editor-title">Next</h2>
             <span className="mono text-[12px] tracking-[0.14em] text-[var(--muted)]">
-              03 / TOOLBOX
+              02 / ROUTES
             </span>
           </div>
-          <div className="grid border-t border-[var(--line)] lg:grid-cols-4">
-            {stackColumns.map((column, index) => (
-              <div
-                key={column.title}
-                className={`border-[var(--line)] py-6 ${
-                  index < stackColumns.length - 1 ? "lg:border-r" : ""
-                } ${index > 0 ? "border-t lg:border-t-0" : ""} ${
-                  index === 0 ? "pr-6" : "px-6"
-                } ${index === stackColumns.length - 1 ? "pl-6 pr-0" : ""}`}
-              >
-                <div className="mono mb-5 text-[11.5px] tracking-[0.14em] text-[var(--accent)]">
-                  {column.title.toUpperCase()}
-                </div>
-                <div className="grid gap-2 text-[15px] text-[var(--muted)]">
-                  {column.items.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            <Link
+              to="/portfolio"
+              className="surface block p-6 transition-colors hover:border-[var(--accent)]"
+            >
+              <div className="mono mb-3 text-[11px] tracking-[0.14em] text-[var(--accent)]">
+                Portfolio
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="path" className="section">
-          <div className="mb-10 flex flex-wrap items-baseline justify-between gap-4">
-            <h2 className="editor-title">Path</h2>
-            <span className="mono text-[12px] tracking-[0.14em] text-[var(--muted)]">
-              04 / EXPERIENCE
-            </span>
-          </div>
-          <div>
-            {experience.map((job) => (
-              <article
-                key={job.year}
-                className="grid gap-4 border-t border-[var(--line)] py-7 lg:grid-cols-[150px_1fr]"
-              >
-                <div className="mono text-[12px] text-[var(--accent)]">
-                  {job.year}
-                </div>
-                <div>
-                  <h3 className="display mb-1 text-[19px] font-semibold">
-                    {job.title}
-                  </h3>
-                  <p className="max-w-3xl text-[15.5px] leading-[1.65] text-[var(--muted)]">
-                    {job.description}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="contact" className="section pb-24">
-          <div className="mono mb-7 text-[12px] tracking-[0.14em] text-[var(--muted)]">
-            05 / CONTACT
-          </div>
-          <h2 className="display mb-8 max-w-[13ch] text-[clamp(42px,8vw,116px)] font-bold leading-[0.94] tracking-[-0.03em]">
-            Let&apos;s build something<span className="text-[var(--accent)]">.</span>
-          </h2>
-          <p className="mb-10 max-w-[30rem] text-[18px] leading-[1.65] text-[var(--muted)]">
-            Open to full-stack roles and collaborations. Email is the fastest
-            way to reach me.
-          </p>
-          <a
-            href="mailto:Moosorkh@Gmail.com"
-            className="display inline-block border-b border-[var(--accent)] pb-2 text-[clamp(24px,3.6vw,50px)] font-bold tracking-[-0.02em]"
-          >
-            Moosorkh@Gmail.com
-          </a>
-          <div className="mono mt-12 flex flex-wrap gap-6 text-[12.5px]">
-            <a className="text-[var(--muted)]" href="https://github.com/Moosorkh" target="_blank" rel="noreferrer">
-              GitHub ↗
-            </a>
-            <a className="text-[var(--muted)]" href="https://www.linkedin.com/in/irdmousa/" target="_blank" rel="noreferrer">
-              LinkedIn ↗
-            </a>
-            <Link className="text-[var(--muted)]" to="/resume">
-              Résumé ↓
+              <p className="text-[15px] leading-[1.6] text-[var(--muted)]">
+                Featured projects, shipped work, and technical case studies.
+              </p>
+            </Link>
+            <Link
+              to="/resume"
+              className="surface block p-6 transition-colors hover:border-[var(--accent)]"
+            >
+              <div className="mono mb-3 text-[11px] tracking-[0.14em] text-[var(--accent)]">
+                Resume
+              </div>
+              <p className="text-[15px] leading-[1.6] text-[var(--muted)]">
+                Experience, stack depth, and work history in one place.
+              </p>
+            </Link>
+            <Link
+              to="/contact"
+              className="surface block p-6 transition-colors hover:border-[var(--accent)]"
+            >
+              <div className="mono mb-3 text-[11px] tracking-[0.14em] text-[var(--accent)]">
+                Contact
+              </div>
+              <p className="text-[15px] leading-[1.6] text-[var(--muted)]">
+                Reach out directly for roles, consulting, or collaboration.
+              </p>
             </Link>
           </div>
         </section>

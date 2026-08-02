@@ -21,14 +21,14 @@ const Navbar = () => {
           mehdi<span className="text-[var(--accent)]">.</span>azar
         </Link>
 
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="flex items-center gap-3 sm:gap-5 lg:gap-7">
           {navItems.map((item) => {
             const active = location.pathname === item.to;
             return (
               <Link
                 key={item.label}
                 to={item.to}
-                className={`mono text-[12px] uppercase tracking-[0.14em] transition-colors ${
+                className={`mono text-[10px] uppercase tracking-[0.08em] transition-colors sm:text-[11px] sm:tracking-[0.12em] ${
                   active ? "text-[var(--text)]" : "text-[var(--muted)] hover:text-[var(--text)]"
                 }`}
               >
@@ -36,7 +36,7 @@ const Navbar = () => {
               </Link>
             );
           })}
-          <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-3 lg:flex">
             <a
               href="https://github.com/Moosorkh"
               target="_blank"

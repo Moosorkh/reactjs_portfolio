@@ -13,7 +13,6 @@ export default defineConfig({
           'icons-vendor': ['react-icons/fa', 'react-icons/si', 'react-icons/di', '@remixicon/react'],
           'mui-vendor': ['@mui/material', '@emotion/react', '@emotion/styled'],
           'emailjs-vendor': ['@emailjs/browser'],
-          'transition-vendor': ['react-transition-group'],
         },
       },
     },

@@ -138,10 +138,10 @@ const Contact = ({
   return (
     <div
       ref={sectionRef}
-      id="contact"
       className={`contact-cta-track${isWindowSheetOpen ? " contact-cta-track--window-sheet" : ""}${isWindowSheetRestoring ? " contact-cta-track--restoring" : ""}`}
       data-lenis-prevent={isWindowSheetOpen ? "true" : undefined}
     >
+      <span id="contact" className="contact-cta__nav-anchor" aria-hidden="true" />
       {isWindowSheetOpen && (
         <>
           <div className="contact-cta__window-surface" aria-hidden="true">

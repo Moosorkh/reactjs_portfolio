@@ -161,7 +161,7 @@ const ProjectsGrid = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="projects-showcase" aria-label="Selected projects">
+    <section id="portfolio" ref={sectionRef} className="projects-showcase" aria-label="Selected projects">
       <div className="projects-showcase__stage">
         <div className="projects-showcase__backdrop" aria-hidden="true">
           <span ref={(node) => { titleRefs.current[0] = node; }}>PROJECTS</span>

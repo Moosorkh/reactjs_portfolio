@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import HeroIntro from "./HeroIntro";
 import TechnicalHighlights from "./TechnicalHighlights";
 import ScrollRevealText from "./ScrollRevealText";
 import CapabilityShowcase from "./CapabilityShowcase";
+import technicalHighlightsBackground from "../../tech-highlights-bg.mp4";
 import "./About.css";
 import { scrollToSection } from "../../../utils/scroll";
 import {
@@ -39,10 +40,15 @@ import {
 } from "react-icons/si";
 
 const SHOW_LEGACY_EXPERTISE = false;
+const TECH_HIGHLIGHTS_FRAME_RATE = 60;
+const TECH_HIGHLIGHTS_TOTAL_FRAMES = 60;
+const TECH_HIGHLIGHTS_SCRUB_SHARE = 0.84;
 
 const About = ({ heroReady = false }) => {
   const [animatedElements, setAnimatedElements] = useState({});
   const [selectedSkill, setSelectedSkill] = useState(null);
+  const technicalHighlightsTrackRef = useRef(null);
+  const technicalHighlightsVideoRef = useRef(null);
 
   useEffect(() => {
     // Initialize all elements as visible for initial animation
@@ -82,6 +88,97 @@ const About = ({ heroReady = false }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const track = technicalHighlightsTrackRef.current;
+    const video = technicalHighlightsVideoRef.current;
+
+    if (!track || !video) return undefined;
+
+    // The clip is encoded all-intra (every frame a keyframe), so seeking to an
+    // arbitrary frame is cheap. Updates run off a rAF loop rather than scroll
+    // events so the frame tracks the smoothed scroll position every repaint.
+    let rafId = 0;
+    let running = false;
+    let duration = 1;
+    let lastAppliedTime = -1;
+
+    const computeTargetTime = () => {
+      const trackRect = track.getBoundingClientRect();
+      const headerHeight = Number.parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--header-height")
+      ) || 96;
+      const panelHeight = Math.max(window.innerHeight - headerHeight, 1);
+      const scrubDistance = Math.max(track.offsetHeight - panelHeight, 1);
+      const trackProgress = Math.min(
+        1,
+        Math.max(0, (headerHeight - trackRect.top) / scrubDistance)
+      );
+      const scrubProgress = Math.min(
+        1,
+        trackProgress / TECH_HIGHLIGHTS_SCRUB_SHARE
+      );
+      const frameIndex = Math.round(
+        scrubProgress * (TECH_HIGHLIGHTS_TOTAL_FRAMES - 1)
+      );
+      // Aim at the middle of the frame's time slice: landing exactly on a
+      // boundary lets the browser round to the neighbouring frame and stutter.
+      const targetTime = (frameIndex + 0.5) / TECH_HIGHLIGHTS_FRAME_RATE;
+
+      return Math.min(targetTime, Math.max(0, duration - 0.001));
+    };
+
+    const tick = () => {
+      if (!running) return;
+
+      const targetTime = computeTargetTime();
+      if (
+        Number.isFinite(targetTime) &&
+        Math.abs(targetTime - lastAppliedTime) > 0.0005 &&
+        !video.seeking
+      ) {
+        lastAppliedTime = targetTime;
+        video.currentTime = targetTime;
+      }
+
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    const stop = () => {
+      running = false;
+      if (rafId) window.cancelAnimationFrame(rafId);
+      rafId = 0;
+    };
+
+    const handleMetadata = () => {
+      duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 1;
+      video.pause();
+    };
+
+    // Only burn frames while the panel is anywhere near the viewport.
+    const observer = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      { rootMargin: "250px 0px" }
+    );
+    observer.observe(track);
+
+    video.addEventListener("loadedmetadata", handleMetadata);
+
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) handleMetadata();
+    else video.load();
+
+    return () => {
+      observer.disconnect();
+      stop();
+      video.removeEventListener("loadedmetadata", handleMetadata);
+    };
+  }, []);
+
   return (
     <div
       id="about"
@@ -115,7 +212,7 @@ const About = ({ heroReady = false }) => {
 
         {/* A tall track lets Technical Highlights rise over About Me, pin for
             the card interaction, and then release into the remaining page. */}
-        <div id="skills" className="technical-highlights-pullup">
+        <div id="skills" ref={technicalHighlightsTrackRef} className="technical-highlights-pullup">
           <div
             className="technical-highlights-panel sticky z-10 flex items-center overflow-hidden bg-bg-primary rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.35)]"
             style={{
@@ -123,7 +220,19 @@ const About = ({ heroReady = false }) => {
               height: "calc(100vh - var(--header-height, 96px))",
             }}
           >
-            <div className="w-full container mx-auto px-6 md:px-12 py-6 md:py-8">
+            <video
+              ref={technicalHighlightsVideoRef}
+              className="technical-highlights-panel__video"
+              src={technicalHighlightsBackground}
+              muted
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              tabIndex={-1}
+              disablePictureInPicture
+            />
+            <div className="technical-highlights-panel__video-shade" aria-hidden="true" />
+            <div className="technical-highlights-panel__content w-full container mx-auto px-6 md:px-12 py-6 md:py-8">
               <TechnicalHighlights onSelectSkill={setSelectedSkill} />
             </div>
           </div>

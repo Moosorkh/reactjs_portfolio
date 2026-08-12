@@ -19,8 +19,8 @@ export const techCategories = [
       ],
     },
     {
-      id: "backend",
-      title: "Backend",
+      id: "backend-infrastructure",
+      title: "Backend, Data & DevOps",
       technologies: [
         { name: "NodeJS", icon: "FaNodeJs", color: "#339933" },
         { name: "NestJS", icon: "SiNestjs", color: "#E0234E" },
@@ -30,24 +30,12 @@ export const techCategories = [
         { name: "C#", icon: "SiCsharp", color: "#239120" },
         { name: "ASP.NET", icon: "SiDotnet", color: "#512BD4" },
         { name: "Python", icon: "SiPython", color: "#306998" },
-      ],
-    },
-    {
-      id: "databases",
-      title: "Databases & ORMs",
-      technologies: [
         { name: "MongoDB", icon: "SiMongodb", color: "#47A248" },
         { name: "PostgreSQL", icon: "DiPostgresql", color: "#336791" },
         { name: "MySQL", icon: "SiMysql", color: "#4479A1" },
         { name: "Redis", icon: "DiRedis", color: "#FF4438" },
         { name: "Sequelize", icon: "SiSequelize", color: "#52B0E7" },
         { name: "Prisma", icon: "SiPrisma", color: "#2D3748" },
-      ],
-    },
-    {
-      id: "devops",
-      title: "DevOps & Tools",
-      technologies: [
         { name: "GitHub", icon: "FaGithub", color: "#ffffff" },
         { name: "Git", icon: "FaGitAlt", color: "#F05032" },
         { name: "Docker", icon: "FaDocker", color: "#2496ED" },

@@ -1,0 +1,116 @@
+.technology-stack {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.technology-stack__rows {
+  display: grid;
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  padding-block: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.technology-category {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.technology-category__heading {
+  display: flex;
+  width: min(100% - 3rem, 78rem);
+  align-items: baseline;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.technology-category__heading h3 {
+  margin: 0;
+  color: hsl(var(--color-text-primary));
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  font-weight: 500;
+}
+
+.technology-marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.technology-marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.technology-marquee__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: clamp(2.8rem, 5vw, 6.5rem);
+  padding-right: clamp(2.8rem, 5vw, 6.5rem);
+}
+
+.technology-icon {
+  position: relative;
+  display: grid;
+  width: clamp(3.5rem, 4.5vw, 4.75rem);
+  height: clamp(3.5rem, 4.5vw, 4.75rem);
+  flex: none;
+  place-items: center;
+  border-radius: 999px;
+  transition: transform 220ms ease;
+}
+
+.technology-icon:hover {
+  transform: translateY(-0.3rem) scale(1.05);
+}
+
+.technology-icon__tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.55rem);
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  border: 1px solid hsl(var(--color-border-primary));
+  border-radius: 0.45rem;
+  background: hsl(var(--color-bg-elevated));
+  color: hsl(var(--color-text-primary));
+  font-size: 0.68rem;
+  opacity: 0;
+  padding: 0.35rem 0.55rem;
+  pointer-events: none;
+  transform: translate(-50%, 0.35rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.technology-icon:hover .technology-icon__tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 640px) {
+  .technology-stack__rows {
+    gap: 1.5rem;
+    padding-block: 1.5rem;
+  }
+
+  .technology-category__heading {
+    width: calc(100% - 2rem);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .technology-marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .technology-marquee__track {
+    transform: none !important;
+  }
+
+  .technology-marquee__group--clone {
+    display: none;
+  }
+}

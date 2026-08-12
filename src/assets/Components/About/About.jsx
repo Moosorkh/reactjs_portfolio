@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import avatar from "../../7358602-removebg-preview.png";
-import TextChange from "../TextChange";
+import HeroIntro from "./HeroIntro";
+import TechnicalHighlights from "./TechnicalHighlights";
+import ScrollRevealText from "./ScrollRevealText";
+import CapabilityShowcase from "./CapabilityShowcase";
+import "./About.css";
+import { scrollToSection } from "../../../utils/scroll";
 import {
   FaReact,
   FaNodeJs,
-  FaCode,
-  FaLaptopCode,
   FaArrowRight,
-  FaGithub,
-  FaLinkedin,
   FaDatabase,
   FaAws,
   FaDocker,
@@ -37,13 +35,12 @@ import {
   SiGraphql,
   SiJest,
   SiNextdotjs,
-  SiPhp,
-  SiLaravel,
   SiMysql
 } from "react-icons/si";
 
-const About = () => {
-  const navigate = useNavigate();
+const SHOW_LEGACY_EXPERTISE = false;
+
+const About = ({ heroReady = false }) => {
   const [animatedElements, setAnimatedElements] = useState({});
   const [selectedSkill, setSelectedSkill] = useState(null);
 
@@ -87,8 +84,9 @@ const About = () => {
 
   return (
     <div
-      id="About"
-      className="relative text-text-primary min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary pt-20 transition-colors duration-300 overflow-hidden"
+      id="about"
+      className="relative text-text-primary min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary transition-colors duration-300"
+      style={{ paddingTop: "var(--header-height, 96px)" }}
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -97,163 +95,46 @@ const About = () => {
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 pt-8 md:pt-16 pb-12">
-          {/* Left side with text */}
-          <div className="md:w-7/12 space-y-8 animate-on-scroll" id="element-0">
-            <div className={`transition-all duration-1000 ease-out ${animatedElements['element-0'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              {/* Animated greeting */}
-              <div className="mb-6">
-                <TextChange />
-              </div>
+      {/* The hero stays pinned while the following sections rise into view. */}
+      <div className="relative">
+        <div
+          className="sticky z-0"
+          style={{
+            top: "var(--header-height, 96px)",
+            height: "calc(100vh - var(--header-height, 96px))",
+          }}
+        >
+          <HeroIntro visible={heroReady} />
+        </div>
 
-              {/* Main headline with gradient */}
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                <span className="gradient-text">Full Stack</span>
-                <br />
-                <span className="text-text-primary">Developer</span>
-              </h1>
+        {/* Placeholders keep the .animate-on-scroll indices below aligned */}
+        <div className="hidden animate-on-scroll" id="element-0" />
+        <div className="hidden animate-on-scroll" id="element-1" />
 
-              {/* Enhanced description */}
-              <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-2xl">
-                Crafting <span className="text-primary font-semibold">beautiful</span>,
-                <span className="text-accent font-semibold"> scalable</span>, and
-                <span className="text-secondary font-semibold"> performant</span> web applications
-                with modern technologies and best practices.
-              </p>
+        <ScrollRevealText />
 
-              {/* Professional tech stack badges */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                <span className="badge badge-primary">
-                  <FaReact className="mr-1.5" />
-                  React
-                </span>
-                <span className="badge badge-primary">
-                  <SiTypescript className="mr-1.5" />
-                  TypeScript
-                </span>
-                <span className="badge badge-primary">
-                  <FaNodeJs className="mr-1.5" />
-                  Node.js
-                </span>
-                <span className="badge badge-primary">
-                  <SiPhp className="mr-1.5" />
-                  PHP
-                </span>
-                <span className="badge badge-primary">
-                  <SiLaravel className="mr-1.5" />
-                  Laravel
-                </span>
-                <span className="badge badge-primary">
-                  <SiCsharp className="mr-1.5" />
-                  C#
-                </span>
-                <span className="badge badge-primary">
-                  <SiDotnet className="mr-1.5" />
-                  .NET
-                </span>
-              </div>
-
-              {/* CTA buttons with improved styling */}
-              <div className="flex flex-wrap gap-4 mb-8">
-                <button
-                  onClick={() => navigate("/contact")}
-                  className="btn-primary group"
-                >
-                  Let's Talk
-                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
-
-                <button
-                  onClick={() => navigate("/portfolio")}
-                  className="btn-secondary group"
-                >
-                  View Work
-                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              {/* Social links with hover effects */}
-              <div className="flex gap-3">
-                <a
-                  href="https://github.com/Moosorkh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-3 bg-bg-tertiary border border-border-primary rounded-xl hover:bg-bg-elevated hover:border-primary hover:shadow-lg transition-all duration-300"
-                  aria-label="GitHub Profile"
-                >
-                  <FaGithub className="text-xl group-hover:scale-110 transition-transform" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/irdmousa/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group p-3 bg-bg-tertiary border border-border-primary rounded-xl hover:bg-bg-elevated hover:border-primary hover:shadow-lg transition-all duration-300"
-                  aria-label="LinkedIn Profile"
-                >
-                  <FaLinkedin className="text-xl group-hover:scale-110 transition-transform" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side with enhanced avatar */}
-          <div className="md:w-5/12 flex justify-center animate-on-scroll" id="element-1">
-            <div className={`relative transition-all duration-1000 ease-out ${animatedElements['element-1'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-              {/* Glowing background effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur-2xl opacity-30 animate-pulse"></div>
-
-              {/* Rotating border animation */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-full opacity-75 blur-sm animate-spin-slow"></div>
-
-              {/* Avatar container */}
-              <div className="relative">
-                <img
-                  className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-bg-elevated shadow-2xl transform hover:scale-105 transition-transform duration-500"
-                  src={avatar}
-                  alt="Developer Avatar"
-                />
-
-                {/* Status indicator */}
-                <div className="absolute bottom-6 right-6 w-6 h-6 bg-success rounded-full border-4 border-bg-elevated animate-pulse"></div>
-              </div>
+        {/* A tall track lets Technical Highlights rise over About Me, pin for
+            the card interaction, and then release into the remaining page. */}
+        <div id="skills" className="technical-highlights-pullup">
+          <div
+            className="technical-highlights-panel sticky z-10 flex items-center overflow-hidden bg-bg-primary rounded-t-[2.5rem] md:rounded-t-[3rem] shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.35)]"
+            style={{
+              top: "var(--header-height, 96px)",
+              height: "calc(100vh - var(--header-height, 96px))",
+            }}
+          >
+            <div className="w-full container mx-auto px-6 md:px-12 py-6 md:py-8">
+              <TechnicalHighlights onSelectSkill={setSelectedSkill} />
             </div>
           </div>
         </div>
       </div>
 
-      {/* About Me Content Section */}
-      <div className="relative container mx-auto px-6 md:px-12 py-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-on-scroll" id="element-2">
-            <div className={`transition-all duration-1000 ease-out ${animatedElements['element-2'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 flex items-center">
-                <FaCode className="mr-4 text-primary text-3xl" />
-                <span className="gradient-text">
-                  About Me
-                </span>
-              </h2>
-
-              <div className="card p-6 md:p-8 mb-10 hover:shadow-xl transition-all">
-                <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-6">
-                  I'm a passionate full-stack developer with hands-on experience in building responsive and scalable web applications across diverse technology stacks.
-                  My work includes both frontend and backend development, with a focus on creating intuitive user experiences while solving complex technical challenges.
-                </p>
-
-                <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
-                  A background in <strong className="text-primary">full-stack development</strong> ensures my ability to bridge the gap between beautiful design and robust functionality.
-                  Whether architecting scalable systems, optimizing performance, or creating seamless UI interactions, I aim to continually push boundaries and deliver exceptional results.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Technical Skills Showcase with Visual Concepts */}
-        <div className="relative container mx-auto px-6 md:px-12 py-20 bg-gradient-to-b from-bg-secondary to-bg-primary">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-on-scroll" id="element-8">
+      {/* Retained for reference, but removed from the rendered page. */}
+      {SHOW_LEGACY_EXPERTISE && <div className="relative container mx-auto px-6 md:px-12 py-20 bg-gradient-to-b from-bg-secondary to-bg-primary">
+        <div className="max-w-7xl mx-auto">
+          <>
+          <div className="text-center mb-16 animate-on-scroll" id="element-8">
               <div className={`transition-all duration-1000 ${animatedElements['element-8'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">
                   <span className="gradient-text">Technical Expertise</span>
@@ -448,6 +329,7 @@ const About = () => {
               />
 
             </div>
+          </>
 
             {/* Visual Concepts Section */}
             <div className="mt-20 text-center">
@@ -521,138 +403,9 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
+      </div>}
 
-        {/* Original Content Sections */}
-        <div className="relative container mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <div className="animate-on-scroll" id="element-3">
-              <div className={`group card card-interactive p-8 h-full transition-all duration-1000 ease-out ${animatedElements['element-3'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <FaLaptopCode className="text-primary text-3xl" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-text-primary group-hover:text-primary transition-colors">Frontend Mastery</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  Building responsive, accessible interfaces with React, TypeScript, and modern CSS frameworks. Focus on performance and user experience.
-                </p>
-              </div>
-            </div>
-
-            <div className="animate-on-scroll" id="element-4">
-              <div className={`group card card-interactive p-8 h-full transition-all duration-1000 ease-out ${animatedElements['element-4'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                <div className="p-4 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <FaNodeJs className="text-secondary text-3xl" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-text-primary group-hover:text-secondary transition-colors">Backend Development</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  Creating robust APIs and scalable server architectures with Node.js, C#, and .NET. Expert in database design and optimization.
-                </p>
-              </div>
-            </div>
-
-            <div className="animate-on-scroll" id="element-5">
-              <div className={`group card card-interactive p-8 h-full transition-all duration-1000 ease-out ${animatedElements['element-5'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                <div className="p-4 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <FaDatabase className="text-accent text-3xl" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-text-primary group-hover:text-accent transition-colors">Database & DevOps</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">
-                  PostgreSQL, MongoDB, Entity Framework. CI/CD pipelines, Docker, and cloud deployment with AWS and Azure.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Key Achievements */}
-          <div className="animate-on-scroll" id="element-6">
-            <div className={`card p-8 md:p-12 transition-all duration-1000 ease-out ${animatedElements['element-6'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-8 gradient-text">Technical Highlights</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold mb-4 text-primary flex items-center">
-                    <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
-                    Recent Projects
-                  </h4>
-                  <ul className="space-y-3 text-text-secondary">
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Host Guest Platform with AI identity verification (Laravel, PHP, AWS)</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Mobile-responsive map search with React & Leaflet</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Enhanced authentication systems with C# & .NET</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Interactive drag-and-drop interfaces</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-primary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Full-stack invoice tracking application</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-semibold mb-4 text-secondary flex items-center">
-                    <span className="w-2 h-2 bg-secondary rounded-full mr-3"></span>
-                    Core Competencies
-                  </h4>
-                  <ul className="space-y-3 text-text-secondary">
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-secondary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Clean, maintainable code architecture</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-secondary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Performance optimization & scalability</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-secondary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Responsive design & accessibility</span>
-                    </li>
-                    <li className="flex items-start gap-3 group cursor-default">
-                      <span className="text-secondary mt-1 group-hover:scale-125 transition-transform">✓</span>
-                      <span className="group-hover:text-text-primary transition-colors">Agile development & team collaboration</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action Section */}
-        <div className="relative container mx-auto px-6 md:px-12 pb-20">
-          <div className="max-w-4xl mx-auto">
-            <div className="animate-on-scroll" id="element-7">
-              <div className={`card p-10 md:p-16 text-center bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 transition-all duration-1000 ease-out ${animatedElements['element-7'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 gradient-text">Let's Build Something Amazing</h3>
-                <p className="text-lg md:text-xl mb-8 text-text-secondary max-w-2xl mx-auto">
-                  Have a project in mind? Let's collaborate and create something exceptional together.
-                </p>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <button
-                    className="btn-primary group"
-                    onClick={() => navigate("/contact")}
-                  >
-                    Start a Conversation
-                    <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <Link to="/portfolio" className="btn-secondary group">
-                    See My Work
-                    <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <CapabilityShowcase />
 
       {/* Skill Detail Modal */}
       {selectedSkill && (
@@ -662,6 +415,7 @@ const About = () => {
         >
           <div
             className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-bg-elevated rounded-2xl shadow-2xl border border-border-primary"
+            data-lenis-prevent
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -752,19 +506,19 @@ const About = () => {
               </div>
 
               {/* CTA */}
-              <div className={`p-6 bg-gradient-to-r ${selectedSkill.gradient} bg-opacity-10 rounded-xl border border-primary/20 text-center`}>
-                <p className="text-text-primary mb-4">
+              <div className="skill-modal__cta">
+                <p>
                   Want to see more projects using these technologies?
                 </p>
                 <button
                   onClick={() => {
                     setSelectedSkill(null);
-                    navigate("/portfolio");
+                    scrollToSection("portfolio");
                   }}
-                  className="btn-primary"
+                  className="skill-modal__cta-link"
                 >
-                  View Portfolio
-                  <FaArrowRight className="ml-2" />
+                  <span>View Portfolio</span>
+                  <FaArrowRight aria-hidden="true" />
                 </button>
               </div>
             </div>

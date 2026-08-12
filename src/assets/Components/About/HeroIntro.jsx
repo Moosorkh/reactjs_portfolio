@@ -7,11 +7,11 @@ import "./HeroIntro.css";
 const STACK = [
   { label: "React", color: "bg-[#61dafb]" },
   { label: "TypeScript", color: "bg-[#3178c6]" },
-  { label: "Node.js", color: "bg-[#8cc84b]" },
-  { label: ".NET", color: "bg-[#512bd4]" },
+  { label: "C# / .NET", color: "bg-[#512bd4]" },
+  { label: "Laravel / PHP", color: "bg-[#ff2d20]" },
+  { label: "WordPress", color: "bg-[#21759b]" },
   { label: "AWS", color: "bg-[#ff9900]" },
-  { label: "AI Automation", color: "bg-[#f59e0b]" },
-  { label: "SEO", color: "bg-[#ec4899]" },
+  { label: "Technical SEO", color: "bg-[#ec4899]" },
 ];
 
 // Each block eases in on its own beat once the boot sequence hands over.
@@ -104,23 +104,23 @@ const HeroIntro = ({ visible }) => {
 
         <Reveal visible={visible} delay={200}>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6">
-            <span className="gradient-text">Full Stack</span>
+            <span className="gradient-text">Senior Full-Stack</span>
             <br />
-            <span className="text-text-primary">Developer</span>
+            <span className="text-text-primary">Engineer</span>
           </h1>
         </Reveal>
 
         <Reveal visible={visible} delay={320}>
           <p className="text-base md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl">
-            Building <span className="text-primary font-semibold">scalable products</span>,{" "}
-            <span className="text-accent font-semibold">AI automations</span>, and{" "}
-            <span className="text-secondary font-semibold">search-ready experiences</span> from
-            interface to cloud.
+            <span className="text-primary font-semibold">14+ years</span> building and modernizing{" "}
+            <span className="text-accent font-semibold">production platforms</span> across SaaS,
+            finance, e-commerce, nonprofit, and{" "}
+            <span className="text-secondary font-semibold">SEO-driven products</span>.
           </p>
         </Reveal>
 
         <Reveal visible={visible} delay={440}>
-          <div className="flex flex-wrap gap-2.5 mb-8">
+          <div className="hero-intro__stack mb-8">
             {STACK.map(({ label, color }) => (
               <span key={label} className="badge badge-primary">
                 <span className={`w-1.5 h-1.5 rounded-full mr-2 ${color}`} />

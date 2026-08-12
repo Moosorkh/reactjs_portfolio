@@ -214,7 +214,7 @@ const Contact = () => {
                   </button>
                   <a
                     className="contact-cta__resume"
-                    href="https://docs.google.com/document/d/1isg-Y1_idZHA35qVe4st7yB0c-MGRwgQ0O6SxmKkNfc/export?format=pdf"
+                    href="/Mehdi_Azar_Technical_Resume.pdf"
                     download="Mehdi_Azar_Technical_Resume.pdf"
                   >
                     <span>Download resume</span>

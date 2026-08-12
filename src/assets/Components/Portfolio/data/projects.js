@@ -11,10 +11,10 @@ export const projects = [
   {
     id: "host-guest-platform",
     title: "Host Guest - Homestay Booking Platform",
-    description: "A comprehensive full-stack homestay booking platform built with Laravel and PHP, featuring AI-powered identity verification using AWS Rekognition and Textract, integrated payment processing (PayPal, Authorize.Net), real-time messaging, Google Maps integration, and Firebase authentication. Implements modern Laravel ecosystem tools including Livewire for reactive components, Sanctum for API security, and Horizon for queue management.",
+    description: "Took technical ownership of an incomplete homestay marketplace and rebuilt its core workflows with Laravel, PHP, PostgreSQL, Tailwind CSS, and AJAX. Delivered host and guest onboarding, profiles, listings, search and maps, admin operations, Stripe payments, Postmark email, internal messaging, AWS deployment, and GitHub Actions CI/CD.",
     image: "https://test.hostguest.net/assets/images/outdoors.jpg",
     featured: true,
-    tags: ["Laravel", "PHP", "MySQL", "AWS", "Rekognition", "Textract", "Tailwind CSS", "Vite", "Firebase", "PayPal"],
+    tags: ["Laravel", "PHP", "PostgreSQL", "Tailwind CSS", "AWS EC2", "Stripe", "Postmark", "Cloudflare", "GitHub Actions"],
     links: {
       github: "https://github.com/Host-Guest/web_app",
       liveDemo: "https://test.hostguest.net/",

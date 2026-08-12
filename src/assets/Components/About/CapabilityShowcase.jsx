@@ -2,55 +2,54 @@ import { useEffect, useRef, useState } from "react";
 import {
   FaDatabase,
   FaLaptopCode,
-  FaNodeJs,
   FaRobot,
   FaSearch,
-  FaUniversalAccess,
+  FaWordpress,
 } from "react-icons/fa";
 import "./CapabilityShowcase.css";
 
 const capabilities = [
   {
-    title: "Frontend Mastery",
+    title: "Product Frontend",
     icon: FaLaptopCode,
     color: "#4f8cff",
     description:
-      "Building responsive, accessible interfaces with React, TypeScript, and modern CSS frameworks. Focus on performance and user experience.",
+      "Production interfaces built from Figma with React, TypeScript, Next.js, React Native, Tailwind CSS, and responsive interaction systems.",
   },
   {
-    title: "Backend Development",
-    icon: FaNodeJs,
+    title: "Backend & APIs",
+    icon: FaLaptopCode,
     color: "#7277f4",
     description:
-      "Creating robust APIs and scalable server architectures with Node.js, C#, and .NET. Expert in database design and optimization.",
+      "Secure application services and APIs with C#/.NET, ASP.NET, Laravel, PHP, Node.js, Express, REST, GraphQL, and ORM-backed data access.",
   },
   {
-    title: "Database & DevOps",
+    title: "Data & Cloud",
     icon: FaDatabase,
     color: "#16c7bc",
     description:
-      "PostgreSQL, MongoDB, Entity Framework. CI/CD pipelines, Docker, and cloud deployment with AWS and Azure.",
+      "PostgreSQL, SQL Server, MySQL, and MongoDB paired with AWS, Cloudflare, Docker, GitHub Actions, and repeatable CI/CD delivery.",
   },
   {
-    title: "SEO & Digital Marketing",
-    icon: FaSearch,
+    title: "WordPress Platforms",
+    icon: FaWordpress,
     color: "#f05a9d",
     description:
-      "Technical SEO, content structure, analytics, and conversion-focused campaigns that improve visibility and turn qualified traffic into measurable growth.",
+      "Reusable WordPress and PHP systems built from Figma, including a parent-child framework adopted across roughly 50 production sites.",
   },
   {
-    title: "AI Automation",
+    title: "Quality & AI Workflow",
     icon: FaRobot,
     color: "#f59e42",
     description:
-      "Practical AI workflows, intelligent integrations, and automated processes that reduce repetitive work and connect business tools more effectively.",
+      "AI-assisted implementation and QA with Claude Code and Codex, reinforced by Playwright, Cypress, Jest, and browser-based regression checks.",
   },
   {
-    title: "Performance & Accessibility",
-    icon: FaUniversalAccess,
+    title: "Technical SEO & Performance",
+    icon: FaSearch,
     color: "#8dd957",
     description:
-      "Fast, inclusive experiences built through Core Web Vitals optimization, semantic interfaces, resilient responsive behavior, and accessibility testing.",
+      "Search-focused engineering, Lighthouse auditing, structured content, and performance work that has improved organic visibility by 25%.",
   },
 ];
 
@@ -122,9 +121,10 @@ const CapabilityShowcase = () => {
         0,
         1
       );
+      // Stage the aperture like a CRT: ignition point, horizontal scan, then picture.
       const ignitionProgress = clamp(revealProgress / 0.12, 0, 1);
-      const lineProgress = clamp((revealProgress - 0.1) / 0.4, 0, 1);
-      const heightProgress = clamp((revealProgress - 0.44) / 0.56, 0, 1);
+      const lineProgress = clamp((revealProgress - 0.18) / 0.32, 0, 1);
+      const heightProgress = clamp((revealProgress - 0.5) / 0.5, 0, 1);
       const easedIgnition = 1 - Math.pow(1 - ignitionProgress, 3);
       const easedLine = 1 - Math.pow(1 - lineProgress, 3);
       const easedHeight = heightProgress * heightProgress * (3 - 2 * heightProgress);
@@ -132,6 +132,11 @@ const CapabilityShowcase = () => {
       const halfWidth = ignitionRadius + easedLine * (window.innerWidth * 0.6 - ignitionRadius);
       const lineHalfHeight = Math.max(2, ignitionRadius * (1 - easedLine * 0.72));
       const halfHeight = lineHalfHeight + easedHeight * (window.innerHeight * 0.6 - lineHalfHeight);
+      const ignitionLight =
+        Math.sin(clamp(revealProgress / 0.18, 0, 1) * Math.PI) * 0.72;
+      const expansionLight =
+        Math.sin(clamp((revealProgress - 0.14) / 0.86, 0, 1) * Math.PI) *
+        0.42;
       const contentProgress = clamp(
         (progress - CONTENT_REVEAL_START) /
           (CONTENT_REVEAL_END - CONTENT_REVEAL_START),
@@ -165,7 +170,7 @@ const CapabilityShowcase = () => {
       section.style.setProperty("--aperture-radius", `${(1 - easedHeight) * 999}px`);
       section.style.setProperty(
         "--aperture-light",
-        String(Math.sin(revealProgress * Math.PI) * 0.42)
+        String(Math.max(ignitionLight, expansionLight))
       );
       section.style.setProperty("--content-opacity", String(easedContent));
       section.style.setProperty("--exit-scale", String(1 - easedExit * 0.4));

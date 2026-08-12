@@ -3,21 +3,24 @@ import avatar from "../../portraint.webp";
 import "./ScrollRevealText.css";
 
 const ABOUT_COPY =
-  "I'M MEHDI, A FULL-STACK DEVELOPER BUILDING SCALABLE PRODUCTS ACROSS RESPONSIVE INTERFACES, SECURE BACKENDS, CLOUD DELIVERY, AND AI AUTOMATION. I CONNECT PERFORMANCE, ACCESSIBILITY, AND SEARCH STRATEGY TO CREATE FAST, DISCOVERABLE DIGITAL EXPERIENCES.";
+  "I'M MEHDI, A SENIOR FULL-STACK ENGINEER WITH 14+ YEARS BUILDING AND MODERNIZING PRODUCTION PLATFORMS. I WORK ACROSS RESPONSIVE INTERFACES, SECURE APIS, DATA, CLOUD DELIVERY, AUTOMATED TESTING, TECHNICAL SEO, AND AI-ASSISTED DEVELOPMENT.";
 
 const words = ABOUT_COPY.split(" ");
 
 const ACCENT_WORDS = {
-  SCALABLE: "accent",
+  SENIOR: "accent",
+  MODERNIZING: "accent",
+  PRODUCTION: "secondary",
   RESPONSIVE: "primary",
   SECURE: "secondary",
-  RELIABLE: "accent",
-  "AI": "accent",
-  AUTOMATION: "secondary",
-  PERFORMANCE: "secondary",
-  ACCESSIBILITY: "primary",
-  SEARCH: "accent",
-  DISCOVERABLE: "primary",
+  APIS: "accent",
+  DATA: "primary",
+  CLOUD: "secondary",
+  AUTOMATED: "accent",
+  TESTING: "primary",
+  TECHNICAL: "secondary",
+  SEO: "accent",
+  "AI-ASSISTED": "primary",
 };
 
 const getWordAccent = (word) => ACCENT_WORDS[word.replace(/[^A-Z-]/g, "")] || "";

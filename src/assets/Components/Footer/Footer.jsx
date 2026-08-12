@@ -16,8 +16,8 @@ const Footer = () => {
               Mehdi's Portfolio
             </h3>
             <p className="text-text-secondary mb-6 leading-relaxed">
-              Full-stack developer specializing in creating modern, responsive web applications
-              with React, Node.js, Laravel, TypeScript, C#, and other cutting-edge technologies.
+              Senior full-stack engineer with 14+ years building and modernizing production
+              platforms across frontend, backend, cloud delivery, technical SEO, and quality engineering.
             </p>
             <div className="flex gap-4">
               <SocialLink href="https://github.com/Moosorkh" icon={<FaGithub size={18} />} label="GitHub" />

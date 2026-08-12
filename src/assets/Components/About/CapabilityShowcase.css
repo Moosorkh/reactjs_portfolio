@@ -39,8 +39,11 @@
   background: #e2e9f5;
   box-shadow: none;
   opacity: var(--exit-opacity);
-  transform: scale(var(--exit-scale));
+  transform: translateZ(0) scale(var(--exit-scale));
   transform-origin: 50% 50%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3px, #000 calc(100% - 3px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3px, #000 calc(100% - 3px), transparent 100%);
+  backface-visibility: hidden;
   will-change: clip-path;
 }
 
@@ -224,6 +227,9 @@
 
 .capability-showcase__media {
   display: none;
+  inset: -2px;
+  width: auto;
+  height: auto;
   opacity: var(--content-opacity);
   will-change: opacity;
 }

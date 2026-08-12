@@ -16,6 +16,7 @@ export const techCategories = [
         { name: "SASS", icon: "FaSass", color: "#CC6699" },
         { name: "Figma", icon: "FaFigma", color: "#F24E1E" },
         { name: "Shopify", icon: "SiShopify", color: "#95BF47" },
+        { name: "WordPress", icon: "FaWordpress", color: "#21759B" },
       ],
     },
     {
@@ -41,6 +42,8 @@ export const techCategories = [
         { name: "Docker", icon: "FaDocker", color: "#2496ED" },
         { name: "AWS", icon: "FaAws", color: "#FF9900" },
         { name: "Cypress", icon: "SiCypress", color: "#466185" },
+        { name: "GitLab", icon: "FaGitlab", color: "#FC6D26" },
+        { name: "GitHub Actions", icon: "SiGithubactions", color: "#2088FF" },
       ],
     },
   ];

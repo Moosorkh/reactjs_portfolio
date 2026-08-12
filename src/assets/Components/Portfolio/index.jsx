@@ -5,7 +5,6 @@ import ProjectsGrid from "./Projects/ProjectsGrid";
 const Portfolio = () => {
   return (
     <div
-      id="portfolio"
       className="min-h-screen px-10 md:px-24 bg-gradient-to-b from-bg-primary to-bg-secondary transition-colors duration-300"
     >
       <TechnologyStack />

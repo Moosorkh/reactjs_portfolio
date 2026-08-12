@@ -102,21 +102,42 @@ const Navbar = ({ ready = true, onOpenContact }) => {
 
   // Scroll-spy: highlight the tab for the section currently in view
   useEffect(() => {
-    const sectionEls = SECTIONS.map(({ id }) => document.getElementById(id)).filter(Boolean);
+    let animationFrame = 0;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-    );
+    const updateActiveSection = () => {
+      animationFrame = 0;
+      const headerHeight = headerRef.current?.offsetHeight || 0;
+      const activationLine = window.scrollY + headerHeight + window.innerHeight * 0.22;
+      let currentSection = SECTIONS[0].id;
 
-    sectionEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      SECTIONS.forEach(({ id }) => {
+        const section = document.getElementById(id);
+        if (!section) return;
+
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        if (sectionTop <= activationLine) currentSection = id;
+      });
+
+      setActiveSection((current) => (
+        current === currentSection ? current : currentSection
+      ));
+    };
+
+    const requestUpdate = () => {
+      if (!animationFrame) {
+        animationFrame = window.requestAnimationFrame(updateActiveSection);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
   }, []);
 
   return (

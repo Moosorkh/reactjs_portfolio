@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
 import { SiCsharp, SiTypescript, SiTailwindcss, SiLaravel } from "react-icons/si";
+import { scrollToSection } from "../../../utils/scroll";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,16 +31,13 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <FooterLink to="/">About Me</FooterLink>
+                <FooterLink id="about">About Me</FooterLink>
               </li>
               <li>
-                <FooterLink to="/portfolio">Portfolio</FooterLink>
+                <FooterLink id="portfolio">Portfolio</FooterLink>
               </li>
               <li>
-                <FooterLink to="/resume">Resume</FooterLink>
-              </li>
-              <li>
-                <FooterLink to="/contact">Contact</FooterLink>
+                <FooterLink id="contact">Contact</FooterLink>
               </li>
             </ul>
           </div>
@@ -88,13 +85,13 @@ const SocialLink = ({ href, icon, label }) => (
   </a>
 );
 
-const FooterLink = ({ to, children }) => (
-  <Link
-    to={to}
+const FooterLink = ({ id, children }) => (
+  <button
+    onClick={() => scrollToSection(id)}
     className="text-text-secondary hover:text-primary transition-colors duration-300 inline-block"
   >
     {children}
-  </Link>
+  </button>
 );
 
 const SkillBadge = ({ icon, name }) => (

@@ -1,0 +1,209 @@
+.about-reveal {
+  position: relative;
+  z-index: 1;
+  height: calc(360vh - var(--header-height, 96px));
+  min-height: calc(110rem + 100vh - var(--header-height, 96px));
+}
+
+.about-reveal__sticky {
+  position: sticky;
+  top: var(--header-height, 96px);
+  display: flex;
+  height: calc(100vh - var(--header-height, 96px));
+  min-height: 38rem;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 50%, hsl(var(--color-primary) / 0.08), transparent 31%),
+    radial-gradient(circle at 85% 38%, hsl(var(--color-secondary) / 0.07), transparent 28%),
+    hsl(var(--color-bg-primary));
+}
+
+.about-reveal__glow {
+  position: absolute;
+  top: 46%;
+  left: 48%;
+  width: min(68vw, 58rem);
+  height: 13rem;
+  border-radius: 50%;
+  background: hsl(var(--color-primary) / 0.07);
+  filter: blur(72px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.about-reveal__inner {
+  position: relative;
+  width: min(100% - 3rem, 78rem);
+  margin-inline: auto;
+}
+
+.about-reveal__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: clamp(1.5rem, 4vh, 3rem);
+  color: hsl(var(--color-text-tertiary));
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.about-reveal__eyebrow span {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid hsl(var(--color-border-primary));
+  border-radius: 50%;
+  color: hsl(var(--color-primary));
+  letter-spacing: 0;
+}
+
+.about-reveal__eyebrow p {
+  margin: 0;
+}
+
+.about-reveal__content {
+  position: relative;
+  display: grid;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) clamp(13rem, 19vw, 17rem);
+}
+
+.about-reveal h2 {
+  margin: 0;
+  color: hsl(var(--color-text-primary));
+  font-size: clamp(1.65rem, 2.55vw, 2.75rem);
+  font-weight: 570;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  text-transform: uppercase;
+}
+
+.about-reveal__portrait {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.about-reveal__portrait-glow {
+  position: absolute;
+  inset: -1.2rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 45deg,
+    hsl(var(--color-primary) / 0.58),
+    hsl(var(--color-secondary) / 0.2),
+    hsl(var(--color-accent) / 0.52),
+    hsl(var(--color-primary) / 0.58)
+  );
+  filter: blur(18px);
+  opacity: 0.75;
+}
+
+.about-reveal__portrait img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 3px solid hsl(var(--color-border-primary));
+  border-radius: 50%;
+  box-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.85);
+  object-fit: cover;
+  object-position: 50% 34%;
+}
+
+.about-reveal__word {
+  display: inline-block;
+  margin-right: 0.22em;
+  color: inherit;
+  opacity: 0.14;
+  transform: translateY(0.09em);
+  transition: color 220ms ease, text-shadow 220ms ease;
+  will-change: opacity, transform;
+}
+
+.about-reveal__word--primary.is-accented {
+  color: hsl(var(--color-primary));
+  text-shadow: 0 0 24px hsl(var(--color-primary) / 0.18);
+}
+
+.about-reveal__word--secondary.is-accented {
+  color: hsl(var(--color-secondary));
+  text-shadow: 0 0 24px hsl(var(--color-secondary) / 0.18);
+}
+
+.about-reveal__word--accent.is-accented {
+  color: hsl(var(--color-accent));
+  text-shadow: 0 0 24px hsl(var(--color-accent) / 0.18);
+}
+
+@media (max-width: 900px), (max-height: 780px) {
+  .about-reveal {
+    height: 260vh;
+    min-height: 110rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-reveal {
+    height: 220vh;
+    min-height: 85rem;
+  }
+
+  .about-reveal__sticky {
+    min-height: 34rem;
+  }
+
+  .about-reveal__inner {
+    width: min(100% - 2rem, 78rem);
+  }
+
+  .about-reveal h2 {
+    font-size: clamp(1.42rem, 6.4vw, 2rem);
+    letter-spacing: -0.04em;
+    line-height: 1.38;
+  }
+
+  .about-reveal__eyebrow {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-reveal__content {
+    display: block;
+  }
+
+  .about-reveal__portrait {
+    position: absolute;
+    top: -4.75rem;
+    right: 0;
+    width: 4.25rem;
+  }
+
+  .about-reveal__portrait-glow {
+    inset: -0.45rem;
+    filter: blur(8px);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal {
+    height: auto;
+    min-height: 0;
+  }
+
+  .about-reveal__sticky {
+    position: relative;
+    top: auto;
+    min-height: calc(100vh - var(--header-height, 96px));
+  }
+
+  .about-reveal__word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+}

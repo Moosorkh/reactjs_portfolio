@@ -5,6 +5,7 @@ import invoiceTrackerImage from "../../../../assets/invoiceTracker.png";
 import MaryEclairPatisserie from "../../../../assets/MaryEclairPatisserie.png";
 import sweetCreations from "../../../../assets/sweetCreations.png";
 import ETA from "../../../../assets/ETA.png";
+import productPresenterImage from "../../../../assets/product-presenter.jpg";
 
 export const projects = [
   {
@@ -110,90 +111,19 @@ export const projects = [
     color: "blue",
     icon: "SiNestjs",
     iconColor: "#E0234E",
+  },
+  {
+    id: "product-presenter",
+    title: "Dime Industries - Product Presenter",
+    description: "An immersive product presentation experience for Dime Industries, featuring an age-gated landing flow, animated product storytelling, interactive flavor selection, product profiles, lab-result visualization, and responsive carousel experiences.",
+    image: productPresenterImage,
+    featured: true,
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive Design", "Interactive UI", "Cloudflare Workers"],
+    links: {
+      github: "https://github.com/Moosorkh/product-presenter.git",
+      liveDemo: "https://product-presenter.moosorkh.workers.dev/",
+    },
+    color: "blue",
+    badge: "Interactive",
   }
 ];
-
-export const upcomingProjects = [
-  {
-    id: "bed-reservation",
-    title: "Interactive Bed Reservation",
-    description: "A user-friendly drag-and-drop interface for bed reservations and swapping, significantly improving user experience and operational efficiency.",
-    icon: "FaReact",
-    iconColor: "#61DAFB",
-    tags: ["React", "C#", "Entity Framework", "Drag-and-Drop"],
-    status: "Private Repository",
-    color: "blue",
-  },
-  {
-    id: "auth-system",
-    title: "Enhanced Authentication System",
-    description: "Custom login features for web applications, including tailored messages and notifications for new users, enhancing user engagement and security measures.",
-    icon: "SiCsharp",
-    iconColor: "#239120",
-    tags: ["C#", "ASP.NET", "Entity Framework", "Authentication"],
-    status: "Private Repository",
-    color: "blue",
-  },
-  {
-    id: "qa-documentation",
-    title: "QA & Technical Documentation",
-    description: "Upcoming project focused on developing comprehensive test cases and technical documentation to support QA processes. Will include creating user guides, API documentation, and system architecture diagrams to enable efficient testing and validation for professional users and development teams.",
-    icon: "FaFileAlt",
-    iconColor: "#FFD700",
-    tags: ["Markdown", "Swagger", "Jira", "Draw.io"],
-    status: "Internal Documentation",
-    color: "blue",
-  },
-  {
-    id: "api-design",
-    title: "API Design & Backend Architecture",
-    description: "In-progress project developing robust RESTful APIs and backend services using C#.NET and ASP.NET Core. Will implement efficient database integration with PostgreSQL, optimize query performance, and ensure secure authentication mechanisms for a seamless user experience.",
-    icon: "SiDotnet",
-    iconColor: "#512BD4",
-    tags: ["C#.NET", "ASP.NET", "PostgreSQL", "Entity Framework"],
-    status: "Private Repository",
-    color: "blue",
-  },
-  {
-    id: "ui-improvements",
-    title: "UI Enhancement Suite",
-    description: "Planned project to implement over a dozen UI enhancements, applying modern design principles and frameworks. Will focus on increasing usability and aesthetic appeal using Material UI and Tailwind CSS, with emphasis on accessibility and responsive design across various devices.",
-    icon: "SiMui",
-    iconColor: "#007FFF",
-    tags: ["Material UI", "Tailwind CSS", "ReactJS", "UX/UI Design"],
-    status: "Multiple Repositories",
-    color: "blue",
-  },
-  {
-    id: "insurance-interface",
-    title: "Insurance Selection Interface",
-    description: "A dynamic insurance selection tool with cascading dropdown menus, where choices are saved and reflected immediately in the UI, facilitating a better user experience. Integrated with PostgreSQL database for persistent storage and real-time updates.",
-    icon: "SiReact",
-    iconColor: "#61DAFB",
-    tags: ["React", "PostgreSQL", "Material UI", "RESTful API"],
-    status: "Private Repository",
-    color: "blue",
-  },
-  {
-    id: "onboarding-tutorial",
-    title: "Onboarding Tutorial System",
-    description: "An interactive tutorial system for first-time users of the platform, guiding them through complex functionalities to enhance user understanding and satisfaction. Implemented using React Joyride library with custom tooltips and progress tracking.",
-    icon: "FaReact",
-    iconColor: "#61DAFB",
-    tags: ["React", "Joyride", "CSS3", "UX Design"],
-    status: "Private Repository",
-    color: "blue",
-  }
-];
-
-// For the "More Projects Coming Soon" section
-export const comingSoonInfo = {
-  title: "More Projects Coming Soon",
-  description: "I'm currently working on several exciting projects that showcase my full-stack development skills with React, C#, Entity Framework, and more. Check back soon to see my latest work!",
-  icons: [
-    { icon: "FaReact", color: "#61DAFB", delay: 0 },
-    { icon: "SiCsharp", color: "#239120", delay: 0.2 },
-    { icon: "SiDotnet", color: "#512BD4", delay: 0.4 },
-    { icon: "FaDocker", color: "#2496ED", delay: 0.6 }
-  ]
-};

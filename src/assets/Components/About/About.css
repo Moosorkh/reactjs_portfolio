@@ -1,0 +1,68 @@
+.skill-modal__cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.45fr);
+  align-items: end;
+  gap: 1.5rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid hsl(var(--color-border-primary));
+}
+
+.skill-modal__cta p {
+  margin: 0;
+  color: hsl(var(--color-text-secondary));
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.skill-modal__cta-link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border: 0;
+  border-bottom: 1px solid hsl(var(--color-text-primary) / 0.58);
+  background: transparent;
+  color: hsl(var(--color-text-primary));
+  cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.skill-modal__cta-link svg {
+  transition: transform 180ms ease;
+}
+
+.skill-modal__cta-link:hover,
+.skill-modal__cta-link:focus-visible {
+  border-color: hsl(var(--color-primary));
+  color: hsl(var(--color-primary));
+}
+
+.skill-modal__cta-link:hover svg,
+.skill-modal__cta-link:focus-visible svg {
+  transform: translate(0.25rem, -0.15rem);
+}
+
+.skill-modal__cta-link:focus-visible {
+  outline: 2px solid hsl(var(--color-primary));
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .skill-modal__cta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-modal__cta-link,
+  .skill-modal__cta-link svg {
+    transition-duration: 0.01ms;
+  }
+}

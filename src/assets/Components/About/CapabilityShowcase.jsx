@@ -95,6 +95,7 @@ const CapabilityShowcase = () => {
         section.style.setProperty("--content-opacity", "1");
         section.style.setProperty("--exit-scale", "1");
         section.style.setProperty("--exit-opacity", "1");
+        section.style.setProperty("--exit-progress", "0");
         if (media) media.style.display = "block";
         rail.style.removeProperty("transform");
         cardRefs.current.forEach((card) => {
@@ -158,6 +159,12 @@ const CapabilityShowcase = () => {
       );
       const easedExit =
         exitProgress * exitProgress * (3 - 2 * exitProgress);
+      const backdropFadeOut = clamp(
+        (progress - EXIT_END) / Math.max(1 - EXIT_END, 0.0001),
+        0,
+        1
+      );
+      const backdropOpacity = easedExit * (1 - backdropFadeOut);
       const maxTravel = Math.max(rail.scrollHeight - viewport.clientHeight, 0);
       const position = cardProgress * (capabilities.length - 1);
       const nextIndex = clamp(Math.round(position), 0, capabilities.length - 1);
@@ -175,6 +182,8 @@ const CapabilityShowcase = () => {
       section.style.setProperty("--content-opacity", String(easedContent));
       section.style.setProperty("--exit-scale", String(1 - easedExit * 0.4));
       section.style.setProperty("--exit-opacity", String(1 - easedExit * 0.24));
+      // Keep the light backdrop limited to the recede handoff window.
+      section.style.setProperty("--exit-progress", String(backdropOpacity));
       if (media) {
         media.style.display = contentProgress === 0 ? "none" : "block";
       }
@@ -213,6 +222,9 @@ const CapabilityShowcase = () => {
       className="capability-showcase"
       aria-labelledby="capability-showcase-title"
     >
+      {/* Light surface revealed behind the panel as it scales back. */}
+      <div className="capability-showcase__backdrop" aria-hidden="true" />
+
       <div className="capability-showcase__sticky">
         <div className="capability-showcase__aperture-light" aria-hidden="true" />
         <div className="capability-showcase__media" aria-hidden="true">

@@ -6,9 +6,40 @@
 .technical-highlights-pullup {
   position: relative;
   z-index: 10;
-  height: 170vh;
-  min-height: 72rem;
+  height: 300vh;
+  min-height: 135rem;
   margin-top: calc(var(--header-height, 96px) - 100vh);
+}
+
+.technical-highlights-panel {
+  isolation: isolate;
+}
+
+.technical-highlights-panel__video,
+.technical-highlights-panel__video-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.technical-highlights-panel__video {
+  z-index: 0;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.technical-highlights-panel__video-shade {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, hsl(var(--color-bg-primary) / 0.3), hsl(var(--color-bg-primary) / 0.58)),
+    radial-gradient(circle at 50% 54%, transparent 0 24%, hsl(var(--color-bg-primary) / 0.34) 76%);
+}
+
+.technical-highlights-panel__content {
+  position: relative;
+  z-index: 2;
 }
 
 .technical-highlights-grid__header {

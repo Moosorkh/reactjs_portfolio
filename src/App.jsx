@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import About from "./assets/Components/About/About";
@@ -11,6 +11,19 @@ import { setSmoothScroller } from "./utils/scroll";
 
 function App() {
   const [heroReady, setHeroReady] = useState(false);
+  const [contactSheetState, setContactSheetState] = useState("closed");
+  const openContactSheet = useCallback(() => setContactSheetState("open"), []);
+  const restorePortfolio = useCallback(() => setContactSheetState("restoring"), []);
+
+  useEffect(() => {
+    if (contactSheetState !== "restoring") return undefined;
+
+    const restoreTimer = window.setTimeout(() => {
+      setContactSheetState("closed");
+    }, 760);
+
+    return () => window.clearTimeout(restoreTimer);
+  }, [contactSheetState]);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -69,11 +82,18 @@ function App() {
     // sticky positioning in the long-form animation sections.
     <div className="bg-bg-primary min-h-screen w-full overflow-x-clip transition-colors duration-300">
       <BootScreen onReveal={() => setHeroReady(true)} />
-      <Navbar ready={heroReady} />
+      <Navbar
+        ready={heroReady}
+        onOpenContact={openContactSheet}
+      />
       <main>
         <About heroReady={heroReady} />
         <Portfolio />
-        <Contact />
+        <Contact
+          isWindowSheetOpen={contactSheetState !== "closed"}
+          isWindowSheetRestoring={contactSheetState === "restoring"}
+          onWindowSheetRestore={restorePortfolio}
+        />
       </main>
       <Footer />
     </div>

@@ -12,8 +12,13 @@ const initialFormData = {
   message: "",
 };
 
-const Contact = () => {
+const Contact = ({
+  isWindowSheetOpen = false,
+  isWindowSheetRestoring = false,
+  onWindowSheetRestore,
+}) => {
   const sectionRef = useRef(null);
+  const restoreButtonRef = useRef(null);
   const form = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
@@ -42,6 +47,28 @@ const Contact = () => {
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!isWindowSheetOpen) return undefined;
+
+    setIsVisible(true);
+    const previousOverflow = document.body.style.overflow;
+    const previouslyFocused = document.activeElement;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape" && !isWindowSheetRestoring) onWindowSheetRestore?.();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    const focusTimer = window.setTimeout(() => restoreButtonRef.current?.focus(), 780);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused?.focus?.();
+    };
+  }, [isWindowSheetOpen, isWindowSheetRestoring, onWindowSheetRestore]);
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -109,10 +136,62 @@ const Contact = () => {
   };
 
   return (
-    <div ref={sectionRef} id="contact" className="contact-cta-track">
+    <div
+      ref={sectionRef}
+      id="contact"
+      className={`contact-cta-track${isWindowSheetOpen ? " contact-cta-track--window-sheet" : ""}${isWindowSheetRestoring ? " contact-cta-track--restoring" : ""}`}
+      data-lenis-prevent={isWindowSheetOpen ? "true" : undefined}
+    >
+      {isWindowSheetOpen && (
+        <>
+          <div className="contact-cta__window-surface" aria-hidden="true">
+            <div className="contact-cta__window-toolbar">
+              <span className="contact-cta__window-controls">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="contact-cta__window-title">mehdi-azar - portfolio</span>
+              <span className="contact-cta__window-actions">
+                <i />
+                <i />
+                <i />
+              </span>
+            </div>
+            <div className="contact-cta__window-tabs">
+              <span className="contact-cta__window-tab contact-cta__window-tab--active">about.tsx</span>
+              <span className="contact-cta__window-tab">skills.tsx</span>
+              <span className="contact-cta__window-tab">projects.tsx</span>
+              <span className="contact-cta__window-tab">contact.tsx</span>
+            </div>
+            <span className="contact-cta__window-preview">
+              <i />
+              <i />
+              <i />
+            </span>
+          </div>
+          <button
+            ref={restoreButtonRef}
+            type="button"
+            className="contact-cta__restore-tile"
+            onClick={onWindowSheetRestore}
+            aria-label="Restore portfolio window"
+            disabled={isWindowSheetRestoring}
+          >
+            <span className="contact-cta__restore-window" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>Portfolio</span>
+          </button>
+        </>
+      )}
       <section
         className={`contact-cta ${isVisible ? "contact-cta--visible" : ""}`}
         aria-labelledby="contact-cta-title"
+        aria-modal={isWindowSheetOpen ? "true" : undefined}
+        role={isWindowSheetOpen ? "dialog" : "region"}
       >
         <div className="contact-cta__grid">
           <div className="contact-cta__intro">

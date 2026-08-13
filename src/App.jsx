@@ -60,7 +60,14 @@ function App() {
       }
     };
 
+    const handleScrollLock = (event) => {
+      if (!lenis) return;
+      if (event.detail?.locked) lenis.stop();
+      else lenis.start();
+    };
+
     start();
+    window.addEventListener("portfolio:scroll-lock", handleScrollLock);
     if (typeof reducedMotion.addEventListener === "function") {
       reducedMotion.addEventListener("change", start);
     } else {
@@ -68,6 +75,7 @@ function App() {
     }
 
     return () => {
+      window.removeEventListener("portfolio:scroll-lock", handleScrollLock);
       if (typeof reducedMotion.removeEventListener === "function") {
         reducedMotion.removeEventListener("change", start);
       } else {

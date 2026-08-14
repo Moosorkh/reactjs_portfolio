@@ -20,7 +20,9 @@ import {
   FaLock,
   FaMobile,
   FaNodeJs,
+  FaPause,
   FaPalette,
+  FaPlay,
   FaReact,
   FaRobot,
   FaSearch,
@@ -1442,9 +1444,11 @@ const CapabilityProcessShowcase = ({ category, onClose }) => {
   const progressRef = useRef(processStageSeekPoints[0]);
   const lastFrameRef = useRef(0);
   const autoplayResumeAtRef = useRef(0);
+  const autoplayPausedRef = useRef(false);
   const overlayRef = useRef(null);
   const [progress, setProgress] = useState(processStageSeekPoints[0]);
   const [activeStage, setActiveStage] = useState(0);
+  const [autoplayPaused, setAutoplayPaused] = useState(false);
   const frontendStageDetails = category.title === "Frontend Development"
     ? getFrontendStageDetails(config, activeStage)
     : null;
@@ -1483,6 +1487,7 @@ const CapabilityProcessShowcase = ({ category, onClose }) => {
 
       if (
         !prefersReducedMotion.matches &&
+        !autoplayPausedRef.current &&
         timestamp >= autoplayResumeAtRef.current &&
         progressRef.current < 1
       ) {
@@ -1521,6 +1526,13 @@ const CapabilityProcessShowcase = ({ category, onClose }) => {
 
   const seekToStage = (stageIndex) => {
     setDemoProgress(processStageSeekPoints[stageIndex], 1000);
+  };
+
+  const toggleAutoplay = () => {
+    const nextPaused = !autoplayPausedRef.current;
+    autoplayPausedRef.current = nextPaused;
+    lastFrameRef.current = performance.now();
+    setAutoplayPaused(nextPaused);
   };
 
   const handleWheel = (event) => {
@@ -1577,6 +1589,16 @@ const CapabilityProcessShowcase = ({ category, onClose }) => {
         </span>
       </div>
       <div className="frontend-process__actions">
+        <button
+          type="button"
+          className="frontend-process__autoplay-toggle"
+          onClick={toggleAutoplay}
+          aria-label={autoplayPaused ? "Resume slide autoplay" : "Pause slide autoplay"}
+          aria-pressed={autoplayPaused}
+          title={autoplayPaused ? "Resume autoplay" : "Pause autoplay"}
+        >
+          {autoplayPaused ? <FaPlay aria-hidden="true" /> : <FaPause aria-hidden="true" />}
+        </button>
         <button
           type="button"
           onClick={onClose}
@@ -2104,9 +2126,6 @@ const TechnicalHighlights = ({ onSelectSkill }) => {
             />
           ))}
         </div>
-        <p className="technical-highlights-orbit__drag-hint" aria-hidden="true">
-          Drag left or right to spin
-        </p>
         {frontendDemoActive && activeProcessCategory && typeof document !== "undefined" && createPortal(
           <CapabilityProcessShowcase
             category={activeProcessCategory}

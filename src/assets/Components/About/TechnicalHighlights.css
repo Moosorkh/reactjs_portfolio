@@ -454,6 +454,20 @@
   outline: none;
 }
 
+.frontend-process__actions .frontend-process__autoplay-toggle {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+}
+
+.frontend-process__autoplay-toggle svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
 .frontend-process__timeline {
   position: relative;
   z-index: 10;
@@ -5695,5 +5709,98 @@
   .quality-process__stage-head b,
   .seo-process__stage-header h4 {
     font-size: 1rem;
+  }
+
+  /* Final mobile authority: later readability rules must not restore the
+     seven text labels or desktop dashboard columns. */
+  .frontend-process__topline {
+    padding: 0.65rem;
+  }
+
+  .frontend-process__actions {
+    flex: 0 0 auto;
+    align-items: center;
+  }
+
+  .frontend-process__actions .frontend-process__autoplay-toggle {
+    width: 2.35rem;
+    height: 2.35rem;
+    padding: 0;
+  }
+
+  .frontend-process__timeline {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.08rem;
+    margin-inline: 0.3rem;
+  }
+
+  .frontend-process__stage-label,
+  .frontend-process:not(.frontend-process--flow):not(.frontend-process--seo) .frontend-process__stage-label,
+  .frontend-process--flow .frontend-process__stage-label {
+    min-height: 2.55rem;
+    justify-content: center;
+    padding: 0.15rem;
+    font-size: 0;
+  }
+
+  .frontend-process__stage-label span {
+    display: none;
+  }
+
+  .frontend-process__stage-label i {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.65rem;
+  }
+
+  .frontend-process__workspace,
+  .frontend-process--flow .frontend-process__workspace {
+    inset: 7.6rem 0.3rem 0.3rem;
+  }
+
+  .database-process__stage,
+  .cloud-process__stage,
+  .quality-process__dashboard,
+  .seo-process__stage,
+  .frontend-flow__stage {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .database-process__monitor,
+  .cloud-process__monitor-grid,
+  .quality-process__main--monitor,
+  .seo-dashboard--monitor,
+  .seo-process__monitor {
+    height: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    overflow: visible;
+  }
+
+  .cloud-process__monitor {
+    height: auto;
+    overflow: visible;
+  }
+
+  .database-process__monitor > *,
+  .cloud-process__monitor-grid > *,
+  .quality-process__main--monitor > *,
+  .seo-dashboard--monitor > * {
+    grid-column: 1 / -1 !important;
+  }
+
+  .cloud-process__monitor-grid > .cloud-process__panel:first-child {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+
+  .cloud-process__monitor-grid > .cloud-process__panel {
+    min-height: 12rem;
+    overflow: hidden;
+  }
+
+  .cloud-process__uptime {
+    width: 4.8rem;
   }
 }

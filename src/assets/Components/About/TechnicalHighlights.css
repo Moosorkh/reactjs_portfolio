@@ -43,6 +43,7 @@
 }
 
 .technical-highlights-grid__header {
+  padding-top: clamp(1.75rem, 3vh, 2.25rem);
   margin-bottom: 0.7rem;
   text-align: center;
 }
@@ -75,7 +76,7 @@
 
 .technical-highlights-orbit {
   position: relative;
-  height: 36rem;
+  height: 34rem;
   overflow: hidden;
   perspective: 1050px;
   perspective-origin: 50% 46%;

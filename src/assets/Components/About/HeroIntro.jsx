@@ -112,7 +112,7 @@ const HeroIntro = ({ visible }) => {
 
         <Reveal visible={visible} delay={320}>
           <p className="text-base md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl">
-            <span className="text-primary font-semibold">14+ years</span> building and modernizing{" "}
+            <span className="text-primary font-semibold">10+ years</span> building and modernizing{" "}
             <span className="text-accent font-semibold">production platforms</span> across SaaS,
             finance, e-commerce, nonprofit, and{" "}
             <span className="text-secondary font-semibold">SEO-driven products</span>.

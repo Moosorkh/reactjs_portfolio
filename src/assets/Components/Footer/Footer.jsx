@@ -16,7 +16,7 @@ const Footer = () => {
               Mehdi's Portfolio
             </h3>
             <p className="text-text-secondary mb-6 leading-relaxed">
-              Senior full-stack engineer with 14+ years building and modernizing production
+              Senior full-stack engineer with 10+ years building and modernizing production
               platforms across frontend, backend, cloud delivery, technical SEO, and quality engineering.
             </p>
             <div className="flex gap-4">

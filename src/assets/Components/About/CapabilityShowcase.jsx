@@ -78,8 +78,16 @@ const CapabilityShowcase = () => {
     if (!section || !viewport || !rail) return undefined;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // The 901px width floor is a real layout constraint — the pinned
+    // heading + card rail needs that much room — so it always applies.
+    // The height floor is what breaks on high-DPI 14-16" laptops running
+    // 125%/150%/200% OS scaling: a 1920x1080 panel at 125% reports roughly
+    // 1536x761 CSS px, so width is fine but height falls under 781. A fine
+    // pointer + hover is a reliable "mouse/trackpad, not touch" signal, so
+    // those devices get a much lower height floor only.
     const desktopLayout = window.matchMedia(
-      "(min-width: 901px) and (min-height: 781px)"
+      "(min-width: 901px) and (min-height: 781px), " +
+        "(min-width: 901px) and (hover: hover) and (pointer: fine) and (min-height: 520px)"
     );
     let frameId = null;
 

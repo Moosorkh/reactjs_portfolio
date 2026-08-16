@@ -140,7 +140,11 @@
   text-shadow: 0 0 24px hsl(var(--color-accent) / 0.18);
 }
 
-@media (max-width: 900px), (max-height: 780px) {
+/* Exact inverse of the JS hasPullupOverlap query — see CapabilityShowcase.css. */
+@media (max-width: 900px),
+  (max-height: 780px) and (hover: none),
+  (max-height: 780px) and (pointer: coarse),
+  (max-height: 519px) {
   .about-reveal {
     height: 260vh;
     min-height: 110rem;

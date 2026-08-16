@@ -390,7 +390,15 @@
   }
 }
 
-@media (max-width: 900px), (max-height: 780px) {
+/* Exact inverse of the JS desktopLayout query, written as a plain MQ3 comma
+   list so it evaluates identically in every browser. Stack when the width is
+   genuinely too narrow for the two-column layout, or when the viewport is
+   short AND this isn't a mouse/trackpad device (a short viewport on a fine
+   pointer is just an OS-zoomed laptop, which keeps the animation). */
+@media (max-width: 900px),
+  (max-height: 780px) and (hover: none),
+  (max-height: 780px) and (pointer: coarse),
+  (max-height: 519px) {
   .capability-showcase {
     --content-opacity: 1;
     height: auto;

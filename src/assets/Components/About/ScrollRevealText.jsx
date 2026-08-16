@@ -59,8 +59,13 @@ const ScrollRevealText = () => {
           )
         ) || 96;
       const stickyHeight = window.innerHeight - headerHeight;
+      // Kept in sync with CapabilityShowcase's desktopLayout query: the 901px
+      // width floor always applies, while a fine pointer + hover (mouse or
+      // trackpad, not touch) relaxes only the height floor so OS-zoomed
+      // laptops keep the desktop behaviour.
       const hasPullupOverlap = window.matchMedia(
-        "(min-width: 901px) and (min-height: 781px)"
+        "(min-width: 901px) and (min-height: 781px), " +
+          "(min-width: 901px) and (hover: hover) and (pointer: fine) and (min-height: 520px)"
       ).matches;
       const nextPanelTrack = section.parentElement?.querySelector(
         ".technical-highlights-pullup"

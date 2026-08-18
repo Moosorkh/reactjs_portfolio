@@ -1,11 +1,11 @@
 // Import project images
-import WeatherDashboardImage from "../../../../assets/weatherdashboard.png";
 import MapListToggleImage from "../../../../assets/MapListToggleImage.png";
-import invoiceTrackerImage from "../../../../assets/invoiceTracker.png";
-import MaryEclairPatisserie from "../../../../assets/MaryEclairPatisserie.png";
 import sweetCreations from "../../../../assets/sweetCreations.png";
-import ETA from "../../../../assets/ETA.png";
 import productPresenterImage from "../../../../assets/product-presenter.jpg";
+import WestsideDentalImage from "../../../../assets/westside-dental.png";
+import FamilyFirstDentalImage from "../../../../assets/family-first-dental.png";
+import WilliamAndrewsLawImage from "../../../../assets/william-andrews-law.png";
+import LandingPageBuilderImage from "../../../../assets/landing-page-builder.png";
 
 export const projects = [
   {
@@ -49,6 +49,61 @@ export const projects = [
     color: "blue",
   },
   {
+    id: "westside-aesthetic-dentistry",
+    title: "Westside Aesthetic Dentistry",
+    description: "A custom WordPress website for an aesthetic and general dentistry practice in Playa Vista. Delivers a full service hub — cosmetic and restorative dentistry, implants, crowns, whitening, dental Botox, and airway evaluations — with online booking, patient portal integration, and SEO-optimized service pages.",
+    image: WestsideDentalImage,
+    tags: ["WordPress", "PHP", "Web Design", "SEO", "Responsive Design", "Custom Theme"],
+    links: {
+      github: null,
+      liveDemo: "https://westsideaesstg.wpenginepowered.com/",
+    },
+    status: "Client Work",
+    color: "green",
+    badge: "WordPress",
+  },
+  {
+    id: "family-first-dental",
+    title: "Family First Dental",
+    description: "A multi-location WordPress website for a family dental practice with five offices across the Tri-Cities area. Covers the full care spectrum — pediatric, general, cosmetic, Invisalign, and implants — with pay-online billing, location landing pages, online scheduling, and a strong local SEO footprint.",
+    image: FamilyFirstDentalImage,
+    tags: ["WordPress", "PHP", "Local SEO", "Multi-location", "Responsive Design"],
+    links: {
+      github: null,
+      liveDemo: "https://firstdenta2stg.wpenginepowered.com/",
+    },
+    status: "Client Work",
+    color: "green",
+    badge: "WordPress",
+  },
+  {
+    id: "william-andrews-law",
+    title: "William Andrews Law",
+    description: "A conversion-focused legal website for a personal injury attorney in Salt Lake City. Comprehensive practice-area casework pages for car, truck, and motorcycle accidents, wrongful death, and premises liability — plus location landing pages, case results, client reviews, and a prominent call-to-action that converts new-case inquiries.",
+    image: WilliamAndrewsLawImage,
+    tags: ["WordPress", "PHP", "Conversion Design", "SEO", "Responsive Design", "Legal"],
+    links: {
+      github: null,
+      liveDemo: "https://williamenocstg.wpenginepowered.com/",
+    },
+    status: "Client Work",
+    color: "blue",
+    badge: "Legal",
+  },
+  {
+    id: "landing-page-builder",
+    title: "SEO Website Builder Platform",
+    description: "A self-serve SEO landing page builder. The admin console manages sites, pages, versions, and SEO metadata, then publishes instant, indexable landing pages — deployed as a serverless Cloudflare Worker.",
+    image: LandingPageBuilderImage,
+    tags: ["Next.js", "React", "Cloudflare Workers", "SaaS", "SEO"],
+    links: {
+      github: null,
+      liveDemo: "https://landing-page-builder.moosorkh.workers.dev/admin",
+    },
+    color: "blue",
+    badge: "Platform",
+  },
+  {
     id: "adopt-paws",
     title: "AdoptPaws - Pet Adoption",
     description: "A modern, fully responsive pet adoption web application built with React and Material UI. Features include an interactive pet browsing experience with search and filtering.",
@@ -59,58 +114,6 @@ export const projects = [
       liveDemo: "https://adoptpaws-react.pages.dev/",
     },
     color: "blue",
-  },
-  {
-    id: "invoice-tracker",
-    title: "Invoice Tracker - Full Stack CRUD App",
-    description: "An invoice tracking application built with the PERN Stack (PostgreSQL, Express, React, Node.js), featuring advanced CRUD operations, JWT authentication, PDF exporting, and Dockerized deployment on Railway. Use the following credentials to login: Email: \"test@test.com\" Password: \"123456\" or simply register a new account to access the app.",
-    image: invoiceTrackerImage,
-    tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Docker", "Railway"],
-    links: {
-      github: "https://github.com/Moosorkh/invoice-tracker.git",
-      liveDemo: "https://invoice-tracker.up.railway.app/",
-    },
-    color: "blue",
-  },
-  {
-    id: "mary-eclair",
-    title: "Mary Éclair Pâtisserie",
-    description: "A custom Shopify e-commerce store designed and developed for an upscale French-inspired bakery specializing in artisan éclairs and pastries. Features include custom theme customization, responsive design, SEO optimization, integrated contact forms, and social media integration.",
-    image: MaryEclairPatisserie,
-    tags: ["Shopify", "Liquid", "HTML5", "CSS3", "SEO"],
-    badge: "Shopify",
-    links: {
-      github: null,
-      liveDemo: "https://maryeclairpatisserie.myshopify.com/",
-    },
-    status: "Password: None",
-    color: "green",
-  },
-  {
-    id: "weather-dashboard",
-    title: "Weather Dashboard",
-    description: "A full-stack weather application built with React, Material UI, NestJS, and PostgreSQL. Features include current weather data, 5-day forecasts, search history management, and dark/light theme switching. Deployed on Railway with Docker containerization.",
-    image: WeatherDashboardImage,
-    tags: ["React", "TypeScript", "Material UI", "NestJS", "PostgreSQL", "Prisma", "Docker", "Railway"],
-    links: {
-      github: "https://github.com/Moosorkh/Weather_Dashboard",
-      liveDemo: "https://weatherdashboard-production-5c78.up.railway.app/",
-    },
-    color: "blue",
-  },
-  {
-    id: "exercise-tracking-api",
-    title: "ETA - Exercise Tracking API",
-    description: "A comprehensive backend API built with NestJS and PostgreSQL for tracking exercises with social features. Users can create, save, favorite, and rate exercises. Features include JWT authentication, Prisma ORM integration, and complete Swagger documentation. The API implements modern design patterns and robust error handling.",
-    image: ETA,
-    tags: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "Docker", "Swagger", "JWT"],
-    links: {
-      github: "https://github.com/Moosorkh/prehab-api",
-      liveDemo: "https://social-media-api-production-5c29.up.railway.app/api",
-    },
-    color: "blue",
-    icon: "SiNestjs",
-    iconColor: "#E0234E",
   },
   {
     id: "product-presenter",

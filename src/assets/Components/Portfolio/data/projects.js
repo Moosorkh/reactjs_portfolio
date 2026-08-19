@@ -44,7 +44,7 @@ export const projects = [
     tags: ["React", "JavaScript", "Leaflet", "CSS"],
     links: {
       github: "https://github.com/Moosorkh/map-list-toggle.git",
-      liveDemo: "https://map-list-toggle.vercel.app/",
+      liveDemo: "https://map-list-toggle.pages.dev/",
     },
     color: "blue",
   },

@@ -37,8 +37,8 @@ export const projects = [
   },
   {
     id: "map-toggle",
-    title: "Mobile-responsive Map Search",
-    description: "An interactive React application that toggles between a map view and a list view, showcasing various locations with advanced filtering capabilities and responsive design.",
+    title: "Builder.media demo home page",
+    description: "",
     image: '',
     featured: true,
     tags: ["React", "JavaScript", "Leaflet", "CSS"],

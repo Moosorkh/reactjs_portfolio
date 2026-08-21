@@ -1,5 +1,5 @@
 // Import project images
-import MapListToggleImage from "../../../../assets/MapListToggleImage.png";
+import builderMedia from "../../../../assets/builder-media.webp";
 import sweetCreations from "../../../../assets/sweetCreations.png";
 import productPresenterImage from "../../../../assets/product-presenter.jpg";
 import WestsideDentalImage from "../../../../assets/westside-dental.png";
@@ -39,7 +39,7 @@ export const projects = [
     id: "map-toggle",
     title: "Builder.media demo home page",
     description: "",
-    image: '',
+    image: builderMedia,
     featured: true,
     tags: ["React", "JavaScript", "Leaflet", "CSS"],
     links: {

@@ -51,7 +51,7 @@ const categories = [
     showcase: "frontend-process",
     icon: FaReact,
     gradient: "from-blue-500 to-cyan-400",
-    colors: ["#3b82f6", "#22d3ee"],
+    colors: ["#FF4A1C", "#C3300C"],
     description: "Production interfaces from Figma",
     concept: "User Experience & Interface Design",
     skills: [
@@ -73,7 +73,7 @@ const categories = [
     showcase: "capability-process",
     icon: FaServer,
     gradient: "from-green-500 to-emerald-400",
-    colors: ["#22c55e", "#34d399"],
+    colors: ["#FF4A1C", "#C3300C"],
     description: "Secure services and product APIs",
     concept: "API Design & Data Management",
     skills: [
@@ -95,7 +95,7 @@ const categories = [
     showcase: "capability-process",
     icon: FaDatabase,
     gradient: "from-purple-500 to-pink-400",
-    colors: ["#a855f7", "#ec4899"],
+    colors: ["#FF4A1C", "#C3300C"],
     description: "Data modeling & optimization",
     concept: "Data Architecture & Performance",
     skills: [
@@ -117,7 +117,7 @@ const categories = [
     showcase: "capability-process",
     icon: FaAws,
     gradient: "from-orange-500 to-yellow-400",
-    colors: ["#f97316", "#eab308"],
+    colors: ["#FF4A1C", "#C3300C"],
     description: "Infrastructure, delivery & reliability",
     concept: "Cloud Architecture & DevOps",
     skills: [
@@ -139,7 +139,7 @@ const categories = [
     showcase: "capability-process",
     icon: FaRobot,
     gradient: "from-amber-500 to-orange-400",
-    colors: ["#f59e0b", "#fb923c"],
+    colors: ["#FF4A1C", "#C3300C"],
     description: "AI-assisted delivery and test automation",
     concept: "Quality Engineering & Developer Tooling",
     skills: [
@@ -161,7 +161,7 @@ const categories = [
     showcase: "capability-process",
     icon: FaWordpress,
     gradient: "from-pink-500 to-rose-400",
-    colors: ["#ec4899", "#fb7185"],
+    colors: ["#FF4A1C", "#C3300C"],
     description: "Scalable publishing and organic visibility",
     concept: "Web Platforms & Technical SEO",
     skills: [
@@ -632,6 +632,9 @@ const SkillCard = ({
         className="highlight-skill-card"
         onClick={(event) => onSelect(category, event, index)}
       >
+        <span className="highlight-skill-card__kicker">
+          Capability {String(index + 1).padStart(2, "0")}
+        </span>
         <span className="highlight-skill-card__header">
           <span className="highlight-skill-card__icon"><Icon /></span>
           <span>
@@ -1437,6 +1440,9 @@ const CloudProcessWorkspace = ({ config, activeStage }) => {
 const CapabilityProcessShowcase = ({ category, onClose }) => {
   const config = processShowcases[category.title];
   const Icon = category.icon;
+  const capabilityNumber = String(
+    categories.findIndex(({ title }) => title === category.title) + 1
+  ).padStart(2, "0");
   const processStages = config.stages;
   const processRef = useRef(null);
   const animationFrameRef = useRef(null);
@@ -1584,8 +1590,9 @@ const CapabilityProcessShowcase = ({ category, onClose }) => {
       <div className="frontend-process__identity">
         <span className="frontend-process__react"><Icon /></span>
         <span>
-          <small>Selected capability</small>
+          <small>Capability {capabilityNumber}</small>
           <strong>{category.title}</strong>
+          <em className="frontend-process__description">{category.description}</em>
         </span>
       </div>
       <div className="frontend-process__actions">

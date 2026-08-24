@@ -4,27 +4,27 @@ const COMMAND = "npm run dev";
 
 const CODE_LINES = [
   <>
-    <span className="text-[#c586c0]">import</span> <span className="text-[#4ec9b0]">Developer</span>{" "}
-    <span className="text-[#c586c0]">from</span> <span className="text-[#ce9178]">'@mehdi/portfolio'</span>
+    <span className="text-primary">import</span> <span className="text-text-primary">Developer</span>{" "}
+    <span className="text-primary">from</span> <span className="text-text-secondary">'@mehdi/portfolio'</span>
     <span className="text-white/50">;</span>
   </>,
   <>
-    <span className="text-[#c586c0]">export default</span> <span className="text-[#c586c0]">new</span>{" "}
-    <span className="text-[#4ec9b0]">Developer</span>
+    <span className="text-primary">export default</span> <span className="text-primary">new</span>{" "}
+    <span className="text-text-primary">Developer</span>
     <span className="text-white/50">(</span>
-    <span className="text-[#ce9178]">'Mehdi Azar'</span>
+    <span className="text-text-secondary">'Mehdi Azar'</span>
     <span className="text-white/50">);</span>
   </>,
 ];
 
 const OUTPUT_LINES = [
   <>
-    <span className="text-[#4ec9b0] font-semibold">VITE</span> <span className="text-white/50">v5.4.5</span>{" "}
+    <span className="text-primary font-semibold">VITE</span> <span className="text-white/50">v5.4.5</span>{" "}
     <span className="text-white/70">ready in</span> <span className="text-white/90">138 ms</span>
   </>,
   <>
-    <span className="text-[#4ec9b0]">➜</span> <span className="text-white/80">Local:</span>{" "}
-    <span className="text-[#9cdcfe] underline">http://localhost:5173/</span>
+    <span className="text-primary">➜</span> <span className="text-white/80">Local:</span>{" "}
+    <span className="text-text-primary underline">http://localhost:5173/</span>
   </>,
 ];
 
@@ -110,22 +110,22 @@ const BootScreen = ({ onReveal }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#12121a] px-6 transition-all duration-[800ms] ease-[cubic-bezier(0.7,0,0.2,1)] ${
+      className={`boot-screen fixed inset-0 z-[100] flex items-center justify-center bg-[#0C0C0B] px-6 transition-all duration-[800ms] ease-[cubic-bezier(0.7,0,0.2,1)] ${
         isExiting ? "opacity-0 scale-[1.04] pointer-events-none" : "opacity-100 scale-100"
       }`}
     >
       <div className="w-full max-w-lg font-mono">
         {/* Window chrome */}
-        <div className="flex items-center gap-2 bg-[#252537] px-4 py-2.5 rounded-t-xl border border-white/10 border-b-0">
-          <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-          <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+        <div className="boot-screen__bar flex items-center gap-2 bg-[#16150F] px-4 py-2.5 rounded-t-xl border border-[#2E2D29] border-b-0">
+          <span className="w-3 h-3 rounded-full bg-primary" />
+          <span className="w-3 h-3 rounded-full bg-text-tertiary" />
+          <span className="w-3 h-3 rounded-full bg-text-primary" />
           <span className="flex-1 text-center text-[11px] text-white/40 truncate">developer.ts</span>
           <span className="w-14" />
         </div>
 
         {/* Source file */}
-        <div className="bg-[#1e1e2e] border-x border-white/10 px-5 py-4 text-[12.5px] leading-6">
+        <div className="boot-screen__source bg-[#11100E] border-x border-[#2E2D29] px-5 py-4 text-[12.5px] leading-6">
           {CODE_LINES.map((line, i) => (
             <div key={i} className="flex gap-4">
               <span className="select-none text-white/20 w-3 text-right shrink-0">{i + 1}</span>
@@ -135,9 +135,9 @@ const BootScreen = ({ onReveal }) => {
         </div>
 
         {/* Terminal */}
-        <div className="bg-[#181822] border border-white/10 rounded-b-xl px-5 py-4 text-[12.5px] leading-6 min-h-[6.5rem] shadow-2xl">
+        <div className="boot-screen__terminal bg-[#0C0C0B] border border-[#2E2D29] rounded-b-xl px-5 py-4 text-[12.5px] leading-6 min-h-[6.5rem] shadow-2xl">
           <p className="text-white/60">
-            <span className="text-[#4ec9b0]">➜</span> <span className="text-[#9cdcfe]">portfolio</span>{" "}
+            <span className="text-primary">➜</span> <span className="text-text-primary">portfolio</span>{" "}
             {typedCommand}
             {isTyping && <span className="inline-block w-[7px] h-3.5 -mb-0.5 ml-0.5 bg-white/70 animate-pulse" />}
           </p>
@@ -149,7 +149,7 @@ const BootScreen = ({ onReveal }) => {
               </p>
             ))}
 
-          {isDone && <p className="mt-2 text-[#28c840] animate-fade-in">✓ build complete</p>}
+          {isDone && <p className="mt-2 text-primary animate-fade-in">✓ build complete</p>}
         </div>
       </div>
     </div>

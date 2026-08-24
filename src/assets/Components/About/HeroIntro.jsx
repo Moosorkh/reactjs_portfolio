@@ -5,13 +5,13 @@ import { scrollToSection } from "../../../utils/scroll";
 import "./HeroIntro.css";
 
 const STACK = [
-  { label: "React", color: "bg-[#61dafb]" },
-  { label: "TypeScript", color: "bg-[#3178c6]" },
-  { label: "C# / .NET", color: "bg-[#512bd4]" },
-  { label: "Laravel / PHP", color: "bg-[#ff2d20]" },
-  { label: "WordPress", color: "bg-[#21759b]" },
-  { label: "AWS", color: "bg-[#ff9900]" },
-  { label: "Technical SEO", color: "bg-[#ec4899]" },
+  { label: "React", color: "bg-primary" },
+  { label: "TypeScript", color: "bg-primary" },
+  { label: "C# / .NET", color: "bg-primary" },
+  { label: "Laravel / PHP", color: "bg-primary" },
+  { label: "WordPress", color: "bg-primary" },
+  { label: "AWS", color: "bg-primary" },
+  { label: "Technical SEO", color: "bg-primary" },
 ];
 
 // Each block eases in on its own beat once the boot sequence hands over.
@@ -69,7 +69,7 @@ const HeroIntro = ({ visible }) => {
   }, []);
 
   return (
-  <div className="relative h-full overflow-hidden">
+  <div className="hero-intro relative h-full overflow-hidden">
     <div
       className="hero-intro__media absolute inset-y-0 right-0 w-full md:w-[66%] pointer-events-none"
       style={{

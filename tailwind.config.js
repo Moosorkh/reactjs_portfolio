@@ -4,6 +4,11 @@ export default {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Archivo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Archivo Black', 'Arial Black', 'sans-serif'],
+        mono: ['Archivo Narrow', 'Arial Narrow', 'sans-serif'],
+      },
       colors: {
         // Primary colors - Professional Blue
         primary: {

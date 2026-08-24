@@ -12,42 +12,42 @@ const capabilities = [
   {
     title: "Product Frontend",
     icon: FaLaptopCode,
-    color: "#4f8cff",
+    color: "#FF4A1C",
     description:
       "Production interfaces built from Figma with React, TypeScript, Next.js, React Native, Tailwind CSS, and responsive interaction systems.",
   },
   {
     title: "Backend & APIs",
     icon: FaLaptopCode,
-    color: "#7277f4",
+    color: "#FF4A1C",
     description:
       "Secure application services and APIs with C#/.NET, ASP.NET, Laravel, PHP, Node.js, Express, REST, GraphQL, and ORM-backed data access.",
   },
   {
     title: "Data & Cloud",
     icon: FaDatabase,
-    color: "#16c7bc",
+    color: "#FF4A1C",
     description:
       "PostgreSQL, SQL Server, MySQL, and MongoDB paired with AWS, Cloudflare, Docker, GitHub Actions, and repeatable CI/CD delivery.",
   },
   {
     title: "WordPress Platforms",
     icon: FaWordpress,
-    color: "#f05a9d",
+    color: "#FF4A1C",
     description:
       "Reusable WordPress and PHP systems built from Figma, including a parent-child framework adopted across roughly 50 production sites.",
   },
   {
     title: "Quality & AI Workflow",
     icon: FaRobot,
-    color: "#f59e42",
+    color: "#FF4A1C",
     description:
       "AI-assisted implementation and QA with Claude Code and Codex, reinforced by Playwright, Cypress, Jest, and browser-based regression checks.",
   },
   {
     title: "Technical SEO & Performance",
     icon: FaSearch,
-    color: "#8dd957",
+    color: "#FF4A1C",
     description:
       "Search-focused engineering, Lighthouse auditing, structured content, and performance work that has improved organic visibility by 25%.",
   },

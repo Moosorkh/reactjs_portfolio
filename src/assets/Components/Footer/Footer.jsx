@@ -96,7 +96,7 @@ const FooterLink = ({ id, children }) => (
 
 const SkillBadge = ({ icon, name }) => (
   <div className="bg-bg-tertiary px-3 py-1 rounded-full flex items-center gap-1 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">
-    <span className="text-blue-400">{icon}</span>
+    <span className="text-primary">{icon}</span>
     <span>{name}</span>
   </div>
 );

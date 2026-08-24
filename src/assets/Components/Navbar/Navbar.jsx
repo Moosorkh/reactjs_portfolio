@@ -8,10 +8,10 @@ import avatar from "../../7358602-removebg-preview.png";
 import "./Navbar.css";
 
 const SECTIONS = [
-  { id: "about", label: "about.tsx", icon: FaReact, color: "text-[#61dafb]" },
-  { id: "skills", label: "skills.tsx", icon: FaCode, color: "text-accent" },
-  { id: "portfolio", label: "projects.tsx", icon: FaFolderOpen, color: "text-highlight" },
-  { id: "contact", label: "contact.tsx", icon: FaEnvelope, color: "text-secondary" },
+  { id: "about", label: "about.tsx", icon: FaReact, color: "text-primary" },
+  { id: "skills", label: "skills.tsx", icon: FaCode, color: "text-primary" },
+  { id: "portfolio", label: "projects.tsx", icon: FaFolderOpen, color: "text-primary" },
+  { id: "contact", label: "contact.tsx", icon: FaEnvelope, color: "text-primary" },
 ];
 
 const Navbar = ({ ready = true, onOpenContact }) => {
@@ -144,12 +144,12 @@ const Navbar = ({ ready = true, onOpenContact }) => {
     <>
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 w-full z-50 bg-[#1e1e2e] font-mono transition-all duration-700 ease-out ${
+      className={`portfolio-header fixed top-0 left-0 w-full z-50 bg-[#0C0C0B] font-mono transition-all duration-700 ease-out ${
         scrolled ? "shadow-2xl" : ""
       } ${ready ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}
     >
       {/* Title bar */}
-      <div className="flex items-center gap-3 bg-[#252537] px-4 md:px-6 py-2 border-b border-white/10">
+      <div className="portfolio-header__titlebar flex items-center gap-3 bg-[#11100E] px-4 md:px-6 py-2 border-b border-[#2E2D29]">
         <div className="window-controls" role="group" aria-label="Window controls">
           <button
             type="button"
@@ -208,13 +208,13 @@ const Navbar = ({ ready = true, onOpenContact }) => {
               alt="Mehdi Azar"
               className="w-7 h-7 rounded-full object-cover border-2 border-white/20"
             />
-            <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-success rounded-full border-2 border-[#252537]" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-primary rounded-full border-2 border-[#11100E]" />
           </div>
         </div>
       </div>
 
       {/* Tab strip */}
-      <nav className="flex items-center bg-[#18181f] overflow-x-auto scrollbar-none">
+      <nav className="portfolio-header__tabs flex items-center bg-[#0C0C0B] overflow-x-auto scrollbar-none">
         {SECTIONS.map(({ id, label, icon: Icon, color }) => {
           const isActive = activeSection === id;
           return (
@@ -223,7 +223,7 @@ const Navbar = ({ ready = true, onOpenContact }) => {
               onClick={() => scrollToSection(id)}
               className={`flex items-center gap-2 px-4 md:px-5 py-2.5 text-xs md:text-sm whitespace-nowrap border-r border-white/10 border-t-2 transition-colors ${
                 isActive
-                  ? "bg-[#1e1e2e] text-white/90 border-t-primary"
+                  ? "bg-[#16150F] text-white/90 border-t-primary"
                   : "text-white/40 border-t-transparent hover:text-white/70 hover:bg-white/[0.03]"
               }`}
             >
